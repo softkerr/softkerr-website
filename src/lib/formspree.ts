@@ -74,7 +74,7 @@ export async function submitToFormspree(
     replyTo,
     extras = {},
   } = options;
-  console.log('Formspree submission options:', formId, process);
+
   if (!formId || formId === 'YOUR_FORM_ID') {
     throw new Error(
       'Formspree Form ID is not configured. Please set NEXT_PUBLIC_FORMSPREE_FORM_ID in your .env.local file'
