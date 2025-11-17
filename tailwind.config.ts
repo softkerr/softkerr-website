@@ -144,6 +144,7 @@ const config: Config = {
         'slide-down': 'slideDown 0.5s ease-out',
         'scale-in': 'scaleIn 0.3s ease-out',
         'bounce-subtle': 'bounceSubtle 2s infinite',
+        gradient: 'gradient 3s ease infinite',
       },
       keyframes: {
         fadeIn: {
@@ -165,6 +166,10 @@ const config: Config = {
         bounceSubtle: {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-5px)' },
+        },
+        gradient: {
+          '0%, 100%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
         },
       },
       spacing: {
