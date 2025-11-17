@@ -4,9 +4,9 @@ import OpenPositions from '@/components/sections/careers/OpenPositions';
 import CareersCTA from '@/components/sections/careers/CareersCTA';
 
 export const metadata: Metadata = {
-  title: 'Careers - Join Our Team | Bachata Systems',
+  title: 'Careers - Join Our Team | SoftKerr',
   description:
-    'Join our team of talented designers and developers. Explore open positions and grow your career with Bachata Systems.',
+    'Join our team of talented designers and developers. Explore open positions and grow your career with SoftKerr.',
 };
 
 export default function CareersPage() {
