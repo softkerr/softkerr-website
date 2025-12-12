@@ -7,130 +7,7 @@ import Typography from '@/components/ui/Typography';
 import { FaLinkedin, FaTwitter, FaGithub, FaEnvelope } from 'react-icons/fa';
 import { Link } from '../../ui';
 
-interface SocialLinks {
-  linkedin?: string;
-  twitter?: string;
-  github?: string;
-  email?: string;
-}
-
-interface TeamMember {
-  name: string;
-  position: string;
-  department: string;
-  bio: string;
-  image: string;
-  skills: string[];
-  social: SocialLinks;
-  color: string;
-  borderColor: string;
-  glowColor: string;
-}
-
-const teamMembers: TeamMember[] = [
-  {
-    name: 'Sarah Johnson',
-    position: 'Chief Technology Officer',
-    department: 'Leadership',
-    bio: 'Leading our technical vision with 15+ years of experience in enterprise software development.',
-    image:
-      'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=400&fit=crop&crop=face',
-    skills: ['Strategy', 'Architecture', 'Leadership'],
-    social: {
-      linkedin: '#',
-      twitter: '#',
-      email: 'sarah@company.com',
-    },
-    color: 'text-brand-gold',
-    borderColor: 'border-brand-gold/30',
-    glowColor: 'rgba(240, 185, 11, 0.3)',
-  },
-  {
-    name: 'Michael Chen',
-    position: 'Lead Full-Stack Developer',
-    department: 'Engineering',
-    bio: 'Expert in building scalable web applications with React, Node.js, and cloud infrastructure.',
-    image:
-      'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face',
-    skills: ['React', 'Node.js', 'AWS'],
-    social: {
-      linkedin: '#',
-      github: '#',
-      email: 'michael@company.com',
-    },
-    color: 'text-brand-violet',
-    borderColor: 'border-brand-violet/30',
-    glowColor: 'rgba(139, 92, 246, 0.3)',
-  },
-  {
-    name: 'Emily Rodriguez',
-    position: 'Head of Design',
-    department: 'Design',
-    bio: 'Creative leader passionate about crafting beautiful, user-centered digital experiences.',
-    image:
-      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face',
-    skills: ['UI/UX', 'Figma', 'Design Systems'],
-    social: {
-      linkedin: '#',
-      twitter: '#',
-      email: 'emily@company.com',
-    },
-    color: 'text-brand-pink',
-    borderColor: 'border-brand-pink/30',
-    glowColor: 'rgba(236, 72, 153, 0.3)',
-  },
-  {
-    name: 'David Kumar',
-    position: 'Senior DevOps Engineer',
-    department: 'Infrastructure',
-    bio: 'Specialist in cloud infrastructure, automation, and ensuring 99.9% uptime for enterprise clients.',
-    image:
-      'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&crop=face',
-    skills: ['AWS', 'Docker', 'Kubernetes'],
-    social: {
-      linkedin: '#',
-      github: '#',
-      email: 'david@company.com',
-    },
-    color: 'text-brand-cyan',
-    borderColor: 'border-brand-cyan/30',
-    glowColor: 'rgba(6, 182, 212, 0.3)',
-  },
-  {
-    name: 'Lisa Anderson',
-    position: 'Mobile Development Lead',
-    department: 'Mobile',
-    bio: 'Building high-performance native and cross-platform mobile apps for millions of users.',
-    image:
-      'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&h=400&fit=crop&crop=face',
-    skills: ['React Native', 'iOS', 'Android'],
-    social: {
-      linkedin: '#',
-      twitter: '#',
-      email: 'lisa@company.com',
-    },
-    color: 'text-brand-gold',
-    borderColor: 'border-brand-gold/30',
-    glowColor: 'rgba(240, 185, 11, 0.3)',
-  },
-  {
-    name: 'James Wilson',
-    position: 'Product Manager',
-    department: 'Product',
-    bio: 'Strategic thinker driving product vision and ensuring successful delivery for global clients.',
-    image:
-      'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=400&h=400&fit=crop&crop=face',
-    skills: ['Product Strategy', 'Agile', 'Analytics'],
-    social: {
-      linkedin: '#',
-      twitter: '#',
-      email: 'james@company.com',
-    },
-    color: 'text-brand-violet',
-    borderColor: 'border-brand-violet/30',
-    glowColor: 'rgba(139, 92, 246, 0.3)',
-  },
-];
+import { teamMembers, TeamMember, SocialLinks } from '@/data/teamMembers';
 
 const TeamMemberCard = ({ member, index }: { member: TeamMember; index: number }) => {
   const socialIcons: Record<keyof SocialLinks, React.ReactNode> = {
@@ -350,7 +227,7 @@ export default function TeamMembers() {
           <Typography variant="body2" className="text-gray-400">
             Want to join our team?{' '}
             <Link
-              href="#"
+              href="/careers"
               className="text-brand-gold hover:text-brand-violet transition-colors underline"
             >
               View open positions
