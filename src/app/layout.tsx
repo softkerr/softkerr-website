@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter, Orbitron } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -55,6 +56,7 @@ export default function RootLayout({
           <Footer />
           <BookCallModal />
         </BookCallModalProvider>
+        <Analytics />
       </body>
     </html>
   );
