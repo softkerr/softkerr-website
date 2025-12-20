@@ -4,6 +4,8 @@
 # HTML pages - Enable bfcache with proper caching
 /*.html
   Cache-Control: public, max-age=0, must-revalidate
+  Link: </_next/static/css/2739a0429ad1e9bd.css>; rel=preload; as=style; nopush
+  Link: <https://dwagloaw4bttd.cloudfront.net>; rel=preconnect; crossorigin
   
 # Static assets with hash in filename - Cache forever
 /_next/static/*
@@ -13,7 +15,7 @@
 /_next/static/chunks/*
   Cache-Control: public, max-age=31536000, immutable
 
-# CSS files
+# CSS files - Aggressive caching with preload
 /_next/static/css/*
   Cache-Control: public, max-age=31536000, immutable
 
