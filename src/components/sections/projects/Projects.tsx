@@ -286,6 +286,7 @@ const ProjectSection = ({ project }: Props) => {
                       width={32}
                       height={32}
                       className="w-32 h-32 rounded-full object-cover"
+                      loading="lazy"
                     />
                   </div>
                   <div className="lg:col-span-10">
