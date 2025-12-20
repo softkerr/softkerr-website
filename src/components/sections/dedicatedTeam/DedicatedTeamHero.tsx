@@ -92,25 +92,19 @@ export default function DedicatedTeamHero() {
               className="grid grid-cols-3 gap-6 py-6"
             >
               <div className="space-y-1">
-                <Typography variant="h3" className="text-3xl font-bold text-brand-violet">
-                  100M+
-                </Typography>
+                <div className="text-3xl font-bold text-brand-violet">100M+</div>
                 <Typography variant="body2" className="text-gray-400">
                   Users Served
                 </Typography>
               </div>
               <div className="space-y-1">
-                <Typography variant="h3" className="text-3xl font-bold text-brand-pink">
-                  15+
-                </Typography>
+                <div className="text-3xl font-bold text-brand-pink">15+</div>
                 <Typography variant="body2" className="text-gray-400">
                   Countries
                 </Typography>
               </div>
               <div className="space-y-1">
-                <Typography variant="h3" className="text-3xl font-bold text-brand-cyan">
-                  99.9%
-                </Typography>
+                <div className="text-3xl font-bold text-brand-cyan">99.9%</div>
                 <Typography variant="body2" className="text-gray-400">
                   Uptime SLA
                 </Typography>
@@ -195,7 +189,7 @@ export default function DedicatedTeamHero() {
                     </motion.div>
 
                     <div className="text-center space-y-2">
-                      <Typography variant="h3" className="text-2xl font-bold text-white">
+                      <Typography variant="h2" className="text-2xl font-bold text-white">
                         Expert Teams
                       </Typography>
                       <Typography variant="body2" className="text-gray-300">

@@ -114,7 +114,7 @@ const Hero = () => {
                       </motion.div>
 
                       <div className="text-center space-y-2">
-                        <Typography variant="h3" className="text-2xl font-bold text-white">
+                        <Typography variant="h2" className="text-2xl font-bold text-white">
                           Why Choose Us?
                         </Typography>
                         <Typography variant="body2" className="text-gray-300">

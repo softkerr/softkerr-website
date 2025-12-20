@@ -33,12 +33,9 @@ export default function Header() {
             {/* Logo */}
             <Link href="/" className="flex items-center space-x-3">
               <Logo className="text-brand-gold w-12 h-12" />
-              <Typography
-                variant="h4"
-                className="text-brand-gold font-orbitron font-black tracking-wide"
-              >
+              <div className="text-xl lg:text-2xl font-semibold leading-tight text-brand-gold font-orbitron font-black tracking-wide">
                 SoftKerr
-              </Typography>
+              </div>
             </Link>
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-8">

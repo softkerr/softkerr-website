@@ -97,25 +97,19 @@ const ProjectHero = () => {
               className="grid grid-cols-3 gap-6 py-6"
             >
               <div className="space-y-1">
-                <Typography variant="h3" className="text-3xl font-bold text-brand-violet">
-                  150+
-                </Typography>
+                <div className="text-3xl font-bold text-brand-violet">150+</div>
                 <Typography variant="body2" className="text-gray-400">
                   Projects Delivered
                 </Typography>
               </div>
               <div className="space-y-1">
-                <Typography variant="h3" className="text-3xl font-bold text-brand-gold">
-                  98%
-                </Typography>
+                <div className="text-3xl font-bold text-brand-gold">98%</div>
                 <Typography variant="body2" className="text-gray-400">
                   Satisfaction Rate
                 </Typography>
               </div>
               <div className="space-y-1">
-                <Typography variant="h3" className="text-3xl font-bold text-brand-pink">
-                  50M+
-                </Typography>
+                <div className="text-3xl font-bold text-brand-pink">50M+</div>
                 <Typography variant="body2" className="text-gray-400">
                   Users Impacted
                 </Typography>
@@ -200,7 +194,7 @@ const ProjectHero = () => {
                     </motion.div>
 
                     <div className="text-center space-y-2">
-                      <Typography variant="h3" className="text-2xl font-bold text-white">
+                      <Typography variant="h2" className="text-2xl font-bold text-white">
                         Case Studies
                       </Typography>
                       <Typography variant="body2" className="text-gray-300">

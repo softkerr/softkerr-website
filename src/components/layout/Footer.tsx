@@ -39,12 +39,9 @@ export default function Footer() {
           <div className="col-span-2 md:col-span-3 lg:col-span-4">
             <Link href="/" className="flex items-center space-x-2">
               <Logo className="text-brand-gold w-10 h-10" />
-              <Typography
-                variant="h5"
-                className="text-brand-gold font-orbitron font-black tracking-wide"
-              >
+              <div className="text-xl lg:text-2xl font-semibold leading-tight text-brand-gold font-orbitron font-black tracking-wide">
                 SoftKerr
-              </Typography>
+              </div>
             </Link>
 
             <p className="text-text-secondary mb-6">
