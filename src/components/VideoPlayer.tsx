@@ -80,6 +80,7 @@ const VideoPlayer: FC<VideoPlayerProps> = ({ video, title }) => {
         muted
         playsInline
         preload="metadata"
+        crossOrigin="anonymous"
         onEnded={handleVideoEnd}
       >
         <source src={desktopSrc} type={videoType} />
@@ -93,6 +94,7 @@ const VideoPlayer: FC<VideoPlayerProps> = ({ video, title }) => {
         muted
         playsInline
         preload="metadata"
+        crossOrigin="anonymous"
         onEnded={handleVideoEnd}
       >
         <source src={mobileSrc} type={mobileType} />

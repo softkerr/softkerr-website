@@ -1,0 +1,66 @@
+/* Critical CSS - Inline in <head> for instant render */
+/* This file contains only the essential styles needed for initial render */
+
+:root {
+  --background: #02021e;
+  --text-primary: #f8f8f8;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #02021e;
+  color: #f8f8f8;
+  font-family:
+    var(--font-inter),
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings:
+    'rlig' 1,
+    'calt' 1;
+  margin: 0;
+  padding: 0;
+}
+
+/* Prevent flash of unstyled content */
+main {
+  min-height: 100vh;
+}
+
+/* Critical loading state */
+.loading-skeleton {
+  background: linear-gradient(90deg, #1a1a3e 25%, #2d2d5f 50%, #1a1a3e 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s ease-in-out infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
