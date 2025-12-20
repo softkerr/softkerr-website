@@ -69,12 +69,12 @@ export default function Footer() {
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category} className="grid-span-1 lg:col-span-2">
               <h3 className="text-lg font-semibold mb-4">{category}</h3>
-              <ul className="space-y-3">
+              <ul className="space-y-2">
                 {links.map(link => (
                   <li key={link.name}>
                     <Link
                       href={link.href}
-                      className="text-text-secondary hover:text-text-primary transition-colors duration-200"
+                      className="text-text-secondary hover:text-text-primary transition-colors duration-200 md:py-1 min-h-[32px]"
                     >
                       {link.name}
                     </Link>
@@ -90,7 +90,7 @@ export default function Footer() {
       <div className="border-t border-border-subtle">
         <div className="container-custom py-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-text-muted text-sm">© 2024 SoftKerr. All rights reserved.</p>
+            <p className="text-text-muted text-sm">© 2025 SoftKerr. All rights reserved.</p>
 
             <div className="flex space-x-6 text-sm">
               <Link

@@ -201,7 +201,7 @@ const FAQItem = ({
       >
         <div className="flex-1">
           <Typography
-            variant="h3"
+            variant="h5"
             className="text-base md:text-lg font-semibold text-white mb-1 group-hover:text-brand-gold transition-colors"
           >
             {faq.question}

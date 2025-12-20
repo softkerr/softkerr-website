@@ -278,7 +278,7 @@ function ServiceCard({ service, index }: { service: ServiceConfig; index: number
                 }}
                 transition={{ duration: 0.4, type: 'spring', stiffness: 200 }}
               >
-                <Typography variant="h3" className={`${colorClasses.text} text-center`}>
+                <Typography variant="h4" className={`${colorClasses.text} text-center`}>
                   {service.title}
                 </Typography>
               </motion.div>

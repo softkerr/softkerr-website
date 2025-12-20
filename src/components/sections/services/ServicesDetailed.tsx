@@ -126,18 +126,6 @@ const ServiceCard = ({ service, index, categoryColor, glowColor, bgClass }: Serv
         {/* Animated Border Glow */}
         <motion.div
           className={`absolute -inset-[1px] rounded-2xl opacity-0 linear-gradient(135deg, rgba(${glowColor}, 0.3), transparent, rgba(${glowColor}, 0.3))`}
-          animate={{
-            opacity: isActive ? 0.5 : 0,
-            backgroundPosition: isActive ? ['0% 0%', '100% 100%'] : '0% 0%',
-          }}
-          transition={{
-            opacity: { duration: 0.3 },
-            backgroundPosition: {
-              duration: 2,
-              repeat: Infinity,
-              ease: 'linear',
-            },
-          }}
         />
 
         {/* Content Container */}

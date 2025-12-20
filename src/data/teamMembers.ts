@@ -23,7 +23,7 @@ export const teamMembers: TeamMember[] = [
     department: 'Sales',
     bio: 'Helping businesses to thrive and loving it!',
     image:
-      'https://media.licdn.com/dms/image/v2/D4D03AQEPaJVUYEbl8Q/profile-displayphoto-crop_800_800/B4DZqbskeeKEAI-/0/1763548744369?e=1767225600&v=beta&t=_pFj3OtV87ryv0nzV4I2O9Km0_zC4OeQoVmjPw4czPQ',
+      'https://media.licdn.com/dms/image/v2/D4D03AQGv15pK8oqmWw/profile-displayphoto-crop_800_800/B4DZsx8TwBKYAI-/0/1766069452871?e=1767830400&v=beta&t=luKkFzVYc3yjk6Iou2S6XtJ8qPlEXqsRZNi5PeDj0r0',
     skills: ['SMM', 'Email Marketing', 'Content Management'],
     social: {
       linkedin: 'https://www.linkedin.com/in/mariia-lominska/',
@@ -38,7 +38,8 @@ export const teamMembers: TeamMember[] = [
     position: 'Product Manager',
     department: 'Development',
     bio: 'Strategic thinker driving product vision and ensuring successful delivery for global clients.',
-    image: 'https://avatars.githubusercontent.com/u/42728716?v=4',
+    image:
+      'https://media.licdn.com/dms/image/v2/D5603AQGN2otQ3ztbJw/profile-displayphoto-crop_800_800/B56ZssD1djHYAQ-/0/1765970762245?e=1767830400&v=beta&t=JEbk81LCdwGB7Aeb5S-fcW5npjOv1-1PRY-IQL0DPZs',
     skills: ['Strategic Roadmaps', 'Product Development', 'Full-Stack Development'],
     social: {
       linkedin: 'https://www.linkedin.com/in/stas-bakryu-2b59a416b/',
