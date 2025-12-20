@@ -279,6 +279,7 @@ export default function SprintTimelineCircular() {
                     }}
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}
+                    aria-label={`Step ${index + 1}: ${step.title}`}
                   >
                     {isPassed && !isActive ? (
                       <BsCheckCircleFill
@@ -397,6 +398,7 @@ export default function SprintTimelineCircular() {
               animate={{
                 scale: index === activeIndex ? 1.5 : 1,
               }}
+              aria-label={`Step ${index + 1}: ${step.title}`}
             />
           ))}
         </div>

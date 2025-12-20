@@ -104,6 +104,7 @@ export default function HomeCTA() {
                   rightIcon={<FaCalendar />}
                   className="shadow-lg shadow-brand-gold/30 hover:shadow-xl hover:shadow-brand-gold/50 transition-shadow"
                   onClick={openModal}
+                  aria-label="Book a Call"
                 >
                   Book a Call
                 </Button>

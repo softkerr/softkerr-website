@@ -83,6 +83,8 @@ export default function CalculatorForm({
                             : 'border-white/20 bg-white/5 hover:border-white/40'
                         }
                       `}
+                      aria-label={`${isSelected ? 'Deselect' : 'Select'} ${option.label}`}
+                      aria-pressed={isSelected}
                     >
                       <div className="flex items-center gap-2">
                         {Icon && (
@@ -119,6 +121,8 @@ export default function CalculatorForm({
                             : 'border-white/20 bg-white/5 hover:border-white/40'
                         }
                       `}
+                      aria-label={`Select ${option.label}`}
+                      aria-pressed={isSelected}
                     >
                       <div className="flex items-center justify-between">
                         <Typography variant="body1" className="text-white text-sm md:text-base">
@@ -145,11 +149,18 @@ export default function CalculatorForm({
           leftIcon={<FaArrowLeft className="w-3 h-3 md:w-4 md:h-4" />}
           size="sm"
           className="text-sm md:text-base"
+          aria-label="Go back"
         >
           Back
         </Button>
 
-        <Button variant="secondary" onClick={onReset} size="sm" className="text-xs md:text-sm">
+        <Button
+          variant="secondary"
+          onClick={onReset}
+          size="sm"
+          className="text-xs md:text-sm"
+          aria-label="Reset Calculator"
+        >
           Reset
         </Button>
 
@@ -161,6 +172,7 @@ export default function CalculatorForm({
             disabled={!isValid}
             size="sm"
             className="text-sm md:text-base"
+            aria-label="Submit Calculator Form"
           >
             Continue
           </Button>
@@ -172,6 +184,7 @@ export default function CalculatorForm({
             disabled={!isValid}
             size="sm"
             className="text-sm md:text-base"
+            aria-label={`Go to next step`}
           >
             Next
           </Button>

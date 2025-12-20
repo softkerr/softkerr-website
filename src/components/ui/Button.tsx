@@ -114,6 +114,7 @@ export default function Button({
           transition={{ duration: 0.3 }}
           type={props.type}
           onClick={props.onClick}
+          aria-label={props['aria-label']}
         >
           <motion.div
             className="absolute inset-0 opacity-10 pointer-events-none"
@@ -159,6 +160,7 @@ export default function Button({
           transition={{ duration: 0.2, ease: 'easeOut' }}
           type={props.type}
           onClick={props.onClick}
+          aria-label={props['aria-label']}
         >
           {content}
         </motion.button>
@@ -173,6 +175,7 @@ export default function Button({
         transition={{ duration: 0.2, ease: 'easeOut' }}
         type={props.type}
         onClick={props.onClick}
+        aria-label={props['aria-label']}
       >
         {content}
       </motion.button>

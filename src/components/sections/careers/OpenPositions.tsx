@@ -119,6 +119,7 @@ export default function OpenPositions() {
                           className="flex-shrink-0 w-10 h-10 rounded-full bg-brand-violet/10 flex items-center justify-center hover:bg-brand-violet/20 transition-colors"
                           animate={{ rotate: isExpanded ? 180 : 0 }}
                           transition={{ duration: 0.3 }}
+                          aria-label="Expand Job Details"
                         >
                           <FaChevronDown className="text-brand-violet" />
                         </motion.button>

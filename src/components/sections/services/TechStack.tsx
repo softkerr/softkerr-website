@@ -269,6 +269,7 @@ export default function TechStack() {
               }`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              aria-label={`Select ${category.label} Technology Category`}
             >
               <span className="text-xl">{category.icon}</span>
               <span>{category.label}</span>

@@ -128,7 +128,7 @@ export const FeaturedProjectsShowcase: FC = () => {
         </div>
         <ScrollReveal delay={0.2}>
           <div className="text-center mt-12">
-            <Button variant="outline" size="md">
+            <Button variant="outline" size="md" aria-label="View Details">
               <Link href="/projects">View Details</Link>
             </Button>
           </div>

@@ -196,6 +196,8 @@ const FAQItem = ({
       <button
         onClick={onToggle}
         className="w-full text-left p-6 flex items-center justify-between gap-4 group"
+        aria-label={`${isOpen ? 'Collapse' : 'Expand'} ${faq.question}`}
+        aria-expanded={isOpen}
       >
         <div className="flex-1">
           <Typography

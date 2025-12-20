@@ -82,6 +82,7 @@ const CalculatorCTA: FC<CalculatorCTAProps> = ({ openCalculator }) => {
                 className="group relative flex-shrink-0 inline-flex items-center justify-center gap-3 px-6 md:px-8 py-3 md:py-4 bg-brand-gold hover:bg-brand-gold/90 text-background font-bold text-base md:text-lg rounded-2xl shadow-lg shadow-brand-gold/40 transition-all duration-300 whitespace-nowrap overflow-hidden"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
+                aria-label="Use Smart Calculator"
               >
                 {/* Animated border shine */}
                 <motion.div

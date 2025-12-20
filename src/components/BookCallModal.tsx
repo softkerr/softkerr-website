@@ -108,6 +108,7 @@ export default function BookCallModal() {
               <button
                 onClick={closeModal}
                 className="absolute top-6 right-6 z-10 w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:border-brand-gold/50 hover:bg-white/10 transition-all"
+                aria-label="Close modal"
               >
                 <FaTimes className="text-xl" />
               </button>
@@ -257,6 +258,7 @@ export default function BookCallModal() {
                           disabled={isSubmitting}
                           rightIcon={<FaPaperPlane />}
                           className="flex-shrink-0"
+                          aria-label="Submit Contact Form"
                         >
                           {isSubmitting ? 'Sending...' : 'Book a Call'}
                         </Button>

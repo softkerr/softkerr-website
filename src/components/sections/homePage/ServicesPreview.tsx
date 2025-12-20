@@ -296,6 +296,7 @@ function ServiceCard({ service, index }: { service: ServiceConfig; index: number
                   size="sm"
                   glowColor={service.glowColor}
                   colorClass={colorClasses.text}
+                  aria-label={`Discover ${service.title}`}
                   rightIcon={
                     <motion.svg
                       className="w-4 h-4"

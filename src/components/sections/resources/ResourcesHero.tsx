@@ -128,7 +128,12 @@ export default function ResourcesHero() {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="grid grid-cols-1 lg:grid-cols-2 gap-4 pt-4 lg:pt-8"
             >
-              <Button variant="primary" size="lg" rightIcon={<FaArrowRight />}>
+              <Button
+                variant="primary"
+                size="lg"
+                rightIcon={<FaArrowRight />}
+                aria-label="Get Expert Help"
+              >
                 <Link href="/contacts">Get Expert Help</Link>
               </Button>
               <Button
@@ -136,6 +141,7 @@ export default function ResourcesHero() {
                 size="lg"
                 leftIcon={<FaPlay />}
                 className="border-white/20 hover:border-brand-violet/50"
+                aria-label="Our Services"
               >
                 <Link href="/services">Our Services</Link>
               </Button>

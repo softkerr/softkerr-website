@@ -74,10 +74,10 @@ function Variant1() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
-              <Button variant="primary" size="lg" animated>
+              <Button variant="primary" size="lg" animated aria-label="Start Your Project">
                 <a href="/contacts">Start Your Project</a>
               </Button>
-              <Button variant="outline" size="lg" animated>
+              <Button variant="outline" size="lg" animated aria-label="View Our Work">
                 <a href="/projects">View Our Work</a>
               </Button>
             </motion.div>
@@ -211,10 +211,10 @@ function Variant2() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <Button variant="primary" size="lg" animated>
+            <Button variant="primary" size="lg" animated aria-label="Start Your Project">
               <a href="/contacts">Start Your Project</a>
             </Button>
-            <Button variant="outline" size="lg" animated>
+            <Button variant="outline" size="lg" animated aria-label="View Our Work">
               <a href="/projects">View Our Work</a>
             </Button>
           </motion.div>
@@ -333,10 +333,10 @@ function Variant3() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
               >
-                <Button variant="primary" size="lg" animated>
+                <Button variant="primary" size="lg" animated aria-label="Start Your Project">
                   <a href="/contacts">Start Your Project</a>
                 </Button>
-                <Button variant="outline" size="lg" animated>
+                <Button variant="outline" size="lg" animated aria-label="View Our Work">
                   <a href="/projects">View Our Work</a>
                 </Button>
               </motion.div>

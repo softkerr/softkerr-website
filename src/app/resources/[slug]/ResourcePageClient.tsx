@@ -103,6 +103,7 @@ const Resources = ({ pageData, slug }: ResourcePageClientProps) => {
                 variant="ghost"
                 leftIcon={<FaArrowLeft />}
                 className={`mb-6 ${category.colorClass} hover:bg-white/5`}
+                aria-label="Back to Resources"
               >
                 Back to Resources
               </Button>

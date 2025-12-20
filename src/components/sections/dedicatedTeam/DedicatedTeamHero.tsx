@@ -124,7 +124,12 @@ export default function DedicatedTeamHero() {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="grid grid-cols-1 lg:grid-cols-2 gap-4 pt-4 lg:pt-8"
             >
-              <Button variant="primary" size="lg" rightIcon={<FaArrowRight />}>
+              <Button
+                variant="primary"
+                size="lg"
+                rightIcon={<FaArrowRight />}
+                aria-label="Build Your Team"
+              >
                 <Link href="/contacts">Build Your Team</Link>
               </Button>
               <Button
@@ -132,6 +137,7 @@ export default function DedicatedTeamHero() {
                 size="lg"
                 leftIcon={<FaGlobe />}
                 className="border-white/20 hover:border-brand-violet/50"
+                aria-label="View Pricing"
               >
                 <Link href="/pricing">View Pricing</Link>
               </Button>

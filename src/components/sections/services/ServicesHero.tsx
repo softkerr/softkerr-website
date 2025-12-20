@@ -107,7 +107,12 @@ export default function ServicesHero() {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="grid grid-cols-1 lg:grid-cols-2 gap-4 pt-4 lg:pt-8"
             >
-              <Button variant="primary" size="lg" rightIcon={<FaArrowRight />}>
+              <Button
+                variant="primary"
+                size="lg"
+                rightIcon={<FaArrowRight />}
+                aria-label="Get Started"
+              >
                 <Link href="/contacts">Get Started</Link>
               </Button>
               <Button

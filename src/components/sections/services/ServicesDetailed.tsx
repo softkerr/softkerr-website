@@ -187,6 +187,7 @@ const ServiceCard = ({ service, index, categoryColor, glowColor, bgClass }: Serv
               colorClass={categoryColor}
               className="w-full px-6 py-3"
               rightIcon={<FaArrowRight />}
+              aria-label={`View details about ${service.title}`}
             >
               View Details
             </Button>
@@ -340,6 +341,7 @@ export default function ServicesDetailed() {
                   style={{
                     borderColor: isActive ? `rgba(${tab.color}, 0.6)` : 'transparent',
                   }}
+                  aria-label={`Select ${tab.label} Services`}
                 >
                   {/* Content */}
                   <span className="relative z-10 flex items-center justify-center gap-3 text-white">
@@ -468,7 +470,7 @@ export default function ServicesDetailed() {
             Let's discuss how we can help bring your project to life
           </Typography>
           <Link href="/contacts">
-            <Button variant="primary" size="lg">
+            <Button variant="primary" size="lg" aria-label="Schedule a Consultation">
               Schedule a Consultation
             </Button>
           </Link>

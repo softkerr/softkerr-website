@@ -120,6 +120,7 @@ export default function ContactForm({
               onClick={onBack}
               leftIcon={<FaArrowLeft />}
               className="flex-shrink-0"
+              aria-label="Go back"
             >
               Back
             </Button>
@@ -130,6 +131,7 @@ export default function ContactForm({
               size="lg"
               disabled={isSubmitting}
               rightIcon={<FaCheck />}
+              aria-label="Submit Contact Form"
             >
               <Typography variant="body1" className="text-background font-[16px] xl:font-[20px]">
                 {isSubmitting ? 'Sending...' : 'Get My Estimate'}

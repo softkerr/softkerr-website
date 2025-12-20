@@ -107,6 +107,7 @@ const VideoPlayer: FC<VideoPlayerProps> = ({ video, title }) => {
           className="flex items-center gap-3  bg-transparent hover:bg-accent-yellow text-background rounded-full shadow-2xl transition-all duration-300 hover:scale-110"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
+          aria-label={isPlaying ? 'Pause Video' : 'Play Video'}
         >
           {isPlaying ? (
             <>

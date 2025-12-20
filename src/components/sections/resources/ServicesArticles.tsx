@@ -90,6 +90,7 @@ export default function ServicesArticles() {
             }`}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            aria-pressed={activeCategory === category}
           >
             {category}
           </motion.button>
