@@ -6,9 +6,12 @@ import BudgetChallenges from './BudgetChallenges';
 import PricingFactors from './PricingFactors';
 import CalculatorCTA from './CalculatorCTA';
 import ProcessSteps from '../ProcessSteps';
-import FAQ from '../FAQ';
 import HomeCTA from '../HomeCTA';
 import { budgetTrackingSteps, budgetTrackingConfig } from '@/data/budgetTracking';
+import { lazyLoadFAQ } from '@/lib/lazyLoad';
+
+// Lazy load FAQ - below the fold, saves ~10 KiB on initial load
+const FAQ = lazyLoadFAQ();
 
 export default function PricingContent() {
   const [isOpen, setIsOpen] = useState(false);

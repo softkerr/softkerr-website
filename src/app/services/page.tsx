@@ -3,11 +3,13 @@ import React, { Suspense } from 'react';
 import ServicesHero from '@/components/sections/services/ServicesHero';
 import ServicesDetailed from '@/components/sections/services/ServicesDetailed';
 import WhyChooseUs from '@/components/sections/services/WhyChooseUs';
-
 import TechStack from '@/components/sections/services/TechStack';
 import HomeCTA from '@/components/sections/HomeCTA';
-import FAQ from '@/components/sections/FAQ';
 import { pageMetadata } from '@/lib/metadata';
+import { lazyLoadFAQ } from '@/lib/lazyLoad';
+
+// Lazy load FAQ - below the fold, saves ~10 KiB on initial load
+const FAQ = lazyLoadFAQ();
 
 // SEO metadata for services page
 export const metadata: Metadata = pageMetadata.services;
