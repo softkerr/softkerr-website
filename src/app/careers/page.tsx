@@ -2,12 +2,10 @@ import { Metadata } from 'next';
 import CareersHero from '@/components/sections/careers/CareersHero';
 import OpenPositions from '@/components/sections/careers/OpenPositions';
 import CareersCTA from '@/components/sections/careers/CareersCTA';
+import { pageMetadata } from '@/lib/metadata';
 
-export const metadata: Metadata = {
-  title: 'Careers - Join Our Team | Bachata Systems',
-  description:
-    'Join our team of talented designers and developers. Explore open positions and grow your career with Bachata Systems.',
-};
+// SEO metadata for careers page
+export const metadata: Metadata = pageMetadata.careers;
 
 export default function CareersPage() {
   return (

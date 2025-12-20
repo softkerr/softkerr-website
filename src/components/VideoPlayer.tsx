@@ -1,3 +1,5 @@
+'use client';
+
 import { FC, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { FaPlayCircle, FaPauseCircle } from 'react-icons/fa';
