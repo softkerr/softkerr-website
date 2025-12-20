@@ -1,0 +1,54 @@
+# Netlify Headers Configuration
+# This file configures cache headers for static export deployment
+
+# HTML pages - Enable bfcache with proper caching
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+  
+# Static assets with hash in filename - Cache forever
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# JavaScript chunks
+/_next/static/chunks/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# CSS files
+/_next/static/css/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Media files
+/_next/static/media/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Images - Cache for 1 year but allow revalidation
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/movies/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.svg
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.png
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.jpg
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.jpeg
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.webp
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.mp4
+  Cache-Control: public, max-age=31536000, immutable
+
+# Security headers for all pages
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
