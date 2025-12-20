@@ -311,6 +311,7 @@ export default function OurTeamGlobal() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                aria-label="Build Your Team"
                 className="px-6 py-3 bg-gradient-to-r from-brand-gold to-brand-violet rounded-lg text-white font-semibold shadow-lg hover:shadow-brand-gold/50 transition-shadow"
               >
                 Build Your Team
@@ -318,6 +319,7 @@ export default function OurTeamGlobal() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                aria-label="View Case Studies"
                 className="px-6 py-3 border border-white/20 rounded-lg text-white font-semibold hover:bg-white/5 transition-colors"
               >
                 View Case Studies

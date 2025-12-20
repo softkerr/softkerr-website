@@ -70,15 +70,23 @@ const Hero = () => {
 
               {/* CTA Buttons */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 pt-4 lg:pt-8">
-                <Button variant="primary" size="lg" className="grid-template-columns-1" animated>
-                  <Link href="/contacts">Start Your Project</Link>
+                <Button
+                  variant="primary"
+                  size="lg"
+                  animated
+                  href="/contacts"
+                  aria-label="Start Your Project"
+                >
+                  Start Your Project
                 </Button>
                 <Button
                   variant="outline"
                   size="lg"
-                  className="border-white/20 hover:border-brand-violet/50 grid-template-columns-1"
+                  href="/projects"
+                  className="border-white/20 hover:border-brand-violet/50"
+                  aria-label="View Our Work"
                 >
-                  <Link href="/projects">View Our Work</Link>
+                  View Our Work
                 </Button>
               </div>
             </div>
@@ -106,7 +114,7 @@ const Hero = () => {
                       </motion.div>
 
                       <div className="text-center space-y-2">
-                        <Typography variant="h3" className="text-2xl font-bold text-white">
+                        <Typography variant="h2" className="text-2xl font-bold text-white">
                           Why Choose Us?
                         </Typography>
                         <Typography variant="body2" className="text-gray-300">

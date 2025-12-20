@@ -111,7 +111,7 @@ const config: Config = {
         text: {
           primary: '#EAEAEA', // primary text (almost white)
           secondary: '#9CA3AF', // secondary text (body, descriptions)
-          muted: '#6B7280', // muted text (captions, hints)
+          muted: '#9CA3AF', // muted text (captions, hints) - updated for better contrast
         },
         accent: {
           yellow: '#F0B90B', // main accent (CTA buttons, highlights)

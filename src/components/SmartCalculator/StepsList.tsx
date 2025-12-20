@@ -14,7 +14,7 @@ export default function StepsList({ steps, currentStep }: StepsListProps) {
   return (
     <div className="hidden lg:flex lg:flex-col lg:col-span-3 bg-white/5 border-r border-white/20 overflow-hidden">
       <div className="p-6 pb-0 flex-shrink-0">
-        <Typography variant="h6" className="text-white mb-4">
+        <Typography variant="body1" className="text-white mb-4 font-semibold text-lg">
           Progress
         </Typography>
       </div>

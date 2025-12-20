@@ -98,15 +98,15 @@ const Resources = ({ pageData, slug }: ResourcePageClientProps) => {
             className={`rounded-2xl border-2 ${category.borderClass} bg-slate-900/50 backdrop-blur-sm p-8 md:p-12 shadow-2xl shadow-${category.bgClass}/20`}
           >
             {/* Back Button */}
-            <Link href="/resources">
-              <Button
-                variant="ghost"
-                leftIcon={<FaArrowLeft />}
-                className={`mb-6 ${category.colorClass} hover:bg-white/5`}
-              >
-                Back to Resources
-              </Button>
-            </Link>
+            <Button
+              variant="ghost"
+              href="/resources"
+              leftIcon={<FaArrowLeft />}
+              className={`mb-6 ${category.colorClass} hover:bg-white/5`}
+              aria-label="Back to Resources"
+            >
+              Back to Resources
+            </Button>
 
             {/* Category with Icon */}
             <div className="flex items-center gap-3 mb-6">

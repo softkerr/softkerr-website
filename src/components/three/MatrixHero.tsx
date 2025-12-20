@@ -1,89 +1,89 @@
-"use client";
+'use client';
 
-import { useEffect, useRef, useCallback, useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useRef, useCallback, useState } from 'react';
+import { motion } from 'framer-motion';
 
 // Character sets for the matrix effect
 const MATRIX_CHARS = [
   // Binary
-  "0",
-  "1",
+  '0',
+  '1',
   // Code symbols
-  "{",
-  "}",
-  "<",
-  ">",
-  "/",
-  "\\",
-  "(",
-  ")",
-  "[",
-  "]",
+  '{',
+  '}',
+  '<',
+  '>',
+  '/',
+  '\\',
+  '(',
+  ')',
+  '[',
+  ']',
   // Programming keywords (shortened)
-  "fn",
-  "if",
-  "js",
-  "ts",
-  "go",
-  "py",
-  "rs",
-  "cpp",
+  'fn',
+  'if',
+  'js',
+  'ts',
+  'go',
+  'py',
+  'rs',
+  'cpp',
   // Modern code snippets
-  "=>",
-  "&&",
-  "||",
-  "!=",
-  "==",
-  "++",
-  "--",
-  "+=",
+  '=>',
+  '&&',
+  '||',
+  '!=',
+  '==',
+  '++',
+  '--',
+  '+=',
   // Letters and numbers
-  "A",
-  "B",
-  "C",
-  "D",
-  "E",
-  "F",
-  "G",
-  "H",
-  "I",
-  "J",
-  "K",
-  "L",
-  "M",
-  "N",
-  "O",
-  "P",
-  "Q",
-  "R",
-  "S",
-  "T",
-  "U",
-  "V",
-  "W",
-  "X",
-  "Y",
-  "Z",
-  "2",
-  "3",
-  "4",
-  "5",
-  "6",
-  "7",
-  "8",
-  "9",
+  'A',
+  'B',
+  'C',
+  'D',
+  'E',
+  'F',
+  'G',
+  'H',
+  'I',
+  'J',
+  'K',
+  'L',
+  'M',
+  'N',
+  'O',
+  'P',
+  'Q',
+  'R',
+  'S',
+  'T',
+  'U',
+  'V',
+  'W',
+  'X',
+  'Y',
+  'Z',
+  '2',
+  '3',
+  '4',
+  '5',
+  '6',
+  '7',
+  '8',
+  '9',
   // Special characters
-  "@",
-  "#",
-  "$",
-  "%",
-  "&",
-  "*",
-  "+",
-  "-",
-  "=",
-  "?",
-  "!",
+  '@',
+  '#',
+  '$',
+  '%',
+  '&',
+  '*',
+  '+',
+  '-',
+  '=',
+  '?',
+  '!',
 ];
 
 // Pre-computed character pool for better performance
@@ -117,9 +117,7 @@ class MatrixColumn {
     // Shorter columns for better performance
     const columnHeight = Math.floor(Math.random() * 15) + 8;
     for (let i = 0; i < columnHeight; i++) {
-      this.chars.push(
-        precomputedChars[(this.charPoolIndex + i) % CHAR_POOL_SIZE]
-      );
+      this.chars.push(precomputedChars[(this.charPoolIndex + i) % CHAR_POOL_SIZE]);
       this.opacity.push(Math.max(0.1, 1 - i * 0.08)); // Pre-computed opacity
     }
   }
@@ -157,10 +155,7 @@ class MatrixColumn {
     canvasHeight: number
   ) {
     // Early visibility check
-    if (
-      this.y > canvasHeight + fontSize ||
-      this.y + this.chars.length * fontSize < -fontSize
-    ) {
+    if (this.y > canvasHeight + fontSize || this.y + this.chars.length * fontSize < -fontSize) {
       return;
     }
 
@@ -186,10 +181,7 @@ class MatrixColumn {
           Math.pow(this.x - mouseX, 2) + Math.pow(charY - mouseY, 2)
         );
         if (distanceFromMouse < mouseDistanceThreshold) {
-          const mouseInfluence = Math.max(
-            0,
-            1 - distanceFromMouse / mouseDistanceThreshold
-          );
+          const mouseInfluence = Math.max(0, 1 - distanceFromMouse / mouseDistanceThreshold);
           opacity = Math.min(1, opacity + mouseInfluence * 0.3);
           glowIntensity += mouseInfluence * 0.5;
         }
@@ -197,7 +189,7 @@ class MatrixColumn {
 
       // Optimized rendering - reduce shadow blur calculations
       if (glowIntensity > 0.4) {
-        ctx.shadowColor = "#FFD600";
+        ctx.shadowColor = '#FFD600';
         ctx.shadowBlur = 8 + glowIntensity * 12; // Reduced blur for performance
         ctx.fillStyle = `rgba(255, 214, 0, ${opacity * glowIntensity})`;
       } else {
@@ -217,7 +209,7 @@ interface MatrixHeroProps {
   className?: string;
 }
 
-export default function MatrixHero({ className = "" }: MatrixHeroProps) {
+export default function MatrixHero({ className = '' }: MatrixHeroProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationRef = useRef<number>();
   const columnsRef = useRef<MatrixColumn[]>([]);
@@ -228,16 +220,22 @@ export default function MatrixHero({ className = "" }: MatrixHeroProps) {
   const [isReduced, setIsReduced] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [isLowPerformance, setIsLowPerformance] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  // Prevent hydration mismatch by only rendering after mount
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   // Check for reduced motion preference
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     setIsReduced(mediaQuery.matches);
 
     const handleChange = (e: MediaQueryListEvent) => setIsReduced(e.matches);
-    mediaQuery.addEventListener("change", handleChange);
+    mediaQuery.addEventListener('change', handleChange);
 
-    return () => mediaQuery.removeEventListener("change", handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
   }, []);
 
   // Check if component is visible in viewport
@@ -250,10 +248,10 @@ export default function MatrixHero({ className = "" }: MatrixHeroProps) {
       setIsVisible(isInViewport);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
     handleScroll(); // Check initial state
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   // Throttled mouse tracking for better performance
@@ -290,7 +288,7 @@ export default function MatrixHero({ className = "" }: MatrixHeroProps) {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
     // Set canvas size
@@ -299,12 +297,12 @@ export default function MatrixHero({ className = "" }: MatrixHeroProps) {
       canvas.width = rect.width * window.devicePixelRatio;
       canvas.height = rect.height * window.devicePixelRatio;
       ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-      canvas.style.width = rect.width + "px";
-      canvas.style.height = rect.height + "px";
+      canvas.style.width = rect.width + 'px';
+      canvas.style.height = rect.height + 'px';
     };
 
     updateSize();
-    window.addEventListener("resize", updateSize);
+    window.addEventListener('resize', updateSize);
 
     // Initialize columns with better spacing for visual appeal
     const fontSize = 16;
@@ -332,7 +330,7 @@ export default function MatrixHero({ className = "" }: MatrixHeroProps) {
     }
 
     return () => {
-      window.removeEventListener("resize", updateSize);
+      window.removeEventListener('resize', updateSize);
     };
   }, []);
 
@@ -342,7 +340,7 @@ export default function MatrixHero({ className = "" }: MatrixHeroProps) {
       const canvas = canvasRef.current;
       if (!canvas) return;
 
-      const ctx = canvas.getContext("2d");
+      const ctx = canvas.getContext('2d');
       if (!ctx) return;
 
       // Initialize lastTime on first frame
@@ -352,17 +350,14 @@ export default function MatrixHero({ className = "" }: MatrixHeroProps) {
       }
 
       // Calculate delta time with cap to prevent large jumps
-      const deltaTime = Math.min(
-        (currentTime - lastTimeRef.current) / 1000,
-        1 / 30
-      );
+      const deltaTime = Math.min((currentTime - lastTimeRef.current) / 1000, 1 / 30);
       lastTimeRef.current = currentTime;
 
       // Performance monitoring
       monitorPerformance();
 
       // Clear canvas efficiently
-      ctx.fillStyle = "#02021e";
+      ctx.fillStyle = '#02021e';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       // Update and draw columns if visible
@@ -378,10 +373,10 @@ export default function MatrixHero({ className = "" }: MatrixHeroProps) {
           : columnsRef.current;
 
         // Batch operations for better performance
-        ctx.textBaseline = "top";
-        ctx.textAlign = "left";
+        ctx.textBaseline = 'top';
+        ctx.textAlign = 'left';
 
-        columnsToRender.forEach((column) => {
+        columnsToRender.forEach(column => {
           column.update(deltaTime, canvasHeight, fontSize);
           column.draw(ctx, fontSize, mouseX, mouseY, canvasHeight);
         });
@@ -409,13 +404,13 @@ export default function MatrixHero({ className = "" }: MatrixHeroProps) {
       }, 16); // ~60fps throttling
     };
 
-    window.addEventListener("mousemove", throttledMouseMove, { passive: true });
+    window.addEventListener('mousemove', throttledMouseMove, { passive: true });
 
     return () => {
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current);
       }
-      window.removeEventListener("mousemove", throttledMouseMove);
+      window.removeEventListener('mousemove', throttledMouseMove);
       if (mouseTimeout) clearTimeout(mouseTimeout);
       cleanup?.();
     };
@@ -431,9 +426,7 @@ export default function MatrixHero({ className = "" }: MatrixHeroProps) {
         transition={{ duration: 1 }}
       >
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-accent-yellow text-6xl font-mono opacity-20">
-            {"{ }"}
-          </div>
+          <div className="text-accent-yellow text-6xl font-mono opacity-20">{'{ }'}</div>
         </div>
       </motion.div>
     );
@@ -449,27 +442,29 @@ export default function MatrixHero({ className = "" }: MatrixHeroProps) {
       <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full"
-        style={{ background: "transparent" }}
+        style={{ background: 'transparent' }}
       />
 
-      {/* Mobile fallback - static pattern */}
-      <div className="md:hidden absolute inset-0 bg-background">
-        <div className="absolute inset-0 opacity-20">
-          {Array.from({ length: 20 }).map((_, i) => (
-            <div
-              key={i}
-              className="absolute text-accent-yellow font-mono text-sm animate-pulse"
-              style={{
-                left: `${(i * 5) % 100}%`,
-                top: `${(i * 7) % 100}%`,
-                animationDelay: `${i * 0.1}s`,
-              }}
-            >
-              {MATRIX_CHARS[i % MATRIX_CHARS.length]}
-            </div>
-          ))}
+      {/* Mobile fallback - static pattern - only render after hydration to prevent mismatch */}
+      {isMounted && (
+        <div className="md:hidden absolute inset-0 bg-background">
+          <div className="absolute inset-0 opacity-20">
+            {Array.from({ length: 20 }).map((_, i) => (
+              <div
+                key={i}
+                className="absolute text-accent-yellow font-mono text-sm animate-pulse"
+                style={{
+                  left: `${(i * 5) % 100}%`,
+                  top: `${(i * 7) % 100}%`,
+                  animationDelay: `${i * 0.1}s`,
+                }}
+              >
+                {MATRIX_CHARS[i % MATRIX_CHARS.length]}
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </motion.div>
   );
 }

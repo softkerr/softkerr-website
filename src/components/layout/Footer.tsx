@@ -25,10 +25,8 @@ const footerLinks = {
 };
 
 const socialLinks = [
-  { name: 'Twitter', href: '#', icon: '𝕏' },
-  { name: 'LinkedIn', href: '#', icon: 'in' },
-  { name: 'GitHub', href: '#', icon: 'gh' },
-  { name: 'Dribbble', href: '#', icon: 'dr' },
+  { name: 'LinkedIn', href: 'https://www.linkedin.com/company/softkerr/', icon: 'in' },
+  { name: 'GitHub', href: 'https://github.com/softkerr', icon: 'gh' },
 ];
 
 export default function Footer() {
@@ -41,12 +39,9 @@ export default function Footer() {
           <div className="col-span-2 md:col-span-3 lg:col-span-4">
             <Link href="/" className="flex items-center space-x-2">
               <Logo className="text-brand-gold w-10 h-10" />
-              <Typography
-                variant="h5"
-                className="text-brand-gold font-orbitron font-black tracking-wide"
-              >
+              <div className="text-xl lg:text-2xl font-semibold leading-tight text-brand-gold font-orbitron font-black tracking-wide">
                 SoftKerr
-              </Typography>
+              </div>
             </Link>
 
             <p className="text-text-secondary mb-6">
@@ -59,9 +54,10 @@ export default function Footer() {
                 <motion.a
                   key={social.name}
                   href={social.href}
-                  className="w-10 h-10 bg-background-secondary rounded-lg flex items-center justify-center text-text-muted hover:bg-accent-blue hover:text-text-primary transition-colors duration-200"
+                  className="w-11 h-11 bg-background-secondary rounded-lg flex items-center justify-center text-text-muted hover:bg-accent-blue hover:text-text-primary transition-colors duration-200"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
+                  aria-label={social.name}
                 >
                   <span className="text-sm font-bold">{social.icon}</span>
                 </motion.a>

@@ -90,6 +90,7 @@ export default function ServicesArticles() {
             }`}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            aria-pressed={activeCategory === category}
           >
             {category}
           </motion.button>
@@ -128,6 +129,7 @@ export default function ServicesArticles() {
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-110"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        loading="lazy"
                       />
 
                       {/* Content Layer */}
@@ -158,7 +160,7 @@ export default function ServicesArticles() {
 
                       {/* Title */}
                       <Typography
-                        variant="h6"
+                        variant="h3"
                         className={`mb-3 group-hover:${article.colorClass} transition-colors`}
                       >
                         {article.title}

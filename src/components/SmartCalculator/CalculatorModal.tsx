@@ -312,6 +312,7 @@ export default function CalculatorModal({ isOpen, onClose }: CalculatorModalProp
                       <button
                         onClick={onClose}
                         className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors flex-shrink-0"
+                        aria-label="Close calculator"
                       >
                         <FaTimes className="w-4 h-4 md:w-5 md:h-5 text-white" />
                       </button>
@@ -358,6 +359,7 @@ export default function CalculatorModal({ isOpen, onClose }: CalculatorModalProp
                       <button
                         onClick={onClose}
                         className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors flex-shrink-0"
+                        aria-label="Close calculator"
                       >
                         <FaTimes className="w-4 h-4 md:w-5 md:h-5 text-white" />
                       </button>

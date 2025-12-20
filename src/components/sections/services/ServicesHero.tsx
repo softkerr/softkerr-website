@@ -107,16 +107,24 @@ export default function ServicesHero() {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="grid grid-cols-1 lg:grid-cols-2 gap-4 pt-4 lg:pt-8"
             >
-              <Button variant="primary" size="lg" rightIcon={<FaArrowRight />}>
-                <Link href="/contacts">Get Started</Link>
+              <Button
+                variant="primary"
+                size="lg"
+                href="/contacts"
+                rightIcon={<FaArrowRight />}
+                aria-label="Get Started"
+              >
+                Get Started
               </Button>
               <Button
                 variant="outline"
                 size="lg"
+                href="/projects"
                 leftIcon={<FaPlay />}
                 className="border-white/20 hover:border-brand-gold/50"
+                aria-label="View Our Work"
               >
-                <Link href="/projects">View Our Work</Link>
+                View Our Work
               </Button>
             </motion.div>
           </motion.div>

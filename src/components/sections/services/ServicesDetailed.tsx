@@ -180,17 +180,17 @@ const ServiceCard = ({ service, index, categoryColor, glowColor, bgClass }: Serv
           </div>
 
           {/* CTA Button with Shimmer Effect */}
-          <Link href={`/resources/${service.id}`}>
-            <Button
-              variant="shimmer"
-              glowColor={glowColor}
-              colorClass={categoryColor}
-              className="w-full px-6 py-3"
-              rightIcon={<FaArrowRight />}
-            >
-              View Details
-            </Button>
-          </Link>
+          <Button
+            variant="shimmer"
+            glowColor={glowColor}
+            colorClass={categoryColor}
+            className="w-full px-6 py-3"
+            rightIcon={<FaArrowRight />}
+            href={`/resources/${service.id}`}
+            aria-label={`View details about ${service.title}`}
+          >
+            View Details
+          </Button>
         </div>
       </motion.div>
     </motion.div>
@@ -340,6 +340,7 @@ export default function ServicesDetailed() {
                   style={{
                     borderColor: isActive ? `rgba(${tab.color}, 0.6)` : 'transparent',
                   }}
+                  aria-label={`Select ${tab.label} Services`}
                 >
                   {/* Content */}
                   <span className="relative z-10 flex items-center justify-center gap-3 text-white">
@@ -467,11 +468,9 @@ export default function ServicesDetailed() {
           <Typography variant="body1" className="text-gray-400 mb-8 text-center ">
             Let's discuss how we can help bring your project to life
           </Typography>
-          <Link href="/contacts">
-            <Button variant="primary" size="lg">
-              Schedule a Consultation
-            </Button>
-          </Link>
+          <Button variant="primary" size="lg" href="/contacts" aria-label="Schedule a Consultation">
+            Schedule a Consultation
+          </Button>
         </motion.div>
       </Container>
     </Section>

@@ -344,6 +344,7 @@ export default function ContactFormHero() {
                     disabled={isSubmitting}
                     rightIcon={<FaPaperPlane />}
                     className="flex-shrink-0"
+                    aria-label="Send Message"
                   >
                     {isSubmitting ? 'Sending...' : 'Send Message'}
                   </Button>

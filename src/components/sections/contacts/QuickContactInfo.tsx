@@ -155,7 +155,7 @@ export default function QuickContactInfo() {
                   </div>
 
                   {/* Label */}
-                  <Typography variant="h6" className="text-white font-semibold mb-2">
+                  <Typography variant="h3" className="text-white font-semibold mb-2">
                     {method.label}
                   </Typography>
 

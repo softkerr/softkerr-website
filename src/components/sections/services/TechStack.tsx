@@ -238,7 +238,10 @@ export default function TechStack() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <Typography variant="h6" className="text-accent-yellow mb-4 tracking-widest text-center">
+          <Typography
+            variant="overline"
+            className="text-accent-yellow mb-4 tracking-widest text-center"
+          >
             Technology Stack
           </Typography>
           <Typography
@@ -269,6 +272,7 @@ export default function TechStack() {
               }`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              aria-label={`Select ${category.label} Technology Category`}
             >
               <span className="text-xl">{category.icon}</span>
               <span>{category.label}</span>

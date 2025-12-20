@@ -149,11 +149,16 @@ export default function CareersHero() {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="grid grid-cols-1 lg:grid-cols-2 gap-4 pt-4 lg:pt-8"
             >
-              <Button onClick={scrollToPositions} size="lg" className="group">
+              <Button
+                onClick={scrollToPositions}
+                size="lg"
+                className="group"
+                aria-label="View Open Positions"
+              >
                 View Open Positions
               </Button>
-              <Button variant="outline" size="lg">
-                <Link href="/contacts">Get in Touch</Link>
+              <Button variant="outline" size="lg" href="/contacts" aria-label="Get in Touch">
+                Get in Touch
               </Button>
             </motion.div>
           </motion.div>

@@ -93,7 +93,7 @@ export const projects: Project[] = [
       mobileType: 'video/webm',
       desktop: 'https://dwagloaw4bttd.cloudfront.net/video/optimized/dashboard/dashboard.mp4',
       mobile: 'https://dwagloaw4bttd.cloudfront.net/video/optimized/dashboard/dashboard_small.mp4',
-      previewImage: '/movies/dreamhost-panel-preview.png',
+      previewImage: '/movies/dreamhost-panel-preview.webp',
     },
     challenge:
       'DreamHost needed to modernize their control panel to handle millions of users while maintaining blazing-fast performance and industry-leading uptime. The existing system was outdated, difficult to navigate, and lacked real-time monitoring capabilities.',
@@ -163,7 +163,7 @@ export const projects: Project[] = [
       mobileType: 'video/webm',
       desktop: '/movies/türkiye-dental.mp4',
       mobile: '/movies/türkiye-dental.mp4',
-      previewImage: '/movies/türkiye-dental-preview.png',
+      previewImage: '/movies/türkiye-dental-preview.webp',
     },
     challenge:
       'TürkiyeDental needed a modern platform to bridge the gap between international patients seeking quality dental care and Turkish dental clinics. The challenge was to create a trustworthy, multilingual platform that simplifies the medical tourism journey from discovery to post-treatment follow-up.',
@@ -233,7 +233,7 @@ export const projects: Project[] = [
       mobileType: 'video/mp4',
       desktop: '/movies/dreamhost-website.mp4',
       mobile: '/movies/dreamhost-website.mp4',
-      previewImage: '/movies/dreamhost-website-preview.png.png',
+      previewImage: '/movies/dreamhost-website-preview.webp',
     },
     challenge:
       "DreamHost's website needed a complete overhaul to improve conversion rates, enhance user experience, and achieve top performance scores. The existing site was slow, difficult to navigate, and not optimized for modern SEO practices.",

@@ -259,6 +259,7 @@ export default function CalculatorDisplay({
           onClick={onOpenCalculator}
           rightIcon={<FaRocket />}
           className="text-base whitespace-nowrap w-full mt-4 lg:mt-8"
+          aria-label="Start Calculator"
         >
           Start Calculator
         </Button>

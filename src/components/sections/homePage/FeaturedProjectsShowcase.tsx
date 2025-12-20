@@ -1,3 +1,5 @@
+'use client';
+
 import { FC } from 'react';
 import { Button, Container, Link, ScrollReveal, Typography } from '@/components/ui';
 import { motion } from 'framer-motion';
@@ -128,8 +130,8 @@ export const FeaturedProjectsShowcase: FC = () => {
         </div>
         <ScrollReveal delay={0.2}>
           <div className="text-center mt-12">
-            <Button variant="outline" size="md">
-              <Link href="/projects">View Details</Link>
+            <Button variant="outline" size="md" href="/projects" aria-label="View Details">
+              View Details
             </Button>
           </div>
         </ScrollReveal>

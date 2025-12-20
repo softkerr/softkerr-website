@@ -92,25 +92,19 @@ export default function DedicatedTeamHero() {
               className="grid grid-cols-3 gap-6 py-6"
             >
               <div className="space-y-1">
-                <Typography variant="h3" className="text-3xl font-bold text-brand-violet">
-                  100M+
-                </Typography>
+                <div className="text-3xl font-bold text-brand-violet">100M+</div>
                 <Typography variant="body2" className="text-gray-400">
                   Users Served
                 </Typography>
               </div>
               <div className="space-y-1">
-                <Typography variant="h3" className="text-3xl font-bold text-brand-pink">
-                  15+
-                </Typography>
+                <div className="text-3xl font-bold text-brand-pink">15+</div>
                 <Typography variant="body2" className="text-gray-400">
                   Countries
                 </Typography>
               </div>
               <div className="space-y-1">
-                <Typography variant="h3" className="text-3xl font-bold text-brand-cyan">
-                  99.9%
-                </Typography>
+                <div className="text-3xl font-bold text-brand-cyan">99.9%</div>
                 <Typography variant="body2" className="text-gray-400">
                   Uptime SLA
                 </Typography>
@@ -124,16 +118,24 @@ export default function DedicatedTeamHero() {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="grid grid-cols-1 lg:grid-cols-2 gap-4 pt-4 lg:pt-8"
             >
-              <Button variant="primary" size="lg" rightIcon={<FaArrowRight />}>
-                <Link href="/contacts">Build Your Team</Link>
+              <Button
+                variant="primary"
+                size="lg"
+                href="/contacts"
+                rightIcon={<FaArrowRight />}
+                aria-label="Build Your Team"
+              >
+                Build Your Team
               </Button>
               <Button
                 variant="outline"
                 size="lg"
+                href="/pricing"
                 leftIcon={<FaGlobe />}
                 className="border-white/20 hover:border-brand-violet/50"
+                aria-label="View Pricing"
               >
-                <Link href="/pricing">View Pricing</Link>
+                View Pricing
               </Button>
             </motion.div>
           </motion.div>
@@ -187,7 +189,7 @@ export default function DedicatedTeamHero() {
                     </motion.div>
 
                     <div className="text-center space-y-2">
-                      <Typography variant="h3" className="text-2xl font-bold text-white">
+                      <Typography variant="h2" className="text-2xl font-bold text-white">
                         Expert Teams
                       </Typography>
                       <Typography variant="body2" className="text-gray-300">

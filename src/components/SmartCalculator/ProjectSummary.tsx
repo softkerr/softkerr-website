@@ -165,7 +165,7 @@ export default function ProjectSummary({
                     <Typography variant="body2" className="text-gray-400 text-sm mb-1">
                       {item.service}
                     </Typography>
-                    <Typography variant="h6" className="text-white">
+                    <Typography variant="body1" className="text-white font-semibold">
                       {item.minDays} - {item.maxDays} days
                     </Typography>
                   </motion.div>
@@ -208,7 +208,7 @@ export default function ProjectSummary({
               Total Timeline:
             </Typography>
           </div>
-          <Typography variant="h6" className="text-brand-gold mb-2">
+          <Typography variant="body1" className="text-brand-gold mb-2 text-2xl font-bold">
             {formatTimeEstimate(estimate.minDays)} - {formatTimeEstimate(estimate.maxDays)}
           </Typography>
           <Typography variant="caption" className="text-gray-400 mt-2 hidden lg:block">

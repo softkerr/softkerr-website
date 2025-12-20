@@ -96,25 +96,19 @@ export default function ResourcesHero() {
               className="grid grid-cols-3 gap-6 py-6"
             >
               <div className="space-y-1">
-                <Typography variant="h3" className="text-3xl font-bold text-brand-gold">
-                  12+
-                </Typography>
+                <div className="text-3xl font-bold text-brand-gold">12+</div>
                 <Typography variant="body2" className="text-gray-400">
                   Articles
                 </Typography>
               </div>
               <div className="space-y-1">
-                <Typography variant="h3" className="text-3xl font-bold text-brand-violet">
-                  2K+
-                </Typography>
+                <div className="text-3xl font-bold text-brand-violet">2K+</div>
                 <Typography variant="body2" className="text-gray-400">
                   Readers
                 </Typography>
               </div>
               <div className="space-y-1">
-                <Typography variant="h3" className="text-3xl font-bold text-brand-pink">
-                  100%
-                </Typography>
+                <div className="text-3xl font-bold text-brand-pink">100%</div>
                 <Typography variant="body2" className="text-gray-400">
                   Free Access
                 </Typography>
@@ -128,16 +122,24 @@ export default function ResourcesHero() {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="grid grid-cols-1 lg:grid-cols-2 gap-4 pt-4 lg:pt-8"
             >
-              <Button variant="primary" size="lg" rightIcon={<FaArrowRight />}>
-                <Link href="/contacts">Get Expert Help</Link>
+              <Button
+                variant="primary"
+                size="lg"
+                href="/contacts"
+                rightIcon={<FaArrowRight />}
+                aria-label="Get Expert Help"
+              >
+                Get Expert Help
               </Button>
               <Button
                 variant="outline"
                 size="lg"
+                href="/services"
                 leftIcon={<FaPlay />}
                 className="border-white/20 hover:border-brand-violet/50"
+                aria-label="Our Services"
               >
-                <Link href="/services">Our Services</Link>
+                Our Services
               </Button>
             </motion.div>
           </motion.div>
@@ -191,7 +193,7 @@ export default function ResourcesHero() {
                     </motion.div>
 
                     <div className="text-center space-y-2">
-                      <Typography variant="h3" className="text-2xl font-bold text-white">
+                      <Typography variant="h2" className="text-2xl font-bold text-white">
                         Expert Knowledge
                       </Typography>
                       <Typography variant="body2" className="text-gray-300">

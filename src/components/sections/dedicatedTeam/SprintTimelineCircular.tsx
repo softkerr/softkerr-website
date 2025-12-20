@@ -164,7 +164,7 @@ export default function SprintTimelineCircular() {
             transition={{ duration: 0.6 }}
           >
             <Typography
-              variant="h6"
+              variant="overline"
               className="text-accent-yellow mb-4 tracking-widest text-center"
             >
               SPRINT SYSTEM
@@ -279,6 +279,7 @@ export default function SprintTimelineCircular() {
                     }}
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}
+                    aria-label={`Step ${index + 1}: ${step.title}`}
                   >
                     {isPassed && !isActive ? (
                       <BsCheckCircleFill
@@ -397,6 +398,7 @@ export default function SprintTimelineCircular() {
               animate={{
                 scale: index === activeIndex ? 1.5 : 1,
               }}
+              aria-label={`Step ${index + 1}: ${step.title}`}
             />
           ))}
         </div>

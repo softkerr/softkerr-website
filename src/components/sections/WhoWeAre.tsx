@@ -74,11 +74,23 @@ function Variant1() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
-              <Button variant="primary" size="lg" animated>
-                <a href="/contacts">Start Your Project</a>
+              <Button
+                variant="primary"
+                size="lg"
+                animated
+                href="/contacts"
+                aria-label="Start Your Project"
+              >
+                Start Your Project
               </Button>
-              <Button variant="outline" size="lg" animated>
-                <a href="/projects">View Our Work</a>
+              <Button
+                variant="outline"
+                size="lg"
+                animated
+                href="/projects"
+                aria-label="View Our Work"
+              >
+                View Our Work
               </Button>
             </motion.div>
           </motion.div>
@@ -211,11 +223,23 @@ function Variant2() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <Button variant="primary" size="lg" animated>
-              <a href="/contacts">Start Your Project</a>
+            <Button
+              variant="primary"
+              size="lg"
+              animated
+              href="/contacts"
+              aria-label="Start Your Project"
+            >
+              Start Your Project
             </Button>
-            <Button variant="outline" size="lg" animated>
-              <a href="/projects">View Our Work</a>
+            <Button
+              variant="outline"
+              size="lg"
+              animated
+              href="/projects"
+              aria-label="View Our Work"
+            >
+              View Our Work
             </Button>
           </motion.div>
         </div>
@@ -333,11 +357,23 @@ function Variant3() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
               >
-                <Button variant="primary" size="lg" animated>
-                  <a href="/contacts">Start Your Project</a>
+                <Button
+                  variant="primary"
+                  size="lg"
+                  animated
+                  href="/contacts"
+                  aria-label="Start Your Project"
+                >
+                  Start Your Project
                 </Button>
-                <Button variant="outline" size="lg" animated>
-                  <a href="/projects">View Our Work</a>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  animated
+                  href="/projects"
+                  aria-label="View Our Work"
+                >
+                  View Our Work
                 </Button>
               </motion.div>
             </div>
