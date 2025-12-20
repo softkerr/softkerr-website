@@ -289,6 +289,8 @@ Comprehensive documentation is available in the `/docs` directory:
 
 ### Performance Optimization Guides
 
+- **[Network Dependency Tree](docs/NETWORK_DEPENDENCY_TREE.md)** - Complete network optimization guide (LATEST)
+- **[Network Optimization Summary](docs/NETWORK_OPTIMIZATION_SUMMARY.md)** - Quick reference for network fixes
 - **[DOM Size Optimization](docs/DOM_SIZE_OPTIMIZATION.md)** - Complete guide to reducing DOM complexity
 - **[DOM Size Analysis](docs/DOM_SIZE_ANALYSIS.md)** - Detailed analysis of current codebase
 - **[DOM Size Summary](docs/DOM_SIZE_SUMMARY.md)** - Quick reference and measurement tools
@@ -316,8 +318,12 @@ Comprehensive documentation is available in the `/docs` directory:
 ✅ **Network & Caching**
 
 - Font loading optimization with `display: 'swap'`
-- Resource hints (dns-prefetch, preconnect)
+- Resource hints (dns-prefetch, preconnect) for all external CDNs
 - CloudFront video preconnect for faster streaming
+- LinkedIn CDN preconnect for team images
+- Unsplash CDN dns-prefetch for blog images
+- Prioritized resource hints (high/medium/low)
+- Reduced network dependency chains (4-6 levels → 2-3 levels)
 
 ✅ **JavaScript Optimization**
 
@@ -325,12 +331,43 @@ Comprehensive documentation is available in the `/docs` directory:
 - Modern browser targets (Chrome 90+, Safari 14+, Firefox 88+)
 - Lazy loading for heavy components (84 KiB → 30-40 KiB unused JS)
 - Lazy loading utility library for DRY code
+- Optimized package imports for React Icons, Framer Motion, Three.js
+
+✅ **Main-Thread Work Optimization** (NEW)
+
+- **Animation Optimization**:
+  - Memoized animation variants to prevent re-calculation
+  - Simplified parallax calculations (3 layers → 2 layers)
+  - Reduced framer-motion animation duration (0.6s → 0.5s)
+  - Use of CSS transforms instead of layout properties
+- **Event Handler Optimization**:
+  - Throttled mouse move events using requestAnimationFrame
+  - Debounced resize handlers (150ms delay)
+  - Passive event listeners for scroll/resize
+  - Cleanup of RAF on unmount
+- **Performance Utilities** (`lib/performance.ts`):
+  - `throttleRAF()` - Throttle with requestAnimationFrame
+  - `debounce()` - Debounce expensive operations
+  - `prefersReducedMotion()` - Respect user preferences
+  - `isLowEndDevice()` - Detect low-end devices
+  - `getOptimizedAnimationConfig()` - Adaptive animation settings
+
+- **Component Optimizations**:
+  - ScrollReveal: Memoized variants, container stagger
+  - ServicesPreview: RAF throttling, reduced parallax layers
+  - ServicesDetailed: Throttled mouse tracking
+  - Header: Memoized animation variants
+  - SprintTimeline: Debounced resize, memoized calculations
+  - ExpandableCardList: Debounced resize, useCallback handlers
 
 ✅ **CSS & Rendering**
 
 - Critical CSS inlining (~500 bytes)
 - Non-blocking CSS loading
 - Optimized Tailwind configuration
+- `content-visibility: auto` for images/videos
+- GPU-accelerated animations with CSS transforms
+- Respect for `prefers-reduced-motion`
 
 ✅ **DOM Management**
 

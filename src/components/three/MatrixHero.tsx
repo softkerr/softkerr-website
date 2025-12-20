@@ -211,7 +211,7 @@ interface MatrixHeroProps {
 
 export default function MatrixHero({ className = '' }: MatrixHeroProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number | undefined>(undefined);
   const columnsRef = useRef<MatrixColumn[]>([]);
   const lastTimeRef = useRef<number>(0);
   const mouseRef = useRef({ x: 0, y: 0 });

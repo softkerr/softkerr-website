@@ -1,10 +1,11 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Section, Container, Typography } from '@/components/ui';
 import { FaClipboardList, FaPalette, FaCode, FaSearch, FaRocket } from 'react-icons/fa';
 import { BsCheckCircleFill } from 'react-icons/bs';
+import { debounce } from '@/lib/performance';
 
 interface SprintStep {
   title: string;
@@ -119,8 +120,8 @@ export default function SprintTimelineCircular() {
     return () => clearInterval(interval);
   }, [isHovered]);
 
-  // Responsive radius and dimensions
-  const getCircleDimensions = () => {
+  // Responsive radius and dimensions - memoized
+  const getCircleDimensions = useCallback(() => {
     if (typeof window !== 'undefined') {
       const width = window.innerWidth;
       if (width < 640) {
@@ -133,18 +134,19 @@ export default function SprintTimelineCircular() {
     }
     // Desktop: 500px container
     return { radius: 200, centerX: 250, centerY: 250, size: 500 };
-  };
+  }, []);
 
   const [dimensions, setDimensions] = useState(getCircleDimensions());
 
   useEffect(() => {
-    const handleResize = () => {
+    // Debounced resize handler to reduce main-thread work
+    const handleResize = debounce(() => {
       setDimensions(getCircleDimensions());
-    };
+    }, 150);
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', handleResize, { passive: true });
     return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  }, [getCircleDimensions]);
 
   const { radius, centerX, centerY, size } = dimensions;
 

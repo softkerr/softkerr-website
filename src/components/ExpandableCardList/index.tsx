@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Container, Typography } from '@/components/ui';
+import { debounce } from '@/lib/performance';
 
 interface Step {
   title: string;
@@ -41,25 +42,28 @@ export default function ExpandableCardList({
   const [activeIndex, setActiveIndex] = useState(-1);
   const [isMobile, setIsMobile] = useState(false);
 
-  // Detect mobile screen size
+  // Detect mobile screen size with debounced resize handler
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
 
     checkMobile();
-    window.addEventListener('resize', checkMobile);
 
-    return () => window.removeEventListener('resize', checkMobile);
+    // Debounce resize events to reduce main-thread work
+    const debouncedCheck = debounce(checkMobile, 150);
+    window.addEventListener('resize', debouncedCheck, { passive: true });
+
+    return () => window.removeEventListener('resize', debouncedCheck);
   }, []);
 
-  const handleCardHover = (index: number) => {
+  const handleCardHover = useCallback((index: number) => {
     setActiveIndex(index);
-  };
+  }, []);
 
-  const handleCardLeave = () => {
+  const handleCardLeave = useCallback(() => {
     setActiveIndex(-1);
-  };
+  }, []);
 
   return (
     <>
