@@ -283,6 +283,114 @@ NEXT_PUBLIC_ANALYTICS_ID=your-analytics-id
 - Image loading optimization
 - Animation frame rate monitoring
 
+## 📚 Documentation
+
+Comprehensive documentation is available in the `/docs` directory:
+
+### Performance Optimization Guides
+
+- **[Network Dependency Tree](docs/NETWORK_DEPENDENCY_TREE.md)** - Complete network optimization guide (LATEST)
+- **[Network Optimization Summary](docs/NETWORK_OPTIMIZATION_SUMMARY.md)** - Quick reference for network fixes
+- **[DOM Size Optimization](docs/DOM_SIZE_OPTIMIZATION.md)** - Complete guide to reducing DOM complexity
+- **[DOM Size Analysis](docs/DOM_SIZE_ANALYSIS.md)** - Detailed analysis of current codebase
+- **[DOM Size Summary](docs/DOM_SIZE_SUMMARY.md)** - Quick reference and measurement tools
+- **[Lazy Loading Utility](docs/LAZY_LOAD_UTILITY.md)** - Reusable lazy loading patterns
+- **[Legacy JavaScript Fix](docs/LEGACY_JAVASCRIPT_FIX.md)** - ES2020 migration guide
+- **[Unused JavaScript Fix](docs/UNUSED_JAVASCRIPT_FIX.md)** - Code splitting strategies
+
+### Quick Reference Files
+
+- **[LAZY_LOAD_SUMMARY.md](LAZY_LOAD_SUMMARY.md)** - Lazy loading implementation summary
+- **[LAZY_LOAD_QUICK_REF.md](LAZY_LOAD_QUICK_REF.md)** - One-page lazy loading reference
+
+### Performance Testing Scripts
+
+```bash
+# Measure DOM size on production
+./scripts/test-dom-size.sh
+
+# Or use browser console tool
+# Copy contents of scripts/measure-dom-size.js into browser DevTools
+```
+
+### Current Optimizations Applied
+
+✅ **Network & Caching**
+
+- Font loading optimization with `display: 'swap'`
+- Resource hints (dns-prefetch, preconnect) for all external CDNs
+- CloudFront video preconnect for faster streaming
+- LinkedIn CDN preconnect for team images
+- Unsplash CDN dns-prefetch for blog images
+- Prioritized resource hints (high/medium/low)
+- Reduced network dependency chains (4-6 levels → 2-3 levels)
+
+✅ **JavaScript Optimization**
+
+- ES2020 compilation target (26 KiB savings)
+- Modern browser targets (Chrome 90+, Safari 14+, Firefox 88+)
+- Lazy loading for heavy components (84 KiB → 30-40 KiB unused JS)
+- Lazy loading utility library for DRY code
+- Optimized package imports for React Icons, Framer Motion, Three.js
+
+✅ **Main-Thread Work Optimization** (NEW)
+
+- **Animation Optimization**:
+  - Memoized animation variants to prevent re-calculation
+  - Simplified parallax calculations (3 layers → 2 layers)
+  - Reduced framer-motion animation duration (0.6s → 0.5s)
+  - Use of CSS transforms instead of layout properties
+- **Event Handler Optimization**:
+  - Throttled mouse move events using requestAnimationFrame
+  - Debounced resize handlers (150ms delay)
+  - Passive event listeners for scroll/resize
+  - Cleanup of RAF on unmount
+- **Performance Utilities** (`lib/performance.ts`):
+  - `throttleRAF()` - Throttle with requestAnimationFrame
+  - `debounce()` - Debounce expensive operations
+  - `prefersReducedMotion()` - Respect user preferences
+  - `isLowEndDevice()` - Detect low-end devices
+  - `getOptimizedAnimationConfig()` - Adaptive animation settings
+
+- **Component Optimizations**:
+  - ScrollReveal: Memoized variants, container stagger
+  - ServicesPreview: RAF throttling, reduced parallax layers
+  - ServicesDetailed: Throttled mouse tracking
+  - Header: Memoized animation variants
+  - SprintTimeline: Debounced resize, memoized calculations
+  - ExpandableCardList: Debounced resize, useCallback handlers
+
+✅ **CSS & Rendering**
+
+- Critical CSS inlining (~500 bytes)
+- Non-blocking CSS loading
+- Optimized Tailwind configuration
+- `content-visibility: auto` for images/videos
+- GPU-accelerated animations with CSS transforms
+- Respect for `prefers-reduced-motion`
+
+✅ **DOM Management**
+
+- Conditional rendering for accordions/expandables
+- Limited initial render (e.g., `.slice(0, 4)` for long lists)
+- Proper `AnimatePresence` unmounting
+- Minimal wrapper divs
+
+✅ **SEO & Metadata**
+
+- Comprehensive metadata system
+- Structured data (JSON-LD)
+- XML sitemap and robots.txt
+
+### Lighthouse Performance
+
+Expected scores after optimizations:
+
+- **Performance**: 95-100
+- **Accessibility**: 95-100
+- **Best Practices**: 95-100
+- **SEO**: 95-100
+
 ## 🤝 Contributing
 
 1. Fork the repository

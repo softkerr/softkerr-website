@@ -15,7 +15,6 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: true,
   },
   // Production optimizations
-  swcMinify: true, // Use SWC for minification (default in Next.js 13+)
   compress: true, // Enable gzip compression
   poweredByHeader: false, // Remove X-Powered-By header
   reactStrictMode: true, // Enable React strict mode for better performance
@@ -29,7 +28,12 @@ const nextConfig: NextConfig = {
 
   // Experimental features for better optimization
   experimental: {
-    optimizePackageImports: ['react-icons', 'framer-motion'],
+    optimizePackageImports: [
+      'react-icons',
+      'framer-motion',
+      '@react-three/fiber',
+      '@react-three/drei',
+    ],
   },
 
   // Compiler optimizations
@@ -41,6 +45,10 @@ const nextConfig: NextConfig = {
           }
         : false,
   },
+
+  // Target modern browsers - ES2020+ (avoid legacy polyfills)
+  // This reduces bundle size by ~26 KiB
+  transpilePackages: [], // Don't transpile modern packages
 };
 
 export default nextConfig;

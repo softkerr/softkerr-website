@@ -56,10 +56,11 @@ const SERVICES: readonly ServiceConfig[] = [
   },
 ] as const;
 
-// Glass Morphism Card with Parallax Depth
+// Glass Morphism Card with Parallax Depth - Optimized
 function ServiceCard({ service, index }: { service: ServiceConfig; index: number }) {
   const [isHovered, setIsHovered] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
+  const rafRef = useRef<number | undefined>(undefined);
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -67,15 +68,12 @@ function ServiceCard({ service, index }: { service: ServiceConfig; index: number
   const mouseXSpring = useSpring(x, SPRING_CONFIG);
   const mouseYSpring = useSpring(y, SPRING_CONFIG);
 
-  // Create parallax transforms - must be at top level
-  const layer1X = useTransform(mouseXSpring, PARALLAX_RANGE, [-20, 20]);
-  const layer1Y = useTransform(mouseYSpring, PARALLAX_RANGE, [-20, 20]);
+  // Simplified parallax - only 2 layers instead of 3 for better performance
+  const layer1X = useTransform(mouseXSpring, PARALLAX_RANGE, [-15, 15]);
+  const layer1Y = useTransform(mouseYSpring, PARALLAX_RANGE, [-15, 15]);
 
-  const layer2X = useTransform(mouseXSpring, PARALLAX_RANGE, [-10, 10]);
-  const layer2Y = useTransform(mouseYSpring, PARALLAX_RANGE, [-10, 10]);
-
-  const layer3X = useTransform(mouseXSpring, PARALLAX_RANGE, [-5, 5]);
-  const layer3Y = useTransform(mouseYSpring, PARALLAX_RANGE, [-5, 5]);
+  const layer2X = useTransform(mouseXSpring, PARALLAX_RANGE, [-8, 8]);
+  const layer2Y = useTransform(mouseYSpring, PARALLAX_RANGE, [-8, 8]);
 
   // Memoized color classes
   const colorClasses = useMemo(
@@ -86,16 +84,24 @@ function ServiceCard({ service, index }: { service: ServiceConfig; index: number
     [service.color]
   );
 
-  // Optimized event handlers
+  // Throttled mouse move handler using RAF
   const handleMouseMove = useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
       if (!cardRef.current) return;
 
-      const rect = cardRef.current.getBoundingClientRect();
-      const mouseX = (e.clientX - rect.left) / rect.width - 0.5;
-      const mouseY = (e.clientY - rect.top) / rect.height - 0.5;
-      x.set(mouseX);
-      y.set(mouseY);
+      // Cancel previous RAF to throttle updates
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current);
+      }
+
+      rafRef.current = requestAnimationFrame(() => {
+        if (!cardRef.current) return;
+        const rect = cardRef.current.getBoundingClientRect();
+        const mouseX = (e.clientX - rect.left) / rect.width - 0.5;
+        const mouseY = (e.clientY - rect.top) / rect.height - 0.5;
+        x.set(mouseX);
+        y.set(mouseY);
+      });
     },
     [x, y]
   );
@@ -104,6 +110,9 @@ function ServiceCard({ service, index }: { service: ServiceConfig; index: number
     setIsHovered(false);
     x.set(0);
     y.set(0);
+    if (rafRef.current) {
+      cancelAnimationFrame(rafRef.current);
+    }
   }, [x, y]);
 
   return (
@@ -179,13 +188,12 @@ function ServiceCard({ service, index }: { service: ServiceConfig; index: number
 
           {/* Card Content */}
           <div className="relative p-8 h-full flex flex-col pointer-events-auto">
-            {/* Icon Container with Depth */}
+            {/* Icon Container with Depth - Simplified parallax */}
             <motion.div
               style={{
-                x: layer3X,
-                y: layer3Y,
-                transform: 'translateZ(60px)',
-                transformStyle: 'preserve-3d',
+                x: layer2X,
+                y: layer2Y,
+                transform: 'translateZ(40px)',
               }}
               className="relative mb-6 flex justify-center pointer-events-none will-change-transform"
             >
@@ -270,7 +278,7 @@ function ServiceCard({ service, index }: { service: ServiceConfig; index: number
                 }}
                 transition={{ duration: 0.4, type: 'spring', stiffness: 200 }}
               >
-                <Typography variant="h3" className={`${colorClasses.text} text-center`}>
+                <Typography variant="h4" className={`${colorClasses.text} text-center`}>
                   {service.title}
                 </Typography>
               </motion.div>

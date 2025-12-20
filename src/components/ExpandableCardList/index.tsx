@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Container, Typography } from '@/components/ui';
+import { debounce } from '@/lib/performance';
 
 interface Step {
   title: string;
@@ -41,52 +42,39 @@ export default function ExpandableCardList({
   const [activeIndex, setActiveIndex] = useState(-1);
   const [isMobile, setIsMobile] = useState(false);
 
-  // Detect mobile screen size
+  // Detect mobile screen size with debounced resize handler
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
 
     checkMobile();
-    window.addEventListener('resize', checkMobile);
 
-    return () => window.removeEventListener('resize', checkMobile);
+    // Debounce resize events to reduce main-thread work
+    const debouncedCheck = debounce(checkMobile, 150);
+    window.addEventListener('resize', debouncedCheck, { passive: true });
+
+    return () => window.removeEventListener('resize', debouncedCheck);
   }, []);
 
-  const handleCardHover = (index: number) => {
+  const handleCardHover = useCallback((index: number) => {
     setActiveIndex(index);
-  };
+  }, []);
 
-  const handleCardLeave = () => {
+  const handleCardLeave = useCallback(() => {
     setActiveIndex(-1);
-  };
+  }, []);
 
   return (
     <>
       {/* Enhanced Background Effects */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-accent-yellow/5 via-transparent to-accent-blue/5" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-accent-purple/10 via-transparent to-transparent" />
+      <div className="absolute h-full overflow-hidden">
+        <div className="absolute h-full bg-gradient-to-b from-accent-yellow/5 via-transparent to-accent-blue/5" />
+        <div className="absolute  bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-accent-purple/10 via-transparent to-transparent" />
 
         {/* Animated floating orbs */}
-        <motion.div
-          className="absolute top-1/4 left-1/4 w-64 h-64 bg-accent-yellow/5 rounded-full blur-3xl"
-          animate={{
-            x: [0, 50, 0],
-            y: [0, 30, 0],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-        />
-        <motion.div
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent-purple/5 rounded-full blur-3xl"
-          animate={{
-            x: [0, -50, 0],
-            y: [0, -30, 0],
-            scale: [1, 1.3, 1],
-          }}
-          transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-        />
+        <motion.div className="absolute top-1/4 left-1/4 w-64 h-64 bg-accent-yellow/5 rounded-full blur-3xl" />
+        <motion.div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent-purple/5 rounded-full blur-3xl" />
       </div>
 
       <Container className="relative">

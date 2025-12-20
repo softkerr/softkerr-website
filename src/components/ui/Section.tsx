@@ -33,10 +33,10 @@ const variantStyles: Record<
 
 const paddingStyles = {
   none: '',
-  sm: 'py-4 lg:py-12',
-  md: 'py-6 lg:py-16',
-  lg: 'py-8 lg:py-24',
-  xl: 'py-12 lg:py-32',
+  sm: 'py-4 lg:py-8',
+  md: 'py-6 lg:py-12',
+  lg: 'py-8 lg:py-18',
+  xl: 'py-12 lg:py-24',
 };
 
 export default function Section({

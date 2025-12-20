@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import {
@@ -57,13 +57,28 @@ const ServiceCard = ({ service, index, categoryColor, glowColor, bgClass }: Serv
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
   const [isInView, setIsInView] = useState(false);
+  const rafRef = useRef<number | undefined>(undefined);
 
+  // Throttle mouse move with RAF for better performance
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    setMousePosition({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top,
+    if (rafRef.current) {
+      cancelAnimationFrame(rafRef.current);
+    }
+
+    rafRef.current = requestAnimationFrame(() => {
+      const rect = e.currentTarget.getBoundingClientRect();
+      setMousePosition({
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top,
+      });
     });
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    if (rafRef.current) {
+      cancelAnimationFrame(rafRef.current);
+    }
   };
 
   // Active state combines hover (desktop) or in-view (mobile)
@@ -77,7 +92,7 @@ const ServiceCard = ({ service, index, categoryColor, glowColor, bgClass }: Serv
       transition={{ duration: 0.4, delay: index * 0.05 }}
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseLeave={handleMouseLeave}
       onViewportEnter={() => setIsInView(true)}
       onViewportLeave={() => setIsInView(false)}
       viewport={{ margin: '-100px', amount: 0.5 }}
@@ -111,18 +126,6 @@ const ServiceCard = ({ service, index, categoryColor, glowColor, bgClass }: Serv
         {/* Animated Border Glow */}
         <motion.div
           className={`absolute -inset-[1px] rounded-2xl opacity-0 linear-gradient(135deg, rgba(${glowColor}, 0.3), transparent, rgba(${glowColor}, 0.3))`}
-          animate={{
-            opacity: isActive ? 0.5 : 0,
-            backgroundPosition: isActive ? ['0% 0%', '100% 100%'] : '0% 0%',
-          }}
-          transition={{
-            opacity: { duration: 0.3 },
-            backgroundPosition: {
-              duration: 2,
-              repeat: Infinity,
-              ease: 'linear',
-            },
-          }}
         />
 
         {/* Content Container */}
