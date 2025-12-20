@@ -98,7 +98,7 @@ export default function ExpandableCardList({
             transition={{ duration: 0.6 }}
           >
             <Typography
-              variant="h6"
+              variant="overline"
               className="text-accent-yellow mb-4 tracking-widest text-center"
             >
               {heading}

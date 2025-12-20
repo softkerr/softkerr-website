@@ -110,18 +110,21 @@ export default function ServicesHero() {
               <Button
                 variant="primary"
                 size="lg"
+                href="/contacts"
                 rightIcon={<FaArrowRight />}
                 aria-label="Get Started"
               >
-                <Link href="/contacts">Get Started</Link>
+                Get Started
               </Button>
               <Button
                 variant="outline"
                 size="lg"
+                href="/projects"
                 leftIcon={<FaPlay />}
                 className="border-white/20 hover:border-brand-gold/50"
+                aria-label="View Our Work"
               >
-                <Link href="/projects">View Our Work</Link>
+                View Our Work
               </Button>
             </motion.div>
           </motion.div>

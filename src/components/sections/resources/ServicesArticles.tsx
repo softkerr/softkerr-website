@@ -159,7 +159,7 @@ export default function ServicesArticles() {
 
                       {/* Title */}
                       <Typography
-                        variant="h6"
+                        variant="h3"
                         className={`mb-3 group-hover:${article.colorClass} transition-colors`}
                       >
                         {article.title}

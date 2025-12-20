@@ -73,19 +73,20 @@ const Hero = () => {
                 <Button
                   variant="primary"
                   size="lg"
-                  className="grid-template-columns-1"
                   animated
+                  href="/contacts"
                   aria-label="Start Your Project"
                 >
-                  <Link href="/contacts">Start Your Project</Link>
+                  Start Your Project
                 </Button>
                 <Button
                   variant="outline"
                   size="lg"
-                  className="border-white/20 hover:border-brand-violet/50 grid-template-columns-1"
+                  href="/projects"
+                  className="border-white/20 hover:border-brand-violet/50"
                   aria-label="View Our Work"
                 >
-                  <Link href="/projects">View Our Work</Link>
+                  View Our Work
                 </Button>
               </div>
             </div>

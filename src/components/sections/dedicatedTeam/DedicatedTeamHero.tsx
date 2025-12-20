@@ -127,19 +127,21 @@ export default function DedicatedTeamHero() {
               <Button
                 variant="primary"
                 size="lg"
+                href="/contacts"
                 rightIcon={<FaArrowRight />}
                 aria-label="Build Your Team"
               >
-                <Link href="/contacts">Build Your Team</Link>
+                Build Your Team
               </Button>
               <Button
                 variant="outline"
                 size="lg"
+                href="/pricing"
                 leftIcon={<FaGlobe />}
                 className="border-white/20 hover:border-brand-violet/50"
                 aria-label="View Pricing"
               >
-                <Link href="/pricing">View Pricing</Link>
+                View Pricing
               </Button>
             </motion.div>
           </motion.div>

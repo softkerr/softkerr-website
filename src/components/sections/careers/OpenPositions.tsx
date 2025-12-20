@@ -139,7 +139,7 @@ export default function OpenPositions() {
                           <div className="px-6 pb-6 space-y-6 border-t border-border-subtle pt-6">
                             {/* Responsibilities */}
                             <div>
-                              <Typography variant="h6" className="mb-3 text-brand-violet">
+                              <Typography variant="h5" className="mb-3 text-brand-violet">
                                 Responsibilities
                               </Typography>
                               <ul className="space-y-2">
@@ -157,7 +157,7 @@ export default function OpenPositions() {
 
                             {/* Requirements */}
                             <div>
-                              <Typography variant="h6" className="mb-3 text-brand-gold">
+                              <Typography variant="h5" className="mb-3 text-brand-gold">
                                 Requirements
                               </Typography>
                               <ul className="space-y-2">
@@ -176,7 +176,7 @@ export default function OpenPositions() {
                             {/* Nice to Have */}
                             {job.niceToHave && job.niceToHave.length > 0 && (
                               <div>
-                                <Typography variant="h6" className="mb-3 text-brand-cyan">
+                                <Typography variant="h5" className="mb-3 text-brand-cyan">
                                   Nice to Have
                                 </Typography>
                                 <ul className="space-y-2">
@@ -195,7 +195,7 @@ export default function OpenPositions() {
 
                             {/* Benefits */}
                             <div>
-                              <Typography variant="h6" className="mb-3 text-brand-pink">
+                              <Typography variant="h5" className="mb-3 text-brand-pink">
                                 Benefits
                               </Typography>
                               <ul className="space-y-2">

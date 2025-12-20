@@ -131,19 +131,21 @@ export default function ResourcesHero() {
               <Button
                 variant="primary"
                 size="lg"
+                href="/contacts"
                 rightIcon={<FaArrowRight />}
                 aria-label="Get Expert Help"
               >
-                <Link href="/contacts">Get Expert Help</Link>
+                Get Expert Help
               </Button>
               <Button
                 variant="outline"
                 size="lg"
+                href="/services"
                 leftIcon={<FaPlay />}
                 className="border-white/20 hover:border-brand-violet/50"
                 aria-label="Our Services"
               >
-                <Link href="/services">Our Services</Link>
+                Our Services
               </Button>
             </motion.div>
           </motion.div>

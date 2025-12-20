@@ -270,7 +270,7 @@ function ServiceCard({ service, index }: { service: ServiceConfig; index: number
                 }}
                 transition={{ duration: 0.4, type: 'spring', stiffness: 200 }}
               >
-                <Typography variant="h6" className={`${colorClasses.text} text-center`}>
+                <Typography variant="h3" className={`${colorClasses.text} text-center`}>
                   {service.title}
                 </Typography>
               </motion.div>
@@ -289,36 +289,35 @@ function ServiceCard({ service, index }: { service: ServiceConfig; index: number
             </motion.div>
 
             {/* Glass Button */}
-            <Link href={`/services?tab=${service.tab}`} className="cursor-pointer">
-              <motion.div className="flex justify-center mt-4 pointer-events-auto">
-                <Button
-                  variant="glass"
-                  size="sm"
-                  glowColor={service.glowColor}
-                  colorClass={colorClasses.text}
-                  aria-label={`Discover ${service.title}`}
-                  rightIcon={
-                    <motion.svg
-                      className="w-4 h-4"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      animate={{ x: [0, 3, 0] }}
-                      transition={{ duration: 1.5, repeat: Infinity }}
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M13 7l5 5m0 0l-5 5m5-5H6"
-                      />
-                    </motion.svg>
-                  }
-                >
-                  Discover
-                </Button>
-              </motion.div>
-            </Link>
+            <motion.div className="flex justify-center mt-4 pointer-events-auto">
+              <Button
+                variant="glass"
+                size="sm"
+                glowColor={service.glowColor}
+                colorClass={colorClasses.text}
+                href={`/services?tab=${service.tab}`}
+                aria-label={`Discover ${service.title}`}
+                rightIcon={
+                  <motion.svg
+                    className="w-4 h-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    animate={{ x: [0, 3, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M13 7l5 5m0 0l-5 5m5-5H6"
+                    />
+                  </motion.svg>
+                }
+              >
+                Discover
+              </Button>
+            </motion.div>
 
             {/* Bottom Shine Effect */}
             <motion.div

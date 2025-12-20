@@ -157,8 +157,8 @@ export default function CareersHero() {
               >
                 View Open Positions
               </Button>
-              <Button variant="outline" size="lg" aria-label="Get in Touch">
-                <Link href="/contacts">Get in Touch</Link>
+              <Button variant="outline" size="lg" href="/contacts" aria-label="Get in Touch">
+                Get in Touch
               </Button>
             </motion.div>
           </motion.div>

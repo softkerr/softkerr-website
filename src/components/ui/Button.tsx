@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import NextLink from 'next/link';
 import { cn } from '@/lib/utils';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -12,6 +13,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   animated?: boolean;
   glowColor?: string; // RGB values for glass/shimmer variant (e.g., "240, 185, 11")
   colorClass?: string; // Tailwind color class for text (e.g., "text-brand-gold")
+  href?: string; // If provided, renders as Next.js Link instead of button
 }
 
 const variantStyles: Record<
@@ -32,10 +34,10 @@ const variantStyles: Record<
 };
 
 const sizeStyles = {
-  sm: 'px-3 py-2 text-sm',
-  md: 'px-4 py-2.5 text-base',
-  lg: 'px-6 py-3 text-lg',
-  xl: 'px-8 py-4 text-xl',
+  sm: 'px-4 py-2.5 text-sm min-h-[44px]',
+  md: 'px-5 py-3 text-base min-h-[44px]',
+  lg: 'px-6 py-3.5 text-lg min-h-[48px]',
+  xl: 'px-8 py-4 text-xl min-h-[52px]',
 };
 
 export default function Button({
@@ -51,6 +53,7 @@ export default function Button({
   className,
   children,
   disabled,
+  href,
   ...props
 }: ButtonProps) {
   const baseClasses =
@@ -94,6 +97,36 @@ export default function Button({
       {!loading && rightIcon && <span className="ml-2">{rightIcon}</span>}
     </>
   );
+
+  // If href is provided, render as Next.js Link
+  if (href) {
+    if (animated && !disabled && !loading) {
+      return (
+        <NextLink
+          href={href}
+          className={cn(classes, 'no-underline')}
+          aria-label={props['aria-label']}
+        >
+          <motion.span
+            className="w-full h-full flex items-center justify-center"
+            whileTap={{ scale: 0.98 }}
+            transition={{ duration: 0.2, ease: 'easeOut' }}
+          >
+            {content}
+          </motion.span>
+        </NextLink>
+      );
+    }
+    return (
+      <NextLink
+        href={href}
+        className={cn(classes, 'no-underline')}
+        aria-label={props['aria-label']}
+      >
+        {content}
+      </NextLink>
+    );
+  }
 
   if (animated && !disabled && !loading) {
     // Shimmer variant with glow and animated shimmer effect
