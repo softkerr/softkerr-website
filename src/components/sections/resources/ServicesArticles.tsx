@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from '@/lib/motion';
 import { Typography, Section, Card } from '@/components/ui';
 import { resources } from '@/data/resources';
 import { resourcesMeta } from '@/data/resourcesMeta';

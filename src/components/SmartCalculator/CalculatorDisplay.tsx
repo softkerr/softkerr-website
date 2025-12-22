@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from '@/lib/motion';
 import { FaRocket } from 'react-icons/fa';
 import Button from '@/components/ui/Button';
 

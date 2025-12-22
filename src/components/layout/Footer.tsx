@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { m } from '@/lib/motion';
 
 import Link from '../ui/Link';
 import { Logo } from '../Logo';
@@ -51,7 +51,7 @@ export default function Footer() {
 
             <div className="flex space-x-4">
               {socialLinks.map(social => (
-                <motion.a
+                <m.a
                   key={social.name}
                   href={social.href}
                   className="w-11 h-11 bg-background-secondary rounded-lg flex items-center justify-center text-text-muted hover:bg-accent-blue hover:text-text-primary transition-colors duration-200"
@@ -60,7 +60,7 @@ export default function Footer() {
                   aria-label={social.name}
                 >
                   <span className="text-sm font-bold">{social.icon}</span>
-                </motion.a>
+                </m.a>
               ))}
             </div>
           </div>

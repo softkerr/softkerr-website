@@ -1,15 +1,13 @@
 'use client';
 
 import { Suspense, lazy } from 'react';
-import { motion } from 'framer-motion';
+import { m as motion } from '@/lib/motion';
 import { Section, Container, Typography, Button } from '@/components/ui';
 
 // Lazy load the Matrix component for better performance
 const MatrixHero = lazy(() => import('@/components/three/MatrixHero'));
 
-// You can switch between variants by changing this value: 'variant1' | 'variant2' | 'variant3'
-type VariantType = 'variant1' | 'variant2' | 'variant3';
-const ACTIVE_VARIANT: VariantType = 'variant3';
+// Single, optimized variant
 
 // VARIANT 1: Split Screen - Hero Left, About Right
 function Variant1() {
@@ -451,7 +449,5 @@ function Variant3() {
 
 // Main Export - Switch between variants here
 export default function WhoWeAre() {
-  if (ACTIVE_VARIANT === 'variant2') return <Variant2 />;
-  if (ACTIVE_VARIANT === 'variant3') return <Variant3 />;
-  return <Variant1 />; // Default
+  return <Variant3 />;
 }

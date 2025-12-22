@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { m } from '@/lib/motion';
 import { useInView } from 'react-intersection-observer';
 import { ReactNode, useMemo } from 'react';
 
@@ -46,7 +46,7 @@ export default function ScrollReveal({
   }, [direction]);
 
   return (
-    <motion.div
+    <m.div
       ref={ref}
       initial="hidden"
       animate={inView ? 'visible' : 'hidden'}
@@ -55,7 +55,7 @@ export default function ScrollReveal({
       className={className}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }
 
@@ -99,7 +99,7 @@ export function StaggeredReveal({
   );
 
   return (
-    <motion.div
+    <m.div
       ref={ref}
       className={className}
       initial="hidden"
@@ -108,11 +108,11 @@ export function StaggeredReveal({
     >
       {Array.isArray(children)
         ? children.map((child, index) => (
-            <motion.div key={index} variants={itemVariants}>
+            <m.div key={index} variants={itemVariants}>
               {child}
-            </motion.div>
+            </m.div>
           ))
         : children}
-    </motion.div>
+    </m.div>
   );
 }

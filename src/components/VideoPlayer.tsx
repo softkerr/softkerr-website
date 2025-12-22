@@ -1,7 +1,7 @@
 'use client';
 
 import { FC, useState, useRef } from 'react';
-import { motion } from 'framer-motion';
+import { m as motion } from '@/lib/motion';
 import { FaPlayCircle, FaPauseCircle } from 'react-icons/fa';
 import Image from 'next/image';
 
@@ -79,9 +79,10 @@ const VideoPlayer: FC<VideoPlayerProps> = ({ video, title }) => {
         loop
         muted
         playsInline
-        preload="metadata"
+        preload="none"
         crossOrigin="anonymous"
         onEnded={handleVideoEnd}
+        poster={previewImage}
       >
         <source src={desktopSrc} type={videoType} />
       </video>
@@ -93,9 +94,10 @@ const VideoPlayer: FC<VideoPlayerProps> = ({ video, title }) => {
         loop
         muted
         playsInline
-        preload="metadata"
+        preload="none"
         crossOrigin="anonymous"
         onEnded={handleVideoEnd}
+        poster={previewImage}
       >
         <source src={mobileSrc} type={mobileType} />
       </video>

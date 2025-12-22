@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from '@/lib/motion';
 import NextLink from 'next/link';
 import { cn } from '@/lib/utils';
 
@@ -107,13 +107,13 @@ export default function Button({
           className={cn(classes, 'no-underline')}
           aria-label={props['aria-label']}
         >
-          <motion.span
+          <m.span
             className="w-full h-full flex items-center justify-center"
             whileTap={{ scale: 0.98 }}
             transition={{ duration: 0.2, ease: 'easeOut' }}
           >
             {content}
-          </motion.span>
+          </m.span>
         </NextLink>
       );
     }
@@ -132,7 +132,7 @@ export default function Button({
     // Shimmer variant with glow and animated shimmer effect
     if (variant === 'shimmer' && glowColor) {
       return (
-        <motion.button
+        <m.button
           className={cn(
             classes,
             'bg-gradient-to-r from-white/10 to-white/5 border border-white/20'
@@ -149,7 +149,7 @@ export default function Button({
           onClick={props.onClick}
           aria-label={props['aria-label']}
         >
-          <motion.div
+          <m.div
             className="absolute inset-0 opacity-10 pointer-events-none"
             initial={{ x: -100 }}
             animate={{ x: 100 }}
@@ -166,22 +166,22 @@ export default function Button({
           <span className="relative">{children}</span>
           {leftIcon && <span className="relative mr-2">{leftIcon}</span>}
           {rightIcon && (
-            <motion.span
+            <m.span
               className="relative ml-2"
               animate={{ x: [0, 5, 0] }}
               transition={{ duration: 1, repeat: Infinity, ease: 'easeInOut' }}
             >
               {rightIcon}
-            </motion.span>
+            </m.span>
           )}
-        </motion.button>
+        </m.button>
       );
     }
 
     // Glass variant with special hover effects
     if (variant === 'glass' && glowColor) {
       return (
-        <motion.button
+        <m.button
           className={classes}
           disabled={disabled || loading}
           whileHover={{
@@ -190,18 +190,17 @@ export default function Button({
             borderColor: `rgba(${glowColor}, 0.4)`,
           }}
           whileTap={{ scale: 0.95 }}
-          transition={{ duration: 0.2, ease: 'easeOut' }}
           type={props.type}
           onClick={props.onClick}
           aria-label={props['aria-label']}
         >
           {content}
-        </motion.button>
+        </m.button>
       );
     }
 
     return (
-      <motion.button
+      <m.button
         className={classes}
         disabled={disabled || loading}
         whileTap={{ scale: 0.98 }}
@@ -211,7 +210,7 @@ export default function Button({
         aria-label={props['aria-label']}
       >
         {content}
-      </motion.button>
+      </m.button>
     );
   }
 

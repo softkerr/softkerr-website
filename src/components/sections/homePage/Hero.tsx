@@ -1,7 +1,7 @@
 'use client';
 
 import { Suspense, lazy } from 'react';
-import { motion } from 'framer-motion';
+import { m as motion } from '@/lib/motion';
 import { Typography, Section, Container, Button, Link } from '@/components/ui';
 import { FaAward, FaCheckCircle, FaLightbulb } from 'react-icons/fa';
 

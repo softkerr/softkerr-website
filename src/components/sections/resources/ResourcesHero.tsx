@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { m as motion } from '@/lib/motion';
 import { Container, Section, Typography, Button } from '@/components/ui';
 import Link from 'next/link';
 import {

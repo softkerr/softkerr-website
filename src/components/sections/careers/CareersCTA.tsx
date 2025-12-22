@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { m as motion } from '@/lib/motion';
 import { Container, Typography, Section } from '@/components/ui';
 import { FaEnvelope, FaLinkedin } from 'react-icons/fa';
 

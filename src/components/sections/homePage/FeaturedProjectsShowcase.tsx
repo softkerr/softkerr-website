@@ -2,7 +2,7 @@
 
 import { FC } from 'react';
 import { Button, Container, Link, ScrollReveal, Typography } from '@/components/ui';
-import { motion } from 'framer-motion';
+import { m as motion } from '@/lib/motion';
 import VideoPlayer from '../../VideoPlayer';
 import { projects } from '@/data/projects';
 

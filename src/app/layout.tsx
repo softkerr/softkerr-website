@@ -6,6 +6,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { BookCallModalProvider } from '@/contexts/BookCallModalContext';
 import BookCallModal from '@/components/BookCallModal';
+import { LazyMotion, domAnimation } from '@/lib/motion';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -50,12 +51,14 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${orbitron.variable} `}>
       <body className="font-sans antialiased" suppressHydrationWarning={true}>
-        <BookCallModalProvider>
-          <Header />
-          <main className="pt-16 lg:pt-20 overflow-hidden">{children}</main>
-          <Footer />
-          <BookCallModal />
-        </BookCallModalProvider>
+        <LazyMotion features={domAnimation} strict>
+          <BookCallModalProvider>
+            <Header />
+            <main className="pt-16 lg:pt-20 overflow-hidden">{children}</main>
+            <Footer />
+            <BookCallModal />
+          </BookCallModalProvider>
+        </LazyMotion>
         <Analytics />
       </body>
     </html>

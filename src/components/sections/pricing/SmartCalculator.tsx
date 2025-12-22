@@ -1,7 +1,13 @@
 'use client';
 
-import CalculatorModal from '../../SmartCalculator/CalculatorModal';
+import dynamic from 'next/dynamic';
 import Hero from '../../SmartCalculator/Hero';
+
+// Lazy-load heavy calculator modal to keep pricing route light
+const CalculatorModal = dynamic(() => import('../../SmartCalculator/CalculatorModal'), {
+  ssr: false,
+  loading: () => null,
+});
 
 type SmartCalculatorProps = {
   isOpen: boolean;
@@ -17,7 +23,7 @@ export default function SmartCalculator({
   return (
     <div id="calculator">
       <Hero onOpenCalculator={openCalculator} />
-      <CalculatorModal isOpen={isOpen} onClose={closeCalculator} />
+      {isOpen ? <CalculatorModal isOpen={isOpen} onClose={closeCalculator} /> : null}
     </div>
   );
 }

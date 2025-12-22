@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
+import { m as motion, useMotionValue, useTransform, useSpring } from '@/lib/motion';
 import { useState, useRef, useMemo, useCallback, type ReactNode } from 'react';
 import Link from 'next/link';
 import { Typography, Section, Container, ScrollReveal, Button } from '@/components/ui';

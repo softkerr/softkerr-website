@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from '@/lib/motion';
 import { FaCheck, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import Typography from '@/components/ui/Typography';
 import Button from '@/components/ui/Button';

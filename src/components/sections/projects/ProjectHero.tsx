@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { m as motion } from '@/lib/motion';
 import { Typography, Container, Button, Link, ScrollReveal, Section } from '@/components/ui';
 import { HiSparkles } from 'react-icons/hi';
 import {

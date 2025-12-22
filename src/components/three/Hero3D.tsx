@@ -3,14 +3,14 @@
 import React, { Suspense, useRef, useState, useEffect } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { OrbitControls, Sphere, Box, Torus, useGLTF } from '@react-three/drei';
-import * as THREE from 'three';
-import { motion } from 'framer-motion';
+import { Mesh, ACESFilmicToneMapping } from 'three';
+import { m as motion } from '@/lib/motion';
 
 function FloatingGeometry() {
   const [mounted, setMounted] = useState(false);
-  const sphereRef = useRef<THREE.Mesh>(null);
-  const boxRef = useRef<THREE.Mesh>(null);
-  const torusRef = useRef<THREE.Mesh>(null);
+  const sphereRef = useRef<Mesh>(null);
+  const boxRef = useRef<Mesh>(null);
+  const torusRef = useRef<Mesh>(null);
   const { viewport } = useThree();
 
   useEffect(() => {
@@ -192,7 +192,7 @@ export default function Hero3D({ className = '' }: Hero3DProps) {
           }}
           gl={{
             antialias: true,
-            toneMapping: THREE.ACESFilmicToneMapping,
+            toneMapping: ACESFilmicToneMapping,
           }}
           style={{
             position: 'absolute',
