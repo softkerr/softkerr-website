@@ -3,7 +3,7 @@
 import { Suspense, lazy } from 'react';
 import { m as motion } from '@/lib/motion';
 import { Typography, Section, Container, Button, Link } from '@/components/ui';
-import { FaAward, FaCheckCircle, FaLightbulb } from 'react-icons/fa';
+import { FaAward, FaCheckCircle, FaLightbulb } from '@/components/icons';
 
 // Lazy load the Matrix component for better performance
 const MatrixHero = lazy(() => import('@/components/three/MatrixHero'));

@@ -15,7 +15,7 @@ import {
   FaRocket,
   FaDocker,
   FaAws,
-} from 'react-icons/fa';
+} from '@/components/icons';
 import {
   SiNextdotjs,
   SiTypescript,
@@ -33,7 +33,7 @@ import {
   SiMui,
   SiGitlab,
   SiJenkins,
-} from 'react-icons/si';
+} from '@/components/icons';
 
 const techCategories = [
   {

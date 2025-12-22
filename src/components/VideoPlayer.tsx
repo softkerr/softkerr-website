@@ -2,7 +2,7 @@
 
 import { FC, useState, useRef } from 'react';
 import { m as motion } from '@/lib/motion';
-import { FaPlayCircle, FaPauseCircle } from 'react-icons/fa';
+import { FaPlayCircle, FaPauseCircle } from '@/components/icons';
 import Image from 'next/image';
 
 interface VideoPlayerProps {

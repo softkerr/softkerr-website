@@ -25,7 +25,7 @@ const nextConfig: NextConfig = {
   // Experimental features for better optimization
   experimental: {
     optimizePackageImports: [
-      'react-icons',
+      '@/components/icons',
       'framer-motion',
       '@react-three/fiber',
       '@react-three/drei',

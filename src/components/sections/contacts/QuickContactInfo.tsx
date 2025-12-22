@@ -5,16 +5,7 @@ import { m as motion } from '@/lib/motion';
 import Container from '@/components/ui/Container';
 import Section from '@/components/ui/Section';
 import Typography from '@/components/ui/Typography';
-import {
-  FaEnvelope,
-  FaPhone,
-  FaWhatsapp,
-  FaLinkedin,
-  FaMapMarkerAlt,
-  FaClock,
-  FaCheck,
-  FaGlobeEurope,
-} from 'react-icons/fa';
+import { FaCheck, FaClock, FaEnvelope, FaGlobeEurope, FaLinkedin, FaMapMarkerAlt, FaPhone, FaWhatsapp } from '@/components/icons';
 
 const contactMethods = [
   {

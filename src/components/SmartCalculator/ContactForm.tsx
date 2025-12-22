@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { UseFormRegister, FieldErrors } from 'react-hook-form';
-import { FaUser, FaEnvelope, FaPhone, FaCheck, FaArrowLeft } from 'react-icons/fa';
+import { FaUser, FaEnvelope, FaPhone, FaCheck, FaArrowLeft } from '@/components/icons';
 import Typography from '@/components/ui/Typography';
 import Button from '@/components/ui/Button';
 import Input from '@/components/ui/Input';

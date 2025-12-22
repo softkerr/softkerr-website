@@ -3,8 +3,8 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { m as motion, AnimatePresence } from '@/lib/motion';
 import { Section, Container, Typography } from '@/components/ui';
-import { FaClipboardList, FaPalette, FaCode, FaSearch, FaRocket } from 'react-icons/fa';
-import { BsCheckCircleFill } from 'react-icons/bs';
+import { FaClipboardList, FaPalette, FaCode, FaSearch, FaRocket } from '@/components/icons';
+import { BsCheckCircleFill } from '@/components/icons';
 import { debounce } from '@/lib/performance';
 
 interface SprintStep {

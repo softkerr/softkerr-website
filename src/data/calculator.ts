@@ -1,4 +1,4 @@
-import { FaPalette, FaCode, FaMobile, FaShoppingCart, FaDatabase, FaRocket } from 'react-icons/fa';
+import { FaCode, FaDatabase, FaMobile, FaPalette, FaRocket, FaShoppingCart } from '@/components/icons';
 
 // Forward type declarations to avoid circular dependency
 type ServiceType = 'design' | 'webDev' | 'mobileDev' | 'ecommerce' | 'backend' | 'consulting';

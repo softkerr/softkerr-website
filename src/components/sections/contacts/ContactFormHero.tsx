@@ -11,9 +11,8 @@ import Button from '@/components/ui/Button';
 import Input from '@/components/ui/Input';
 import Select from '@/components/ui/Select';
 import Textarea from '@/components/ui/Textarea';
-import { FaUpload, FaCheckCircle, FaPaperPlane } from 'react-icons/fa';
-import { HiSparkles } from 'react-icons/hi';
 import { submitToFormspree } from '@/lib/formspree';
+import { FaCheckCircle, FaPaperPlane, FaUpload, HiSparkles } from '@/components/icons';
 
 const budgetOptions = [
   { value: 'under-10k', label: 'Under $10,000' },

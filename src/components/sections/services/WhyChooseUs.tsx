@@ -2,8 +2,7 @@
 
 import { m as motion } from '@/lib/motion';
 import { Container, Section, Typography } from '@/components/ui';
-import { FaShieldAlt, FaRocket, FaUsers, FaChartLine, FaClock, FaAward } from 'react-icons/fa';
-import { HiSparkles } from 'react-icons/hi';
+import { FaAward, FaChartLine, FaClock, FaRocket, FaShieldAlt, FaUsers, HiSparkles } from '@/components/icons';
 
 const reasons = [
   {

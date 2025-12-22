@@ -3,8 +3,7 @@
 import { FC } from 'react';
 import { m as motion } from '@/lib/motion';
 import { Container, Typography } from '@/components/ui';
-import { FaCalculator, FaArrowUp, FaCheck } from 'react-icons/fa';
-import { HiSparkles } from 'react-icons/hi';
+import { FaArrowUp, FaCalculator, FaCheck, HiSparkles } from '@/components/icons';
 
 type CalculatorCTAProps = {
   openCalculator: () => void;

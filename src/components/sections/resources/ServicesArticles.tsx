@@ -5,7 +5,7 @@ import { m as motion, AnimatePresence } from '@/lib/motion';
 import { Typography, Section, Card } from '@/components/ui';
 import { resources } from '@/data/resources';
 import { resourcesMeta } from '@/data/resourcesMeta';
-import { FaPaintBrush, FaCode, FaLifeRing } from 'react-icons/fa';
+import { FaPaintBrush, FaCode, FaLifeRing } from '@/components/icons';
 import Link from 'next/link';
 import Image from 'next/image';
 

@@ -5,8 +5,8 @@ import Container from '@/components/ui/Container';
 import Section from '@/components/ui/Section';
 import Typography from '@/components/ui/Typography';
 import Button from '@/components/ui/Button';
-import { FaPlay, FaArrowRight } from 'react-icons/fa';
 import Link from 'next/link';
+import { FaArrowRight, FaPlay } from '@/components/icons';
 
 export default function ServicesHero() {
   return (

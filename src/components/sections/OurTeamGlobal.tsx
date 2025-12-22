@@ -14,8 +14,8 @@ import {
   FaGlobe,
   FaClock,
   FaUsers,
-} from 'react-icons/fa';
-import { HiSparkles } from 'react-icons/hi';
+} from '@/components/icons';
+import { HiSparkles } from '@/components/icons';
 
 interface TeamMember {
   role: string;

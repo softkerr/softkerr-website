@@ -1,4 +1,3 @@
-import { IconType } from 'react-icons';
 import { ReactNode } from 'react';
 import {
   FaAws,
@@ -11,7 +10,7 @@ import {
   FaGlobeAmericas,
   FaStar,
   FaChartLine,
-} from 'react-icons/fa';
+} from '@/components/icons';
 import {
   SiRedux,
   SiMui,
@@ -20,7 +19,7 @@ import {
   SiGatsby,
   SiGraphql,
   SiTailwindcss,
-} from 'react-icons/si';
+} from '@/components/icons';
 
 // Project type definition
 export interface Project {

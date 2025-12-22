@@ -4,9 +4,8 @@ import { useState } from 'react';
 import { m as motion, AnimatePresence } from '@/lib/motion';
 import { Container, Typography, Button, Section } from '@/components/ui';
 import { jobPositions, JobPosition } from '@/data/careers';
-import { FaMapMarkerAlt, FaClock, FaDollarSign, FaChevronDown, FaChevronUp } from 'react-icons/fa';
-import { HiSparkles } from 'react-icons/hi';
 import Link from 'next/link';
+import { FaChevronDown, FaChevronUp, FaClock, FaDollarSign, FaMapMarkerAlt, HiSparkles } from '@/components/icons';
 
 export default function OpenPositions() {
   const [expandedId, setExpandedId] = useState<string | null>(null);

@@ -5,7 +5,7 @@ import { m as motion, AnimatePresence } from '@/lib/motion';
 import Container from '@/components/ui/Container';
 import Section from '@/components/ui/Section';
 import Typography from '@/components/ui/Typography';
-import { FaChevronDown, FaQuestionCircle } from 'react-icons/fa';
+import { FaChevronDown, FaQuestionCircle } from '@/components/icons';
 import { Link } from '../ui';
 
 interface FAQ {

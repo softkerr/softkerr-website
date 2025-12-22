@@ -2,7 +2,7 @@
 
 import { m as motion } from '@/lib/motion';
 import { Container, Typography, Section } from '@/components/ui';
-import { FaEnvelope, FaLinkedin } from 'react-icons/fa';
+import { FaEnvelope, FaLinkedin } from '@/components/icons';
 
 export default function CareersCTA() {
   return (

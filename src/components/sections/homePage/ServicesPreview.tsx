@@ -4,7 +4,7 @@ import { m as motion, useMotionValue, useTransform, useSpring } from '@/lib/moti
 import { useState, useRef, useMemo, useCallback, type ReactNode } from 'react';
 import Link from 'next/link';
 import { Typography, Section, Container, ScrollReveal, Button } from '@/components/ui';
-import { FaRocket, FaPaintBrush, FaCogs, FaTools } from 'react-icons/fa';
+import { FaRocket, FaPaintBrush, FaCogs, FaTools } from '@/components/icons';
 
 // Constants
 const SPRING_CONFIG = { stiffness: 300, damping: 30 } as const;

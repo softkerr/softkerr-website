@@ -2,7 +2,7 @@
 
 import { m as motion } from '@/lib/motion';
 import { Typography, Container, Button, Link, ScrollReveal, Section } from '@/components/ui';
-import { HiSparkles } from 'react-icons/hi';
+import { HiSparkles } from '@/components/icons';
 import {
   FaProjectDiagram,
   FaChartLine,
@@ -13,7 +13,7 @@ import {
   FaRocket,
   FaAward,
   FaCode,
-} from 'react-icons/fa';
+} from '@/components/icons';
 
 const ProjectHero = () => {
   return (

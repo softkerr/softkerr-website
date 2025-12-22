@@ -8,7 +8,7 @@ import {
   FaBullseye,
   FaCode,
   FaRocket,
-} from 'react-icons/fa';
+} from '@/components/icons';
 
 export interface OursProcessStep {
   title: string;

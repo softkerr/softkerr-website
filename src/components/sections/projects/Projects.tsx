@@ -17,21 +17,16 @@ import {
   FaTooth,
   FaGlobeAmericas,
   FaStar,
-} from 'react-icons/fa';
-import { HiSparkles } from 'react-icons/hi';
-import { IconType } from 'react-icons';
+} from '@/components/icons';
+import { HiSparkles } from '@/components/icons';
 import Image from 'next/image';
 import VideoPlayer from '@/components/VideoPlayer';
 
 import { projects, Project as ProjectType } from '@/data/projects';
 
 // Icon mapping for metrics - supports both string names and IconType components
-const getMetricIcon = (icon: string | IconType) => {
+const getMetricIcon = (icon: string) => {
   // If it's already a component (IconType), render it
-  if (typeof icon === 'function') {
-    const IconComponent = icon;
-    return <IconComponent className="text-4xl text-accent-blue" />;
-  }
 
   // Otherwise, map string to icon
   const iconMap: { [key: string]: React.ReactNode } = {

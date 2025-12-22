@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { m as motion, AnimatePresence } from '@/lib/motion';
 import { useForm } from 'react-hook-form';
-import { FaTimes } from 'react-icons/fa';
+import { FaTimes } from '@/components/icons';
 import Typography from '@/components/ui/Typography';
 import StepsList from './StepsList';
 import CalculatorForm from './CalculatorForm';
