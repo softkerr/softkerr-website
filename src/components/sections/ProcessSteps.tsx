@@ -3,7 +3,7 @@
 import { FC } from 'react';
 import { Container, Section } from '../ui';
 import { Typography } from '../ui';
-import { motion } from 'framer-motion';
+import { m as motion } from '@/lib/motion';
 
 export interface ProcessStep {
   number: string;

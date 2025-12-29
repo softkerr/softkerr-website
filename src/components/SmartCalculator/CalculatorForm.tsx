@@ -1,7 +1,7 @@
 'use client';
 
-import { motion, AnimatePresence } from 'framer-motion';
-import { FaCheck, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import { m as motion, AnimatePresence } from '@/lib/motion';
+import { FaCheck, FaArrowLeft, FaArrowRight } from '@/components/icons';
 import Typography from '@/components/ui/Typography';
 import Button from '@/components/ui/Button';
 import { CalculatorData, CalculatorStep } from './types';

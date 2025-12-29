@@ -1,9 +1,9 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { m as motion } from '@/lib/motion';
 import { Container, Typography } from '@/components/ui';
 import Link from 'next/link';
-import { FaArrowRight } from 'react-icons/fa';
+import { FaArrowRight } from '@/components/icons';
 import { resources } from '@/data/resources';
 import { resourcesMeta } from '@/data/resourcesMeta';
 

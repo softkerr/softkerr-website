@@ -1,9 +1,8 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { UseFormRegister, FieldErrors } from 'react-hook-form';
-import { FaUser, FaEnvelope, FaPhone, FaCheck, FaArrowLeft } from 'react-icons/fa';
-import { getCountries, getCountryCallingCode } from 'react-phone-number-input/input';
-import en from 'react-phone-number-input/locale/en';
+import { FaUser, FaEnvelope, FaPhone, FaCheck, FaArrowLeft } from '@/components/icons';
 import Typography from '@/components/ui/Typography';
 import Button from '@/components/ui/Button';
 import Input from '@/components/ui/Input';
@@ -20,16 +19,18 @@ type ContactFormProps = {
   onBack: () => void;
 };
 
-// Generate country codes dynamically from the library
-const countryCodes = getCountries().map(country => {
-  const callingCode = getCountryCallingCode(country);
-  const countryName = en[country] || country;
-  const flag = getCountryFlag(country);
+// Small fallback list to avoid blocking render before lazy load
+const fallbackCountryCodes = [
+  { code: 'US', calling: '1', name: 'United States' },
+  { code: 'GB', calling: '44', name: 'United Kingdom' },
+  { code: 'CA', calling: '1', name: 'Canada' },
+  { code: 'DE', calling: '49', name: 'Germany' },
+  { code: 'TR', calling: '90', name: 'Türkiye' },
+];
 
-  return {
-    value: `+${callingCode}`,
-    label: `${flag} ${countryName} +${callingCode}`,
-  };
+const mapCountry = ({ code, calling, name }: { code: string; calling: string; name: string }) => ({
+  value: `+${calling}`,
+  label: `${getCountryFlag(code)} ${name} +${calling}`,
 });
 
 export default function ContactForm({
@@ -40,6 +41,38 @@ export default function ContactForm({
   onSubmit,
   onBack,
 }: ContactFormProps) {
+  const [countryCodes, setCountryCodes] = useState(() => fallbackCountryCodes.map(mapCountry));
+
+  useEffect(() => {
+    let mounted = true;
+
+    (async () => {
+      try {
+        const [{ getCountries, getCountryCallingCode }, locale] = await Promise.all([
+          import('react-phone-number-input/input'),
+          import('react-phone-number-input/locale/en'),
+        ]);
+
+        const labels = locale as unknown as Record<string, string>;
+
+        const fullList = getCountries().map(country => {
+          const callingCode = getCountryCallingCode(country);
+          const countryName = labels?.[country as string] || country;
+          return mapCountry({ code: country, calling: callingCode, name: countryName });
+        });
+
+        if (mounted) setCountryCodes(fullList);
+      } catch (error) {
+        // Fall back to the small list if dynamic import fails
+        if (mounted) setCountryCodes(fallbackCountryCodes.map(mapCountry));
+      }
+    })();
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
   return (
     <div className="p-4 md:p-6 lg:p-8 lg:col-span-5 flex flex-col justify-between flex-1">
       <div className="overflow-y-auto scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">

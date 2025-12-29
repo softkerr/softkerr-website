@@ -1,13 +1,13 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { m as motion } from '@/lib/motion';
 import Container from '@/components/ui/Container';
 import Section from '@/components/ui/Section';
 import Typography from '@/components/ui/Typography';
 import Button from '@/components/ui/Button';
 import Link from 'next/link';
-import { FaArrowRight, FaGlobe, FaUsers, FaChartLine } from 'react-icons/fa';
-import { HiSparkles } from 'react-icons/hi';
+import { FaArrowRight, FaGlobe, FaUsers, FaChartLine } from '@/components/icons';
+import { HiSparkles } from '@/components/icons';
 
 export default function DedicatedTeamHero() {
   return (

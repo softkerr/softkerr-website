@@ -1,7 +1,7 @@
 'use client';
 
-import { motion, AnimatePresence } from 'framer-motion';
-import { FaRocket } from 'react-icons/fa';
+import { m as motion, AnimatePresence } from '@/lib/motion';
+import { FaRocket } from '@/components/icons';
 import Button from '@/components/ui/Button';
 
 type CalculatorDisplayProps = {

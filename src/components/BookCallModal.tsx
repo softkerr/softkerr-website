@@ -2,10 +2,10 @@
 
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from '@/lib/motion';
 import Link from 'next/link';
-import { FaTimes, FaPaperPlane } from 'react-icons/fa';
-import { HiSparkles } from 'react-icons/hi';
+import { FaTimes, FaPaperPlane } from '@/components/icons';
+import { HiSparkles } from '@/components/icons';
 import { Typography, Button, Input, Textarea } from '@/components/ui';
 import { useBookCallModal } from '@/contexts/BookCallModalContext';
 import { submitToFormspree } from '@/lib/formspree';
@@ -66,7 +66,7 @@ export default function BookCallModal() {
       {isOpen && (
         <>
           {/* Backdrop */}
-          <motion.div
+          <m.div
             className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -76,18 +76,18 @@ export default function BookCallModal() {
 
           {/* Modal */}
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto">
-            <motion.div
+            <m.div
               className="relative w-full max-w-4xl my-8"
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              onClick={e => e.stopPropagation()}
+              onClick={(e: React.MouseEvent<HTMLDivElement>) => e.stopPropagation()}
             >
               {/* Background Effects */}
               <div className="absolute inset-0">
                 <div className="absolute inset-0 bg-gradient-to-br from-brand-gold/10 via-brand-violet/10 to-brand-pink/10 rounded-2xl" />
-                <motion.div
+                <m.div
                   className="absolute inset-0 opacity-10 rounded-2xl"
                   style={{
                     backgroundImage: `linear-gradient(rgba(240,185,11,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(240,185,11,0.1) 1px, transparent 1px)`,
@@ -142,7 +142,7 @@ export default function BookCallModal() {
                   {/* Right Side - Form */}
                   <div className="lg:col-span-3">
                     {submitStatus === 'success' && (
-                      <motion.div
+                      <m.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         className="mb-6 p-4 rounded-xl bg-green-500/20 border border-green-500/30 text-green-300"
@@ -150,11 +150,11 @@ export default function BookCallModal() {
                         <Typography variant="body2">
                           Thank you! We'll get back to you within 24 hours.
                         </Typography>
-                      </motion.div>
+                      </m.div>
                     )}
 
                     {submitStatus === 'error' && (
-                      <motion.div
+                      <m.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         className="mb-6 p-4 rounded-xl bg-red-500/20 border border-red-500/30 text-red-300"
@@ -162,7 +162,7 @@ export default function BookCallModal() {
                         <Typography variant="body2">
                           Something went wrong. Please try again.
                         </Typography>
-                      </motion.div>
+                      </m.div>
                     )}
 
                     <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
@@ -267,7 +267,7 @@ export default function BookCallModal() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </m.div>
           </div>
         </>
       )}

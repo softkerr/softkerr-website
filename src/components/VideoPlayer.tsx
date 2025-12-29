@@ -1,8 +1,8 @@
 'use client';
 
 import { FC, useState, useRef } from 'react';
-import { motion } from 'framer-motion';
-import { FaPlayCircle, FaPauseCircle } from 'react-icons/fa';
+import { m as motion } from '@/lib/motion';
+import { FaPlayCircle, FaPauseCircle } from '@/components/icons';
 import Image from 'next/image';
 
 interface VideoPlayerProps {
@@ -79,9 +79,10 @@ const VideoPlayer: FC<VideoPlayerProps> = ({ video, title }) => {
         loop
         muted
         playsInline
-        preload="metadata"
+        preload="none"
         crossOrigin="anonymous"
         onEnded={handleVideoEnd}
+        poster={previewImage}
       >
         <source src={desktopSrc} type={videoType} />
       </video>
@@ -93,9 +94,10 @@ const VideoPlayer: FC<VideoPlayerProps> = ({ video, title }) => {
         loop
         muted
         playsInline
-        preload="metadata"
+        preload="none"
         crossOrigin="anonymous"
         onEnded={handleVideoEnd}
+        poster={previewImage}
       >
         <source src={mobileSrc} type={mobileType} />
       </video>
@@ -115,11 +117,11 @@ const VideoPlayer: FC<VideoPlayerProps> = ({ video, title }) => {
         >
           {isPlaying ? (
             <>
-              <FaPauseCircle className="text-5xl lg:text-8xl" />
+              <FaPauseCircle className="h-12 w-12 lg:h-24 lg:w-24" />
             </>
           ) : (
             <>
-              <FaPlayCircle className="text-5xl lg:text-8xl" />
+              <FaPlayCircle className="h-12 w-12 lg:h-24 lg:w-24" />
             </>
           )}
         </motion.button>

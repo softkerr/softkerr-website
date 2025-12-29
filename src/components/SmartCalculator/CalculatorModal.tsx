@@ -1,9 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from '@/lib/motion';
 import { useForm } from 'react-hook-form';
-import { FaTimes } from 'react-icons/fa';
+import { FaTimes } from '@/components/icons';
 import Typography from '@/components/ui/Typography';
 import StepsList from './StepsList';
 import CalculatorForm from './CalculatorForm';
@@ -242,7 +242,7 @@ export default function CalculatorModal({ isOpen, onClose }: CalculatorModalProp
         submissionData.ecommerceProducts = calculatorData.ecommerceProducts;
       }
       if (calculatorData.hasContent !== undefined) {
-        submissionData.hasContent = calculatorData.hasContent ? 'Yes' : 'No';
+        submissionData.hasContent = calculatorData.hasContent === 'yes' ? 'Yes' : 'No';
       }
 
       const result = await submitToFormspree({

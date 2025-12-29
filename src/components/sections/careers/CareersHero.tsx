@@ -1,9 +1,9 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { m as motion } from '@/lib/motion';
 import { Container, Section, Typography, Button } from '@/components/ui';
-import { HiSparkles } from 'react-icons/hi';
-import { FaUsers, FaRocket, FaHeart, FaBriefcase } from 'react-icons/fa';
+import { HiSparkles } from '@/components/icons';
+import { FaUsers, FaRocket, FaHeart, FaBriefcase } from '@/components/icons';
 import Link from 'next/link';
 
 export default function CareersHero() {

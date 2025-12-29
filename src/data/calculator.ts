@@ -1,191 +1,183 @@
-import { FaPalette, FaCode, FaMobile, FaShoppingCart, FaDatabase, FaRocket } from 'react-icons/fa';
+import type { ComponentType } from 'react';
+import type {
+  CalculatorStep,
+  DevelopmentStage,
+  ServiceType,
+} from '@/components/SmartCalculator/types';
+import { FaAws, FaBrain, FaBullhorn, FaChartLine, FaCode, FaPaintBrush } from '@/components/icons';
 
-// Forward type declarations to avoid circular dependency
-type ServiceType = 'design' | 'webDev' | 'mobileDev' | 'ecommerce' | 'backend' | 'consulting';
-
-type CalculatorData = {
-  services: ServiceType[];
-  designPages?: string;
-  designComplexity?: string;
-  hasContent?: string;
-  platformType?: string;
-  backendComplexity?: string;
-  ecommerceProducts?: string;
-  additionalFeatures: string[];
+export type ServiceOption = {
+  value: ServiceType;
+  label: string;
+  minDays: number;
+  maxDays: number;
+  icon?: ComponentType<{ className?: string }>;
 };
 
-type CalculatorStepType = {
-  id: string;
-  question: string;
-  type: 'multiselect' | 'select' | 'number' | 'radio';
-  options?: { value: string; label: string; days?: number; icon?: any }[];
-  dependsOn?: string;
-  shouldShow?: (data: CalculatorData) => boolean;
-};
-
-// Service options with min/max days estimation
-export const serviceOptions = [
-  { value: 'design', label: 'UI/UX Design', icon: FaPalette, minDays: 10, maxDays: 20 },
-  { value: 'webDev', label: 'Web Development', icon: FaCode, minDays: 12, maxDays: 25 },
-  { value: 'mobileDev', label: 'Mobile App', icon: FaMobile, minDays: 20, maxDays: 40 },
-  { value: 'ecommerce', label: 'E-commerce', icon: FaShoppingCart, minDays: 15, maxDays: 30 },
-  { value: 'backend', label: 'Backend/API', icon: FaDatabase, minDays: 15, maxDays: 35 },
-  { value: 'consulting', label: 'Consulting', icon: FaRocket, minDays: 5, maxDays: 10 },
-];
-
-// Development stages that will be shown with progress
-export const developmentStages = [
+export const serviceOptions: ServiceOption[] = [
   {
-    id: 'requirements',
-    name: 'Requirements Gathering',
-    description: 'Define project scope & goals',
+    value: 'design',
+    label: 'UI/UX Design',
+    minDays: 7,
+    maxDays: 14,
+    icon: FaPaintBrush,
   },
   {
-    id: 'design',
-    name: 'UI/UX Design',
-    description: 'Create visual designs & prototypes',
-    dependsOn: ['design'],
+    value: 'webDev',
+    label: 'Web Development',
+    minDays: 14,
+    maxDays: 28,
+    icon: FaCode,
   },
   {
-    id: 'development',
-    name: 'Development',
-    description: 'Build & code your solution',
-    dependsOn: ['webDev', 'mobileDev', 'backend', 'ecommerce'],
+    value: 'backend',
+    label: 'Backend Development',
+    minDays: 10,
+    maxDays: 21,
+    icon: FaBrain,
   },
   {
-    id: 'testing',
-    name: 'Testing & QA',
-    description: 'Ensure quality & performance',
-    dependsOn: ['webDev', 'mobileDev', 'backend', 'ecommerce'],
-  },
-  {
-    id: 'deployment',
-    name: 'Deployment',
-    description: 'Launch to production',
-    dependsOn: ['webDev', 'mobileDev', 'backend', 'ecommerce'],
-  },
-  {
-    id: 'support',
-    name: 'Support & Maintenance',
-    description: 'Ongoing optimization',
-    dependsOn: ['webDev', 'mobileDev', 'backend', 'ecommerce'],
+    value: 'ecommerce',
+    label: 'E-commerce',
+    minDays: 12,
+    maxDays: 24,
+    icon: FaAws,
   },
 ];
 
-// Calculator steps configuration
-export const calculatorSteps: CalculatorStepType[] = [
+export const calculatorSteps: CalculatorStep[] = [
   {
     id: 'services',
-    question: 'What services do you need?',
+    question: 'Which services do you need?',
     type: 'multiselect',
-    options: serviceOptions,
+    options: serviceOptions.map(option => ({
+      value: option.value,
+      label: option.label,
+      days: 0,
+      icon: option.icon,
+    })),
   },
   {
     id: 'designPages',
-    question: 'How many pages need design?',
+    question: 'How many unique pages do you need designed?',
     type: 'select',
+    shouldShow: data => data.services.includes('design'),
     options: [
-      { value: '1-5', label: '1-5 pages', days: 5 },
-      { value: '6-10', label: '6-10 pages', days: 10 },
-      { value: '11-20', label: '11-20 pages', days: 15 },
-      { value: '20+', label: '20+ pages', days: 20 },
+      { value: '1-3', label: '1-3 pages', days: 3 },
+      { value: '4-7', label: '4-7 pages', days: 6 },
+      { value: '8-12', label: '8-12 pages', days: 10 },
+      { value: '12+', label: '12+ pages', days: 14 },
     ],
-    shouldShow: (data: CalculatorData) => data.services.includes('design'),
-  },
-  {
-    id: 'platformType',
-    question: 'What type of website?',
-    type: 'select',
-    options: [
-      { value: 'landing', label: 'Landing Page', days: 0 },
-      { value: 'corporate', label: 'Corporate Website', days: 5 },
-      { value: 'webapp', label: 'Web Application', days: 15 },
-      { value: 'portal', label: 'Complex Portal', days: 25 },
-    ],
-    shouldShow: (data: CalculatorData) => data.services.includes('webDev'),
   },
   {
     id: 'designComplexity',
-    question: 'Design complexity level?',
-    type: 'radio',
+    question: 'What level of design complexity do you expect?',
+    type: 'select',
+    shouldShow: data => data.services.includes('design'),
     options: [
-      { value: 'simple', label: 'Simple & Clean', days: 0 },
-      { value: 'moderate', label: 'Moderate Custom', days: 5 },
-      { value: 'complex', label: 'Highly Custom', days: 10 },
+      { value: 'simple', label: 'Simple and clean', days: 3 },
+      { value: 'standard', label: 'Standard product UI', days: 5 },
+      { value: 'premium', label: 'Premium, highly custom UI', days: 8 },
     ],
-    shouldShow: (data: CalculatorData) => data.services.includes('design'),
+  },
+  {
+    id: 'platformType',
+    question: 'What are we building?',
+    type: 'select',
+    shouldShow: data => data.services.includes('webDev'),
+    options: [
+      { value: 'marketing', label: 'Marketing website', days: 5 },
+      { value: 'webapp', label: 'Web application / SaaS', days: 10 },
+      { value: 'landing', label: 'Landing page campaign', days: 3 },
+    ],
+  },
+  {
+    id: 'backendComplexity',
+    question: 'Backend requirements',
+    type: 'select',
+    shouldShow: data => data.services.includes('backend'),
+    options: [
+      { value: 'api', label: 'API and integrations', days: 5 },
+      { value: 'data', label: 'Data processing & queues', days: 8 },
+      { value: 'realtime', label: 'Real-time / streaming', days: 10 },
+    ],
+  },
+  {
+    id: 'ecommerceProducts',
+    question: 'How many products will you manage?',
+    type: 'select',
+    shouldShow: data => data.services.includes('ecommerce'),
+    options: [
+      { value: '1-50', label: 'Up to 50 products', days: 4 },
+      { value: '51-200', label: '51-200 products', days: 7 },
+      { value: '200+', label: '200+ products', days: 10 },
+    ],
   },
   {
     id: 'hasContent',
     question: 'Do you have content ready?',
     type: 'radio',
     options: [
-      { value: 'yes', label: 'Yes, all content ready', days: 0 },
-      { value: 'partial', label: 'Partially ready', days: 3 },
-      { value: 'no', label: 'Need content creation', days: 7 },
+      { value: 'yes', label: 'Yes, I will provide content', days: 0 },
+      { value: 'no', label: 'No, need help with copywriting', days: 5 },
     ],
-    shouldShow: (data: CalculatorData) =>
-      data.services.includes('design') || data.services.includes('webDev'),
-  },
-  {
-    id: 'backendComplexity',
-    question: 'Backend complexity?',
-    type: 'radio',
-    options: [
-      { value: 'simple', label: 'Simple API', days: 0 },
-      { value: 'moderate', label: 'Moderate Logic', days: 10 },
-      { value: 'complex', label: 'Complex System', days: 20 },
-    ],
-    shouldShow: (data: CalculatorData) => data.services.includes('backend'),
-  },
-  {
-    id: 'ecommerceProducts',
-    question: 'Number of products?',
-    type: 'select',
-    options: [
-      { value: '1-50', label: '1-50 products', days: 0 },
-      { value: '51-200', label: '51-200 products', days: 5 },
-      { value: '201-500', label: '201-500 products', days: 10 },
-      { value: '500+', label: '500+ products', days: 15 },
-    ],
-    shouldShow: (data: CalculatorData) => data.services.includes('ecommerce'),
   },
   {
     id: 'additionalFeatures',
-    question: 'Additional features needed?',
+    question: 'Any additional features you need?',
     type: 'multiselect',
     options: [
-      { value: 'auth', label: 'User Authentication', days: 5 },
-      { value: 'payment', label: 'Payment Integration', days: 7 },
-      { value: 'multilang', label: 'Multi-language', days: 5 },
-      { value: 'analytics', label: 'Analytics Dashboard', days: 8 },
-      { value: 'seo', label: 'Advanced SEO', days: 3 },
-      { value: 'api', label: 'Third-party APIs', days: 5 },
+      { value: 'seo', label: 'SEO & analytics setup', days: 2, icon: FaChartLine },
+      { value: 'marketing', label: 'Marketing automation', days: 3, icon: FaBullhorn },
+      { value: 'ai', label: 'AI/ML features', days: 6, icon: FaBrain },
+      { value: 'cloud', label: 'Cloud infrastructure setup', days: 4, icon: FaAws },
     ],
-    shouldShow: (data: CalculatorData) => {
-      const hasDevServices = data.services.some((service: ServiceType) =>
-        ['webDev', 'mobileDev', 'ecommerce', 'backend'].includes(service)
-      );
-      return hasDevServices;
-    },
   },
 ];
 
-// Helper function to format days into human-readable time
-export const formatTimeEstimate = (days: number): string => {
-  if (days < 7) {
-    return `${days} ${days === 1 ? 'day' : 'days'}`;
-  } else if (days < 30) {
-    const weeks = (days / 7).toFixed(1);
-    return `${weeks} ${weeks === '1.0' ? 'week' : 'weeks'}`;
-  } else {
-    const months = (days / 30).toFixed(1);
-    return `${months} ${months === '1.0' ? 'month' : 'months'}`;
-  }
+export const developmentStages: DevelopmentStage[] = [
+  {
+    id: 'requirements',
+    name: 'Requirements & Scope',
+    description: 'Gather requirements, define scope, success metrics and risks.',
+  },
+  {
+    id: 'design',
+    name: 'Product Design',
+    description: 'UX flows, wireframes, UI design system, interactive prototypes.',
+    dependsOn: ['design'],
+  },
+  {
+    id: 'development',
+    name: 'Development',
+    description: 'Front-end and back-end implementation with CI/CD.',
+    dependsOn: ['webDev', 'backend', 'ecommerce'],
+  },
+  {
+    id: 'testing',
+    name: 'QA & UAT',
+    description: 'Manual QA, automated checks, performance and accessibility.',
+  },
+  {
+    id: 'deployment',
+    name: 'Launch',
+    description: 'Production release, observability, smoke checks.',
+  },
+  {
+    id: 'support',
+    name: 'Support & Growth',
+    description: 'Post-launch monitoring, optimisation, growth experiments.',
+  },
+];
+
+export const formatTimeEstimate = (days: number) => {
+  if (days <= 14) return `${days} days`;
+  const weeks = days / 7;
+  return `≈${weeks.toFixed(1)} weeks`;
 };
 
-// Helper function to get country flag emoji
-export const getCountryFlag = (countryCode: string): string => {
+export const getCountryFlag = (countryCode: string) => {
+  if (!countryCode || countryCode.length !== 2) return '';
   const codePoints = countryCode
     .toUpperCase()
     .split('')

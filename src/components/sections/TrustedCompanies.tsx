@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { m as motion } from '@/lib/motion';
 import { Typography, Section, ScrollReveal } from '@/components/ui';
 
 // Trusted companies logos (using files from public/)

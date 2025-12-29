@@ -1,7 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { FaCheck, FaRocket } from 'react-icons/fa';
+import { m as motion } from '@/lib/motion';
+import { FaCheck, FaRocket } from '@/components/icons';
 import Typography from '@/components/ui/Typography';
 import { CalculatorData, ServiceType, TimeEstimate } from './types';
 import { developmentStages, calculatorSteps, formatTimeEstimate } from '@/data/calculator';

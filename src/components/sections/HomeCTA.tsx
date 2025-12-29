@@ -1,11 +1,11 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { m as motion } from '@/lib/motion';
 import Container from '@/components/ui/Container';
 import Section from '@/components/ui/Section';
 import Typography from '@/components/ui/Typography';
 import Button from '@/components/ui/Button';
-import { FaCalendar } from 'react-icons/fa';
+import { FaCalendar } from '@/components/icons';
 import { useBookCallModal } from '@/contexts/BookCallModalContext';
 
 export default function HomeCTA() {

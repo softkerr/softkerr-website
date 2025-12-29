@@ -1,4 +1,7 @@
 import type { NextConfig } from 'next';
+import withBundleAnalyzer from '@next/bundle-analyzer';
+
+const bundleAnalyzer = withBundleAnalyzer({ enabled: process.env.ANALYZE === 'true' });
 
 const nextConfig: NextConfig = {
   output: 'export',
@@ -19,17 +22,10 @@ const nextConfig: NextConfig = {
   poweredByHeader: false, // Remove X-Powered-By header
   reactStrictMode: true, // Enable React strict mode for better performance
 
-  // Optimize package imports for better tree-shaking
-  modularizeImports: {
-    'react-icons': {
-      transform: 'react-icons/{{member}}',
-    },
-  },
-
   // Experimental features for better optimization
   experimental: {
     optimizePackageImports: [
-      'react-icons',
+      '@/components/icons',
       'framer-motion',
       '@react-three/fiber',
       '@react-three/drei',
@@ -50,5 +46,4 @@ const nextConfig: NextConfig = {
   // This reduces bundle size by ~26 KiB
   transpilePackages: [], // Don't transpile modern packages
 };
-
-export default nextConfig;
+export default bundleAnalyzer(nextConfig);

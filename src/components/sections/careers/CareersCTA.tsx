@@ -1,8 +1,8 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { m as motion } from '@/lib/motion';
 import { Container, Typography, Section } from '@/components/ui';
-import { FaEnvelope, FaLinkedin } from 'react-icons/fa';
+import { FaEnvelope, FaLinkedin } from '@/components/icons';
 
 export default function CareersCTA() {
   return (
@@ -32,7 +32,7 @@ export default function CareersCTA() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <a
-                href="mailto:careers@softkerr.com"
+                href="mailto:softkerr@gmail.com"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-violet text-text-primary hover:bg-brand-violet/90 transition-all duration-300 font-medium"
               >
                 <FaEnvelope className="text-xl" />

@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from '@/lib/motion';
 import { cn } from '@/lib/utils';
 
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -49,14 +49,14 @@ export default function Card({
     const { onDrag, onDragStart, onDragEnd, onAnimationStart, onAnimationEnd, ...motionProps } =
       props;
     return (
-      <motion.div
+      <m.div
         className={classes}
         whileHover={hover ? { y: -4, scale: 1.02 } : undefined}
         transition={{ duration: 0.2 }}
         {...motionProps}
       >
         {children}
-      </motion.div>
+      </m.div>
     );
   }
 

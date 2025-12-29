@@ -1,17 +1,9 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { m as motion } from '@/lib/motion';
 import { Container, Section, Typography, Button } from '@/components/ui';
 import Link from 'next/link';
-import {
-  FaBook,
-  FaLightbulb,
-  FaRocket,
-  FaArrowRight,
-  FaGraduationCap,
-  FaPlay,
-} from 'react-icons/fa';
-import { HiSparkles } from 'react-icons/hi';
+import { FaArrowRight, FaBook, FaGraduationCap, FaLightbulb, FaPlay, FaRocket, HiSparkles } from '@/components/icons';
 
 export default function ResourcesHero() {
   return (

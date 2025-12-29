@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { m } from '@/lib/motion';
 import { usePathname } from 'next/navigation';
 import Link from '../ui/Link';
 import { Logo } from '../Logo';
@@ -28,7 +28,7 @@ export default function Header() {
 
   return (
     <>
-      <motion.header
+      <m.header
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-background/95 backdrop-blur-md shadow-lg "
         initial="hidden"
         animate="visible"
@@ -58,7 +58,7 @@ export default function Header() {
                 >
                   {item.name}
                   {pathname === item.href && (
-                    <motion.div
+                    <m.div
                       className="absolute -bottom-1 left-0 right-0 h-0.5 bg-accent-yellow"
                       layoutId="activeTab"
                       initial={false}
@@ -107,11 +107,11 @@ export default function Header() {
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle mobile menu"
             >
-              <motion.div
+              <m.div
                 animate={isMobileMenuOpen ? 'open' : 'closed'}
                 className="w-5 h-5 flex flex-col justify-center items-center relative"
               >
-                <motion.span
+                <m.span
                   className="absolute w-5 h-0.5 bg-brand-gold rounded-full"
                   variants={{
                     closed: { rotate: 0, y: -4, opacity: 1 },
@@ -119,7 +119,7 @@ export default function Header() {
                   }}
                   transition={{ duration: 0.3, ease: 'easeInOut' }}
                 />
-                <motion.span
+                <m.span
                   className="absolute w-5 h-0.5 bg-brand-gold rounded-full"
                   variants={{
                     closed: { opacity: 1, scale: 1 },
@@ -127,7 +127,7 @@ export default function Header() {
                   }}
                   transition={{ duration: 0.2 }}
                 />
-                <motion.span
+                <m.span
                   className="absolute w-5 h-0.5 bg-brand-gold rounded-full"
                   variants={{
                     closed: { rotate: 0, y: 4, opacity: 1 },
@@ -135,17 +135,17 @@ export default function Header() {
                   }}
                   transition={{ duration: 0.3, ease: 'easeInOut' }}
                 />
-              </motion.div>
+              </m.div>
 
               {/* Glow effect on hover */}
               <span className="absolute inset-0 rounded-xl bg-brand-gold/0 group-hover:bg-brand-gold/10 transition-colors duration-300" />
             </button>
           </div>
         </nav>
-      </motion.header>
+      </m.header>
 
       {/* Mobile Menu - Outside header */}
-      <motion.div
+      <m.div
         className="lg:hidden fixed inset-0 top-16 bg-background/98 backdrop-blur-xl z-[60]"
         initial={false}
         animate={isMobileMenuOpen ? 'open' : 'closed'}
@@ -162,7 +162,7 @@ export default function Header() {
           {/* Navigation Links */}
           <div className="space-y-6 pt-8">
             {navigation.map((item, index) => (
-              <motion.div
+              <m.div
                 key={item.name}
                 initial={{ opacity: 0, x: 20 }}
                 animate={isMobileMenuOpen ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
@@ -179,12 +179,12 @@ export default function Header() {
                 >
                   {item.name}
                 </Link>
-              </motion.div>
+              </m.div>
             ))}
           </div>
 
           {/* CTA Button */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={isMobileMenuOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.3, delay: isMobileMenuOpen ? 0.6 : 0 }}
@@ -197,9 +197,9 @@ export default function Header() {
             >
               Get in Touch
             </Link>
-          </motion.div>
+          </m.div>
         </div>
-      </motion.div>
+      </m.div>
     </>
   );
 }

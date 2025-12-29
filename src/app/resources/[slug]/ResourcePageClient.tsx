@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { m as motion } from '@/lib/motion';
 import { Container, Section, Typography, Button } from '@/components/ui';
 import {
   FaCheckCircle,
@@ -11,7 +11,7 @@ import {
   FaUser,
   FaCalendar,
   FaClock,
-} from 'react-icons/fa';
+} from '@/components/icons';
 import Link from 'next/link';
 import HomeCTA from '@/components/sections/HomeCTA';
 import RelatedArticles from '@/components/sections/services/RelatedArticles';

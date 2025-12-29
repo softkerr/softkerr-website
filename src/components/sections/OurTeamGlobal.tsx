@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { m as motion } from '@/lib/motion';
 import Container from '@/components/ui/Container';
 import Section from '@/components/ui/Section';
 import Typography from '@/components/ui/Typography';
@@ -14,8 +14,8 @@ import {
   FaGlobe,
   FaClock,
   FaUsers,
-} from 'react-icons/fa';
-import { HiSparkles } from 'react-icons/hi';
+} from '@/components/icons';
+import { HiSparkles } from '@/components/icons';
 
 interface TeamMember {
   role: string;

@@ -1,3 +1,4 @@
+import type React from 'react';
 import {
   FaLayerGroup,
   FaCog,
@@ -8,7 +9,7 @@ import {
   FaBullseye,
   FaCode,
   FaRocket,
-} from 'react-icons/fa';
+} from '@/components/icons';
 
 export interface OursProcessStep {
   title: string;
@@ -18,7 +19,7 @@ export interface OursProcessStep {
   borderClass: string;
   textClass: string;
   glowClass: string;
-  icon: React.ReactNode;
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   keyPoints: string[];
   metrics?: string[];
 }
@@ -33,7 +34,7 @@ export const oursProcessSteps: OursProcessStep[] = [
     borderClass: 'border-brand-gold/40',
     textClass: 'text-brand-gold',
     glowClass: 'shadow-brand-gold/30',
-    icon: <FaBullseye />,
+    icon: FaBullseye,
     keyPoints: [
       'In-depth stakeholder interviews',
       'Business goals alignment',
@@ -53,7 +54,7 @@ export const oursProcessSteps: OursProcessStep[] = [
     borderClass: 'border-brand-blue/40',
     textClass: 'text-brand-blue',
     glowClass: 'shadow-brand-blue/30',
-    icon: <FaSearchPlus />,
+    icon: FaSearchPlus,
     keyPoints: [
       'Competitive landscape analysis',
       'Market trends research',
@@ -73,7 +74,7 @@ export const oursProcessSteps: OursProcessStep[] = [
     borderClass: 'border-brand-violet/40',
     textClass: 'text-brand-violet',
     glowClass: 'shadow-brand-violet/30',
-    icon: <FaTools />,
+    icon: FaTools,
     keyPoints: [
       'Tech stack evaluation',
       'Performance benchmarking',
@@ -93,7 +94,7 @@ export const oursProcessSteps: OursProcessStep[] = [
     borderClass: 'border-brand-pink/40',
     textClass: 'text-brand-pink',
     glowClass: 'shadow-brand-pink/30',
-    icon: <FaPaintBrush />,
+    icon: FaPaintBrush,
     keyPoints: [
       'Brand identity integration',
       'User journey mapping',
@@ -113,7 +114,7 @@ export const oursProcessSteps: OursProcessStep[] = [
     borderClass: 'border-brand-cyan/40',
     textClass: 'text-brand-cyan',
     glowClass: 'shadow-brand-cyan/30',
-    icon: <FaCode />,
+    icon: FaCode,
     keyPoints: [
       'Clean code architecture',
       'Responsive implementation',
@@ -133,7 +134,7 @@ export const oursProcessSteps: OursProcessStep[] = [
     borderClass: 'border-brand-green/40',
     textClass: 'text-brand-green',
     glowClass: 'shadow-brand-green/30',
-    icon: <FaRocket />,
+    icon: FaRocket,
     keyPoints: [
       'Strategic deployment',
       'Performance monitoring',

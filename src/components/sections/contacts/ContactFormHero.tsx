@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { motion } from 'framer-motion';
+import { m as motion } from '@/lib/motion';
 import Link from 'next/link';
 import Container from '@/components/ui/Container';
 import Section from '@/components/ui/Section';
@@ -11,9 +11,8 @@ import Button from '@/components/ui/Button';
 import Input from '@/components/ui/Input';
 import Select from '@/components/ui/Select';
 import Textarea from '@/components/ui/Textarea';
-import { FaUpload, FaCheckCircle, FaPaperPlane } from 'react-icons/fa';
-import { HiSparkles } from 'react-icons/hi';
 import { submitToFormspree } from '@/lib/formspree';
+import { FaCheckCircle, FaPaperPlane, FaUpload, HiSparkles } from '@/components/icons';
 
 const budgetOptions = [
   { value: 'under-10k', label: 'Under $10,000' },

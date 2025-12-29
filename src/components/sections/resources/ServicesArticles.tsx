@@ -1,11 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from '@/lib/motion';
 import { Typography, Section, Card } from '@/components/ui';
 import { resources } from '@/data/resources';
 import { resourcesMeta } from '@/data/resourcesMeta';
-import { FaPaintBrush, FaCode, FaLifeRing } from 'react-icons/fa';
+import { FaPaintBrush, FaCode, FaLifeRing } from '@/components/icons';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -57,7 +57,7 @@ export default function ServicesArticles() {
     <Section variant="muted" padding="lg">
       <div className="text-center mb-16">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 1, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}

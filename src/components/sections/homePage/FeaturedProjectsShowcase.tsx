@@ -2,7 +2,7 @@
 
 import { FC } from 'react';
 import { Button, Container, Link, ScrollReveal, Typography } from '@/components/ui';
-import { motion } from 'framer-motion';
+import { m as motion } from '@/lib/motion';
 import VideoPlayer from '../../VideoPlayer';
 import { projects } from '@/data/projects';
 
@@ -95,7 +95,7 @@ export const FeaturedProjectsShowcase: FC = () => {
                             className="text-center p-4 bg-background-secondary rounded-xl border border-border-subtle transition-all duration-300 group-hover:border-accent-yellow group-hover:bg-accent-yellow/10 hover:scale-105 cursor-pointer"
                           >
                             {IconComponent && (
-                              <IconComponent className="text-2xl mb-2 mx-auto text-brand-blue" />
+                              <IconComponent className="h-4 w-4 lg:h-6 lg:w-6 mb-2 mx-auto text-brand-blue" />
                             )}
                             <div className="text-accent-yellow font-bold mb-1 group-hover:text-accent-purple transition-colors duration-300">
                               {metric.value}

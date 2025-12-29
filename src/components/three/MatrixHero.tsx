@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useCallback, useState } from 'react';
-import { motion } from 'framer-motion';
+import { m as motion } from '@/lib/motion';
 
 // Character sets for the matrix effect
 const MATRIX_CHARS = [

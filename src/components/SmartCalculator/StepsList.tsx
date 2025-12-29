@@ -1,7 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { FaCheck } from 'react-icons/fa';
+import { m as motion } from '@/lib/motion';
+import { FaCheck } from '@/components/icons';
 import Typography from '@/components/ui/Typography';
 import { CalculatorStep } from './types';
 

@@ -1,11 +1,17 @@
 'use client';
 
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from '@/lib/motion';
 import { Container, Typography, Button, Section } from '@/components/ui';
 import { jobPositions, JobPosition } from '@/data/careers';
-import { FaMapMarkerAlt, FaClock, FaDollarSign, FaChevronDown, FaChevronUp } from 'react-icons/fa';
-import { HiSparkles } from 'react-icons/hi';
+import {
+  FaMapMarkerAlt,
+  FaClock,
+  FaDollarSign,
+  FaChevronDown,
+  FaChevronUp,
+} from '@/components/icons';
+import { HiSparkles } from '@/components/icons';
 import Link from 'next/link';
 
 export default function OpenPositions() {
@@ -34,7 +40,7 @@ export default function OpenPositions() {
       <Container className="relative z-10">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 1, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-12"
