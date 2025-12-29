@@ -4,13 +4,30 @@ import { m as motion, AnimatePresence } from '@/lib/motion';
 import { useState, useMemo, useEffect, useRef } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
+import {
+  FaPaintBrush,
+  FaLaptopCode,
+  FaBullhorn,
+  FaMobileAlt,
+  FaRocket,
+  FaCode,
+  FaLightbulb,
+  FaComments,
+  FaCogs,
+  FaCheckCircle,
+  FaTools,
+  FaArrowRight,
+  FaBrain,
+  FaLifeRing,
+  FaWrench,
+  FaServer,
+} from '@/components/icons';
 import { servicesData, servicesArray } from '@/data/services';
 import Container from '@/components/ui/Container';
 import Section from '@/components/ui/Section';
 import Typography from '@/components/ui/Typography';
 import Button from '@/components/ui/Button';
 import { cn } from '@/lib/utils';
-import { FaArrowRight, FaBrain, FaBullhorn, FaCheckCircle, FaCode, FaCogs, FaComments, FaLaptopCode, FaLifeRing, FaLightbulb, FaMobileAlt, FaPaintBrush, FaRocket, FaServer, FaTools, FaWrench } from '@/components/icons';
 
 const iconMap: Record<string, React.ReactNode> = {
   'ui-ux-design': <FaPaintBrush className="w-8 h-8" />,

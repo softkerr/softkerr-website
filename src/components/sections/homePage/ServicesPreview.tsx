@@ -25,7 +25,7 @@ const SERVICES: readonly ServiceConfig[] = [
   {
     title: 'Web Development',
     description: 'Custom web applications built with modern technologies and best practices.',
-    icon: <FaRocket />,
+    icon: <FaRocket className="h-10 w-10" />,
     color: 'gold',
     tab: 'development',
     glowColor: '240, 185, 11',
@@ -33,7 +33,7 @@ const SERVICES: readonly ServiceConfig[] = [
   {
     title: 'UI/UX Design',
     description: 'User-centered design that creates meaningful and delightful experiences.',
-    icon: <FaPaintBrush />,
+    icon: <FaPaintBrush className="h-10 w-10" />,
     color: 'violet',
     tab: 'design',
     glowColor: '139, 92, 246',
@@ -41,7 +41,7 @@ const SERVICES: readonly ServiceConfig[] = [
   {
     title: 'CMS Development',
     description: 'Custom CMS Built for Speed and Scale.',
-    icon: <FaCogs />,
+    icon: <FaCogs className="h-10 w-10" />,
     color: 'cyan',
     tab: 'development',
     glowColor: '6, 182, 212',
@@ -49,7 +49,7 @@ const SERVICES: readonly ServiceConfig[] = [
   {
     title: 'Support & Maintenance',
     description: 'Ongoing support to keep your digital products running smoothly.',
-    icon: <FaTools />,
+    icon: <FaTools className="h-10 w-10" />,
     color: 'blue',
     tab: 'support',
     glowColor: '37, 99, 235',

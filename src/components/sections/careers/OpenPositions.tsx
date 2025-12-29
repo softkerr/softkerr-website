@@ -4,8 +4,15 @@ import { useState } from 'react';
 import { m as motion, AnimatePresence } from '@/lib/motion';
 import { Container, Typography, Button, Section } from '@/components/ui';
 import { jobPositions, JobPosition } from '@/data/careers';
+import {
+  FaMapMarkerAlt,
+  FaClock,
+  FaDollarSign,
+  FaChevronDown,
+  FaChevronUp,
+} from '@/components/icons';
+import { HiSparkles } from '@/components/icons';
 import Link from 'next/link';
-import { FaChevronDown, FaChevronUp, FaClock, FaDollarSign, FaMapMarkerAlt, HiSparkles } from '@/components/icons';
 
 export default function OpenPositions() {
   const [expandedId, setExpandedId] = useState<string | null>(null);
@@ -33,7 +40,7 @@ export default function OpenPositions() {
       <Container className="relative z-10">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 1, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-12"

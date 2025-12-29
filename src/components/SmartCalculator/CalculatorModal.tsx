@@ -242,7 +242,7 @@ export default function CalculatorModal({ isOpen, onClose }: CalculatorModalProp
         submissionData.ecommerceProducts = calculatorData.ecommerceProducts;
       }
       if (calculatorData.hasContent !== undefined) {
-        submissionData.hasContent = calculatorData.hasContent ? 'Yes' : 'No';
+        submissionData.hasContent = calculatorData.hasContent === 'yes' ? 'Yes' : 'No';
       }
 
       const result = await submitToFormspree({

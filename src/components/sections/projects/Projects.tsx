@@ -1,5 +1,6 @@
 'use client';
 
+import { isValidElement, type ComponentType } from 'react';
 import { m as motion } from '@/lib/motion';
 import { Typography, Container, ScrollReveal, Section } from '@/components/ui';
 import {
@@ -22,26 +23,29 @@ import { HiSparkles } from '@/components/icons';
 import Image from 'next/image';
 import VideoPlayer from '@/components/VideoPlayer';
 
-import { projects, Project as ProjectType } from '@/data/projects';
+import { projects, Project as ProjectType, type IconType } from '@/data/projects';
 
 // Icon mapping for metrics - supports both string names and IconType components
-const getMetricIcon = (icon: string) => {
-  // If it's already a component (IconType), render it
+const getMetricIcon = (icon: string | IconType) => {
+  if (typeof icon !== 'string') {
+    const Icon = icon;
+    return <Icon className="h-6 w-6 lg:w-9 lg:h-9 text-accent-blue" />;
+  }
 
-  // Otherwise, map string to icon
   const iconMap: { [key: string]: React.ReactNode } = {
-    FaUsers: <FaUsers className="text-4xl text-accent-blue" />,
-    FaBolt: <FaBolt className="text-4xl text-accent-yellow" />,
-    FaLock: <FaLock className="text-4xl text-accent-purple" />,
-    FaBox: <FaBox className="text-4xl text-accent-blue" />,
-    FaUserTie: <FaUserTie className="text-4xl text-accent-purple" />,
-    FaTruck: <FaTruck className="text-4xl text-accent-yellow" />,
-    FaChartLine: <FaChartLine className="text-4xl text-accent-blue" />,
-    FaTooth: <FaTooth className="text-4xl text-accent-blue" />,
-    FaGlobeAmericas: <FaGlobeAmericas className="text-4xl text-accent-yellow" />,
-    FaStar: <FaStar className="text-4xl text-accent-yellow" />,
+    FaUsers: <FaUsers className="h-6 w-6 lg:w-9 lg:h-9 text-accent-blue" />,
+    FaBolt: <FaBolt className="h-6 w-6 lg:w-9 lg:h-9 text-accent-yellow" />,
+    FaLock: <FaLock className="h-6 w-6 lg:w-9 lg:h-9 text-accent-purple" />,
+    FaBox: <FaBox className="h-6 w-6 lg:w-9 lg:h-9 text-accent-blue" />,
+    FaUserTie: <FaUserTie className="h-6 w-6 lg:w-9 lg:h-9 text-accent-purple" />,
+    FaTruck: <FaTruck className="h-6 w-6 lg:w-9 lg:h-9 text-accent-yellow" />,
+    FaChartLine: <FaChartLine className="h-6 w-6 lg:w-9 lg:h-9 text-accent-blue" />,
+    FaTooth: <FaTooth className="h-6 w-6 lg:w-9 lg:h-9 text-accent-blue" />,
+    FaGlobeAmericas: <FaGlobeAmericas className="h-6 w-6 lg:w-9 lg:h-9 text-accent-yellow" />,
+    FaStar: <FaStar className="h-6 w-6 lg:w-9 lg:h-9 text-accent-yellow" />,
   };
-  return iconMap[icon] || <HiSparkles className="text-4xl text-accent-yellow" />;
+
+  return iconMap[icon] || <HiSparkles className="h-6 w-6 lg:w-9 lg:h-9 text-accent-yellow" />;
 };
 
 interface Props {
@@ -131,7 +135,7 @@ const ProjectSection = ({ project }: Props) => {
             <ScrollReveal delay={0.2}>
               <div className="relative p-10 bg-background-secondary rounded-2xl border-l-[16px] border-accent-yellow h-full">
                 <div className="absolute top-8 right-8 text-4xl lg:text-6xl">
-                  <FaBullseye className="text-accent-yellow" />
+                  <FaBullseye className="text-accent-yellow w-9 h-9 lg:w-14 lg:h-14" />
                 </div>
                 <Typography variant="h4" className="text-2xl font-bold mb-6 text-accent-yellow">
                   THE CHALLENGE
@@ -148,7 +152,7 @@ const ProjectSection = ({ project }: Props) => {
             <ScrollReveal delay={0.2}>
               <div className="relative p-10 bg-background-secondary rounded-2xl border-l-[16px] border-accent-blue h-full">
                 <div className="absolute top-8 right-8 text-4xl lg:text-6xl">
-                  <FaLightbulb className="text-accent-blue" />
+                  <FaLightbulb className="text-accent-blue w-9 h-9 lg:w-14 lg:h-14" />
                 </div>
                 <Typography variant="h4" className="text-2xl font-bold mb-6 text-accent-blue">
                   OUR APPROACH
@@ -171,17 +175,29 @@ const ProjectSection = ({ project }: Props) => {
               Tech Stack
             </Typography>
             <div className="flex flex-wrap gap-4">
-              {project.technologies.map(({ name, icon }, idx) => (
-                <motion.div
-                  key={idx}
-                  className="flex items-center gap-2 px-6 py-3 rounded-2xl font-medium transition-all duration-300 hover:bg-accent-yellow hover:shadow-lg hover:shadow-accent-yellow/20 bg-background-secondary text-text-secondary hover:bg-background-secondary/80 hover:text-text-primary border border-border-subtle"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <span className="text-xl">{icon}</span>
-                  <span>{name}</span>
-                </motion.div>
-              ))}
+              {project.technologies.map(({ name, icon }, idx) => {
+                const renderIcon = () => {
+                  const maybeComponent = icon as unknown;
+                  if (typeof maybeComponent === 'function') {
+                    const Icon = maybeComponent as ComponentType<{ className?: string }>;
+                    return <Icon className="h-5 w-5 lg:h-6 lg:w-6" />;
+                  }
+                  if (isValidElement(icon)) return icon;
+                  return null;
+                };
+
+                return (
+                  <motion.div
+                    key={idx}
+                    className="flex items-center gap-2 px-6 py-3 rounded-2xl font-medium transition-all duration-300 hover:bg-accent-yellow hover:shadow-lg hover:shadow-accent-yellow/20 bg-background-secondary text-text-secondary hover:bg-background-secondary/80 hover:text-text-primary border border-border-subtle"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {renderIcon()}
+                    <span>{name}</span>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </ScrollReveal>

@@ -133,7 +133,7 @@ const Hero = () => {
                             className="flex items-center gap-3 p-3 rounded-xl bg-white/5 backdrop-blur-lg border border-white/10"
                           >
                             <div className="w-8 h-8 rounded-lg bg-brand-green/20 flex items-center justify-center flex-shrink-0">
-                              <FaCheckCircle className="text-brand-green text-sm" />
+                              <FaCheckCircle className="text-brand-green text-sm h-4 w-4" />
                             </div>
                             <Typography variant="body2" className="text-white text-sm">
                               {highlight}

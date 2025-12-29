@@ -5,8 +5,8 @@ import Container from '@/components/ui/Container';
 import Section from '@/components/ui/Section';
 import Typography from '@/components/ui/Typography';
 import Button from '@/components/ui/Button';
-import { useBookCallModal } from '@/contexts/BookCallModalContext';
 import { FaCalendar } from '@/components/icons';
+import { useBookCallModal } from '@/contexts/BookCallModalContext';
 
 export default function HomeCTA() {
   const { openModal } = useBookCallModal();

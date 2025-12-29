@@ -13,7 +13,7 @@ interface Step {
   borderClass: string;
   textClass: string;
   glowClass: string;
-  icon: React.ReactNode;
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   keyPoints: string[];
   metrics?: string[];
 }
@@ -105,6 +105,7 @@ export default function ExpandableCardList({
           {steps.map((step, index) => {
             const isActive = index === activeIndex;
             const shouldShowContent = isMobile || isActive; // Always show on mobile
+            const StepIcon = step.icon;
 
             return (
               <motion.div
@@ -153,7 +154,7 @@ export default function ExpandableCardList({
                           }}
                           transition={{ duration: 0.4 }}
                         >
-                          {step.icon}
+                          <StepIcon className="h-8 w-8" />
 
                           {/* Ping effect when active */}
                           {isActive && (

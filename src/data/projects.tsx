@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, type ComponentType } from 'react';
 import {
   FaAws,
   FaNodeJs,
@@ -22,6 +22,8 @@ import {
 } from '@/components/icons';
 
 // Project type definition
+export type IconType = ComponentType<{ className?: string }>;
+
 export interface Project {
   id: string;
   title: string;
