@@ -1,7 +1,7 @@
 import { list } from 'postcss';
 
 export const privacyPolicy = {
-  title: 'HSoftKerr Privacy Policy',
+  title: 'SoftKerr Privacy Policy',
   content: [
     {
       title: 'Definitions',
