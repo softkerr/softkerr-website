@@ -90,7 +90,9 @@ export default function Footer() {
       <div className="border-t border-border-subtle">
         <div className="container-custom py-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-text-muted text-sm">© 2025 SoftKerr. All rights reserved.</p>
+            <p className="text-text-muted text-sm">
+              © {new Date().getFullYear()} SoftKerr. All rights reserved.
+            </p>
 
             <div className="flex space-x-6 text-sm">
               <Link

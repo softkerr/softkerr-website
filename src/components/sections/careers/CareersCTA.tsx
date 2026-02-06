@@ -32,7 +32,7 @@ export default function CareersCTA() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <a
-                href="mailto:softkerr@gmail.com"
+                href="mailto:sales@softkerr.online"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-violet text-text-primary hover:bg-brand-violet/90 transition-all duration-300 font-medium"
               >
                 <FaEnvelope className="text-xl" />

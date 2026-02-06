@@ -68,74 +68,72 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    id: 'dreamhost-panel',
-    title: 'DreamHost Panel',
+    id: 'dreamhost-website',
+    title: 'DreamHost Website',
     description:
-      'A modern, intuitive control panel for DreamHost users to manage websites, domains, and hosting with ease. Features include one-click installs, advanced DNS management, and real-time resource monitoring.',
-    category: 'Web Hosting',
-    image: '/projects/dreamhost.jpg',
+      "Complete rebuild of DreamHost's main website, creating a modern, high-performance platform that drives customer acquisition and enhances user experience. Features optimized conversion funnels, advanced SEO, and seamless integration with their hosting infrastructure.",
+    category: 'Web Development',
+    image: '/projects/dreamhost-main.jpg',
     technologies: [
-      { name: 'React', icon: <FaReact className="text-2xl text-brand-blue" /> },
-      { name: 'Redux', icon: <SiRedux className="text-2xl text-brand-violet" /> },
-      { name: 'Node.js', icon: <FaNodeJs className="text-2xl text-brand-green" /> },
+      { name: 'Gatsby.js', icon: <SiGatsby className="text-2xl text-brand-violet" /> },
+      { name: 'GraphQL', icon: <SiGraphql className="text-2xl text-brand-blue" /> },
+      { name: 'Tailwind CSS', icon: <SiTailwindcss className="text-2xl text-brand-blue" /> },
       { name: 'AWS', icon: <FaAws className="text-2xl text-brand-gold" /> },
-      { name: 'MUI', icon: <SiMui className="text-2xl text-brand-blue" /> },
     ],
-    techStack: ['React', 'Redux', 'Node.js', 'AWS'],
+    techStack: ['Gatsby.js', 'Tailwind CSS', 'GraphQL'],
     metrics: [
-      { icon: FaUsers, value: '2M+', label: 'Active Customers' },
-      { icon: FaBolt, value: '1s', label: 'Avg. Response' },
-      { icon: FaLock, value: '100%', label: 'SSL Coverage' },
+      { icon: FaUsers, value: '50K+', label: 'New Customers/Month' },
+      { icon: FaBolt, value: '95+', label: 'Performance Score' },
+      { icon: FaChartLine, value: '200%', label: 'Conversion Increase' },
     ],
     video: {
-      src: 'https://dwagloaw4bttd.cloudfront.net/video/optimized/dashboard/dashboard.mp4',
+      src: '/movies/dreamhost-website.mp4',
       type: 'video/mp4',
-      mobileSrc: 'https://dwagloaw4bttd.cloudfront.net/video/optimized/dashboard/dashboard.webm',
-      mobileType: 'video/webm',
-      desktop: 'https://dwagloaw4bttd.cloudfront.net/video/optimized/dashboard/dashboard.mp4',
-      mobile: 'https://dwagloaw4bttd.cloudfront.net/video/optimized/dashboard/dashboard_small.mp4',
-      previewImage: '/movies/dreamhost-panel-preview.webp',
+      mobileSrc: '/movies/dreamhost-website.mp4',
+      mobileType: 'video/mp4',
+      desktop: '/movies/dreamhost-website.mp4',
+      mobile: '/movies/dreamhost-website.mp4',
+      previewImage: '/movies/dreamhost-website-preview.webp',
     },
     challenge:
-      'DreamHost needed to modernize their control panel to handle millions of users while maintaining blazing-fast performance and industry-leading uptime. The existing system was outdated, difficult to navigate, and lacked real-time monitoring capabilities.',
+      "DreamHost's website needed a complete overhaul to improve conversion rates, enhance user experience, and achieve top performance scores. The existing site was slow, difficult to navigate, and not optimized for modern SEO practices.",
     solution:
-      'We built a completely new control panel using React and Redux for state management, ensuring a responsive and intuitive user interface. The backend was powered by Node.js with AWS infrastructure for scalability. We implemented real-time resource monitoring, one-click installations, and advanced DNS management tools.',
+      'We rebuilt the entire website using Next.js and TypeScript for optimal performance and maintainability. Tailwind CSS was used for consistent, responsive design. We implemented advanced SEO strategies, optimized conversion funnels, and integrated seamlessly with their hosting infrastructure. The site was deployed on Vercel for edge performance.',
     results: [
-      'Increased user satisfaction by 45% within the first quarter',
-      'Reduced average response time to under 1 second',
-      'Achieved 99.99% uptime for over 2 million active customers',
-      '100% SSL coverage across all hosted domains',
-      'Decreased support tickets by 35% due to improved UX',
+      'Attracted 50,000+ new customers per month',
+      'Achieved 95+ performance score on Google Lighthouse',
+      'Increased conversion rate by 200%',
+      'Reduced bounce rate by 45%',
+      'Improved organic search traffic by 180%',
+      'Decreased page load time by 65%',
     ],
     features: [
       {
-        title: 'One-Click Installs',
-        description:
-          'Install popular applications like WordPress, Joomla, and Drupal with a single click.',
+        title: 'Optimized Conversion Funnels',
+        description: 'Strategically designed user flows that guide visitors to become customers.',
       },
       {
-        title: 'Advanced DNS Management',
-        description:
-          'Full control over DNS settings with an intuitive interface for managing records.',
+        title: 'Advanced SEO',
+        description: 'Technical SEO implementation with structured data and meta optimization.',
       },
       {
-        title: 'Real-Time Monitoring',
+        title: 'Performance Optimization',
         description:
-          'Track resource usage, uptime, and performance metrics in real-time dashboards.',
+          'Edge caching, image optimization, and lazy loading for lightning-fast speeds.',
       },
       {
-        title: 'Security Dashboard',
+        title: 'Seamless Integration',
         description:
-          'Comprehensive security overview with SSL certificate management and threat detection.',
+          'Direct integration with hosting infrastructure for real-time account management.',
       },
     ],
     testimonial: {
       quote:
-        'The new DreamHost Panel has transformed how our customers interact with their hosting services. The intuitive design and powerful features have significantly reduced support requests while increasing customer satisfaction.',
-      author: 'John H.',
-      role: 'Customer Experience Manager',
+        "The new DreamHost website has been a game-changer for our business. We're seeing record numbers of new customers, and our conversion rates have skyrocketed. The team at SoftKerr delivered beyond our wildest expectations.",
+      author: 'Brian Glassman',
+      role: 'Director of SEO',
       company: 'DreamHost',
-      avatar: '/avatars/john-h-avatar.jpeg',
+      avatar: '/avatars/brian-glasman-avatar.jpeg',
     },
   },
   {
@@ -208,73 +206,76 @@ export const projects: Project[] = [
       avatar: '/avatars/mahmet-avatar.jpeg',
     },
   },
+
   {
-    id: 'dreamhost-website',
-    title: 'DreamHost Website',
+    id: 'dreamhost-panel',
+    title: 'DreamHost Panel',
     description:
-      "Complete rebuild of DreamHost's main website, creating a modern, high-performance platform that drives customer acquisition and enhances user experience. Features optimized conversion funnels, advanced SEO, and seamless integration with their hosting infrastructure.",
-    category: 'Web Development',
-    image: '/projects/dreamhost-main.jpg',
+      'A modern, intuitive control panel for DreamHost users to manage websites, domains, and hosting with ease. Features include one-click installs, advanced DNS management, and real-time resource monitoring.',
+    category: 'Web Hosting',
+    image: '/projects/dreamhost.jpg',
     technologies: [
-      { name: 'Gatsby.js', icon: <SiGatsby className="text-2xl text-brand-violet" /> },
-      { name: 'GraphQL', icon: <SiGraphql className="text-2xl text-brand-blue" /> },
-      { name: 'Tailwind CSS', icon: <SiTailwindcss className="text-2xl text-brand-blue" /> },
+      { name: 'React', icon: <FaReact className="text-2xl text-brand-blue" /> },
+      { name: 'Redux', icon: <SiRedux className="text-2xl text-brand-violet" /> },
+      { name: 'Node.js', icon: <FaNodeJs className="text-2xl text-brand-green" /> },
       { name: 'AWS', icon: <FaAws className="text-2xl text-brand-gold" /> },
+      { name: 'MUI', icon: <SiMui className="text-2xl text-brand-blue" /> },
     ],
-    techStack: ['Gatsby.js', 'Tailwind CSS', 'GraphQL'],
+    techStack: ['React', 'Redux', 'Node.js', 'AWS'],
     metrics: [
-      { icon: FaUsers, value: '50K+', label: 'New Customers/Month' },
-      { icon: FaBolt, value: '95+', label: 'Performance Score' },
-      { icon: FaChartLine, value: '200%', label: 'Conversion Increase' },
+      { icon: FaUsers, value: '2M+', label: 'Active Customers' },
+      { icon: FaBolt, value: '1s', label: 'Avg. Response' },
+      { icon: FaLock, value: '100%', label: 'SSL Coverage' },
     ],
     video: {
-      src: '/movies/dreamhost-website.mp4',
+      src: 'https://dwagloaw4bttd.cloudfront.net/video/optimized/dashboard/dashboard.mp4',
       type: 'video/mp4',
-      mobileSrc: '/movies/dreamhost-website.mp4',
-      mobileType: 'video/mp4',
-      desktop: '/movies/dreamhost-website.mp4',
-      mobile: '/movies/dreamhost-website.mp4',
-      previewImage: '/movies/dreamhost-website-preview.webp',
+      mobileSrc: 'https://dwagloaw4bttd.cloudfront.net/video/optimized/dashboard/dashboard.webm',
+      mobileType: 'video/webm',
+      desktop: 'https://dwagloaw4bttd.cloudfront.net/video/optimized/dashboard/dashboard.mp4',
+      mobile: 'https://dwagloaw4bttd.cloudfront.net/video/optimized/dashboard/dashboard_small.mp4',
+      previewImage: '/movies/dreamhost-panel-preview.webp',
     },
     challenge:
-      "DreamHost's website needed a complete overhaul to improve conversion rates, enhance user experience, and achieve top performance scores. The existing site was slow, difficult to navigate, and not optimized for modern SEO practices.",
+      'DreamHost needed to modernize their control panel to handle millions of users while maintaining blazing-fast performance and industry-leading uptime. The existing system was outdated, difficult to navigate, and lacked real-time monitoring capabilities.',
     solution:
-      'We rebuilt the entire website using Next.js and TypeScript for optimal performance and maintainability. Tailwind CSS was used for consistent, responsive design. We implemented advanced SEO strategies, optimized conversion funnels, and integrated seamlessly with their hosting infrastructure. The site was deployed on Vercel for edge performance.',
+      'We built a completely new control panel using React and Redux for state management, ensuring a responsive and intuitive user interface. The backend was powered by Node.js with AWS infrastructure for scalability. We implemented real-time resource monitoring, one-click installations, and advanced DNS management tools.',
     results: [
-      'Attracted 50,000+ new customers per month',
-      'Achieved 95+ performance score on Google Lighthouse',
-      'Increased conversion rate by 200%',
-      'Reduced bounce rate by 45%',
-      'Improved organic search traffic by 180%',
-      'Decreased page load time by 65%',
+      'Increased user satisfaction by 45% within the first quarter',
+      'Reduced average response time to under 1 second',
+      'Achieved 99.99% uptime for over 2 million active customers',
+      '100% SSL coverage across all hosted domains',
+      'Decreased support tickets by 35% due to improved UX',
     ],
     features: [
       {
-        title: 'Optimized Conversion Funnels',
-        description: 'Strategically designed user flows that guide visitors to become customers.',
-      },
-      {
-        title: 'Advanced SEO',
-        description: 'Technical SEO implementation with structured data and meta optimization.',
-      },
-      {
-        title: 'Performance Optimization',
+        title: 'One-Click Installs',
         description:
-          'Edge caching, image optimization, and lazy loading for lightning-fast speeds.',
+          'Install popular applications like WordPress, Joomla, and Drupal with a single click.',
       },
       {
-        title: 'Seamless Integration',
+        title: 'Advanced DNS Management',
         description:
-          'Direct integration with hosting infrastructure for real-time account management.',
+          'Full control over DNS settings with an intuitive interface for managing records.',
+      },
+      {
+        title: 'Real-Time Monitoring',
+        description:
+          'Track resource usage, uptime, and performance metrics in real-time dashboards.',
+      },
+      {
+        title: 'Security Dashboard',
+        description:
+          'Comprehensive security overview with SSL certificate management and threat detection.',
       },
     ],
     testimonial: {
       quote:
-        "The new DreamHost website has been a game-changer for our business. We're seeing record numbers of new customers, and our conversion rates have skyrocketed. The team at SoftKerr delivered beyond our wildest expectations.",
-      author: 'Brian Glassman',
-      role: 'Director of SEO',
+        'The new DreamHost Panel has transformed how our customers interact with their hosting services. The intuitive design and powerful features have significantly reduced support requests while increasing customer satisfaction.',
+      author: 'John H.',
+      role: 'Customer Experience Manager',
       company: 'DreamHost',
-      avatar: '/avatars/brian-glasman-avatar.jpeg',
+      avatar: '/avatars/john-h-avatar.jpeg',
     },
   },
 ];
