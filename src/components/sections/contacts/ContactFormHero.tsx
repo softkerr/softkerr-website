@@ -266,7 +266,6 @@ export default function ContactFormHero() {
                     defaultValue={undefined}
                     options={budgetOptions}
                     fullWidth
-                    required
                     error={errors.budget?.message}
                     {...register('budget', {
                       required: 'Please select a budget range',
@@ -281,7 +280,6 @@ export default function ContactFormHero() {
                   rows={4}
                   resize="none"
                   fullWidth
-                  required
                   error={errors.projectDescription?.message}
                   {...register('projectDescription', {
                     required: 'Project description is required',

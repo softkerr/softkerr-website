@@ -5,15 +5,24 @@ import { m as motion } from '@/lib/motion';
 import Container from '@/components/ui/Container';
 import Section from '@/components/ui/Section';
 import Typography from '@/components/ui/Typography';
-import { FaCheck, FaClock, FaEnvelope, FaGlobeEurope, FaLinkedin, FaMapMarkerAlt, FaPhone, FaWhatsapp } from '@/components/icons';
+import {
+  FaCheck,
+  FaClock,
+  FaEnvelope,
+  FaGlobeEurope,
+  FaLinkedin,
+  FaMapMarkerAlt,
+  FaPhone,
+  FaWhatsapp,
+} from '@/components/icons';
 
 const contactMethods = [
   {
     icon: FaEnvelope,
     label: 'Email',
-    value: 'softkerr@gmail.com',
+    value: 'sales@softkerr.online',
     action: 'copy',
-    link: 'mailto:softkerr@gmail.com',
+    link: 'mailto:sales@softkerr.online',
     color: 'brand-gold',
     bgGradient: 'from-brand-gold/20 to-brand-gold/5',
     borderColor: 'border-brand-gold/30',
