@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { m, AnimatePresence } from '@/lib/motion';
 import Link from 'next/link';
@@ -9,6 +9,7 @@ import { HiSparkles } from '@/components/icons';
 import { Typography, Button, Input, Textarea } from '@/components/ui';
 import { useBookCallModal } from '@/contexts/BookCallModalContext';
 import { submitToFormspree } from '@/lib/formspree';
+import { generalEvents, contactEvents } from '@/lib/analytics';
 
 type ContactFormData = {
   fullName: string;
@@ -28,8 +29,24 @@ export default function BookCallModal() {
 
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
+  // Track modal open/close
+  useEffect(() => {
+    if (isOpen) {
+      generalEvents.bookCallModalOpen(window.location.pathname);
+    }
+  }, [isOpen]);
+
+  const handleClose = () => {
+    generalEvents.bookCallModalClose();
+    closeModal();
+  };
+
   const onSubmit = async (data: ContactFormData) => {
     try {
+      // Track form submission
+      contactEvents.formSubmit('book_call');
+      generalEvents.bookCallSubmit();
+
       // Submit to Formspree using the reusable utility
       const result = await submitToFormspree({
         data: {
@@ -47,6 +64,8 @@ export default function BookCallModal() {
         throw new Error(result.message || 'Form submission failed');
       }
 
+      // Track success
+      contactEvents.formSuccess('book_call');
       setSubmitStatus('success');
       reset();
 
@@ -57,6 +76,7 @@ export default function BookCallModal() {
       }, 2000);
     } catch (error) {
       console.error('Form submission error:', error);
+      contactEvents.formError(error instanceof Error ? error.message : 'Unknown error');
       setSubmitStatus('error');
     }
   };
@@ -71,7 +91,7 @@ export default function BookCallModal() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={closeModal}
+            onClick={handleClose}
           />
 
           {/* Modal */}

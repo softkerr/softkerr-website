@@ -1,9 +1,10 @@
 'use client';
 
-import { FC, useState, useRef } from 'react';
+import { FC, useState, useRef, useEffect } from 'react';
 import { m as motion } from '@/lib/motion';
 import { FaPlayCircle, FaPauseCircle } from '@/components/icons';
 import Image from 'next/image';
+import { projectEvents } from '@/lib/analytics';
 
 interface VideoPlayerProps {
   video?: {
@@ -21,6 +22,7 @@ interface VideoPlayerProps {
 const VideoPlayer: FC<VideoPlayerProps> = ({ video, title }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [watchStartTime, setWatchStartTime] = useState<number>(0);
   const videoRefDesktop = useRef<HTMLVideoElement>(null);
   const videoRefMobile = useRef<HTMLVideoElement>(null);
 
@@ -38,6 +40,9 @@ const VideoPlayer: FC<VideoPlayerProps> = ({ video, title }) => {
     if (videoRef.current) {
       if (isPlaying) {
         videoRef.current.pause();
+        // Track pause with watch time
+        const watchTime = (Date.now() - watchStartTime) / 1000;
+        projectEvents.videoPause(title, watchTime);
       } else {
         // Load video on first play if not loaded
         if (!isLoaded) {
@@ -45,6 +50,9 @@ const VideoPlayer: FC<VideoPlayerProps> = ({ video, title }) => {
           setIsLoaded(true);
         }
         videoRef.current.play();
+        // Track play event
+        projectEvents.videoPlay(title);
+        setWatchStartTime(Date.now());
       }
       setIsPlaying(!isPlaying);
     }
@@ -52,6 +60,8 @@ const VideoPlayer: FC<VideoPlayerProps> = ({ video, title }) => {
 
   const handleVideoEnd = () => {
     setIsPlaying(false);
+    // Track video completion
+    projectEvents.videoComplete(title);
   };
 
   if (!desktopSrc) return null;

@@ -13,6 +13,7 @@ import Select from '@/components/ui/Select';
 import Textarea from '@/components/ui/Textarea';
 import { submitToFormspree } from '@/lib/formspree';
 import { FaCheckCircle, FaPaperPlane, FaUpload, HiSparkles } from '@/components/icons';
+import { contactEvents } from '@/lib/analytics';
 
 const budgetOptions = [
   { value: 'under-10k', label: 'Under $10,000' },
@@ -59,6 +60,9 @@ export default function ContactFormHero() {
 
   const onSubmit = async (data: ContactFormData) => {
     try {
+      // Track form submission
+      contactEvents.formSubmit('contact');
+
       // Submit to Formspree using the reusable utility
       const result = await submitToFormspree({
         data: {
@@ -78,6 +82,8 @@ export default function ContactFormHero() {
         throw new Error(result.message || 'Form submission failed');
       }
 
+      // Track successful submission
+      contactEvents.formSuccess('contact');
       setSubmitStatus('success');
       reset();
       setFile(null);
@@ -88,6 +94,7 @@ export default function ContactFormHero() {
       }, 5000);
     } catch (error) {
       console.error('Form submission error:', error);
+      contactEvents.formError(error instanceof Error ? error.message : 'Unknown error');
       setSubmitStatus('error');
     }
   };

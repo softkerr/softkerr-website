@@ -15,6 +15,7 @@ import {
   FaPhone,
   FaWhatsapp,
 } from '@/components/icons';
+import { contactEvents } from '@/lib/analytics';
 
 const contactMethods = [
   {
@@ -92,11 +93,26 @@ export default function QuickContactInfo() {
       try {
         await navigator.clipboard.writeText(method.value);
         setCopiedItem(method.label);
+
+        // Track copy action
+        if (method.label === 'Email') {
+          contactEvents.emailClick();
+        } else if (method.label === 'Phone') {
+          contactEvents.phoneClick();
+        }
+
         setTimeout(() => setCopiedItem(null), 2000);
       } catch (err) {
         console.error('Failed to copy:', err);
       }
     } else if (method.action === 'open') {
+      // Track external link clicks
+      if (method.label === 'WhatsApp') {
+        contactEvents.phoneClick(); // Track WhatsApp as phone contact
+      } else if (method.label === 'LinkedIn') {
+        contactEvents.socialClick('LinkedIn');
+      }
+
       window.open(method.link, '_blank');
     }
   };
@@ -198,6 +214,7 @@ export default function QuickContactInfo() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+                onViewportEnter={() => contactEvents.officeLocationView(office.title)}
                 className="backdrop-blur-xl bg-gradient-to-br from-white/10 via-white/5 to-transparent border border-white/20 rounded-2xl p-6 md:p-8 hover:border-brand-gold/30 transition-colors"
               >
                 {/* Header with Flag and Icon */}

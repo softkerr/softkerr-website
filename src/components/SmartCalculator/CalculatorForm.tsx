@@ -5,6 +5,7 @@ import { FaCheck, FaArrowLeft, FaArrowRight } from '@/components/icons';
 import Typography from '@/components/ui/Typography';
 import Button from '@/components/ui/Button';
 import { CalculatorData, CalculatorStep } from './types';
+import { pricingEvents } from '@/lib/analytics';
 
 type CalculatorFormProps = {
   currentStep: CalculatorStep;
@@ -72,9 +73,10 @@ export default function CalculatorForm({
                   return (
                     <button
                       key={option.value}
-                      onClick={() =>
-                        onMultiSelect(currentStep.id as keyof CalculatorData, option.value)
-                      }
+                      onClick={() => {
+                        onMultiSelect(currentStep.id as keyof CalculatorData, option.value);
+                        pricingEvents.calculatorOptionSelect(currentStep.question, option.label);
+                      }}
                       className={`
                         w-full p-2.5 md:p-3 rounded-lg md:rounded-xl border-2 transition-all text-left
                         ${
@@ -112,7 +114,10 @@ export default function CalculatorForm({
                   return (
                     <button
                       key={option.value}
-                      onClick={() => onSelect(currentStep.id as keyof CalculatorData, option.value)}
+                      onClick={() => {
+                        onSelect(currentStep.id as keyof CalculatorData, option.value);
+                        pricingEvents.calculatorOptionSelect(currentStep.question, option.label);
+                      }}
                       className={`
                         w-full p-2.5 md:p-3 lg:p-4 rounded-lg md:rounded-xl border-2 transition-all text-left
                         ${
@@ -156,7 +161,10 @@ export default function CalculatorForm({
 
         <Button
           variant="secondary"
-          onClick={onReset}
+          onClick={() => {
+            onReset();
+            pricingEvents.calculatorReset();
+          }}
           size="sm"
           className="text-xs md:text-sm"
           aria-label="Reset Calculator"
@@ -167,7 +175,10 @@ export default function CalculatorForm({
         {isLastStep ? (
           <Button
             variant="primary"
-            onClick={onNext}
+            onClick={() => {
+              onNext();
+              pricingEvents.calculatorStepComplete(currentStep.id, currentStep.question);
+            }}
             rightIcon={<FaArrowRight className="w-3 h-3 md:w-4 md:h-4" />}
             disabled={!isValid}
             size="sm"
@@ -179,7 +190,10 @@ export default function CalculatorForm({
         ) : (
           <Button
             variant="primary"
-            onClick={onNext}
+            onClick={() => {
+              onNext();
+              pricingEvents.calculatorStepComplete(currentStep.id, currentStep.question);
+            }}
             rightIcon={<FaArrowRight className="w-3 h-3 md:w-4 md:h-4" />}
             disabled={!isValid}
             size="sm"

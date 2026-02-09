@@ -4,6 +4,7 @@ import { Suspense, lazy } from 'react';
 import { m as motion } from '@/lib/motion';
 import { Typography, Section, Container, Button, Link } from '@/components/ui';
 import { FaAward, FaCheckCircle, FaLightbulb } from '@/components/icons';
+import { homeEvents } from '@/lib/analytics';
 
 // Lazy load the Matrix component for better performance
 const MatrixHero = lazy(() => import('@/components/three/MatrixHero'));
@@ -76,6 +77,7 @@ const Hero = () => {
                   animated
                   href="/contacts"
                   aria-label="Start Your Project"
+                  onClick={() => homeEvents.heroCtaClick('primary')}
                 >
                   Start Your Project
                 </Button>
@@ -85,6 +87,7 @@ const Hero = () => {
                   href="/projects"
                   className="border-white/20 hover:border-brand-violet/50"
                   aria-label="View Our Work"
+                  onClick={() => homeEvents.heroCtaClick('secondary')}
                 >
                   View Our Work
                 </Button>
