@@ -7,6 +7,7 @@ import Footer from '@/components/layout/Footer';
 import { BookCallModalProvider } from '@/contexts/BookCallModalContext';
 import BookCallModal from '@/components/BookCallModal';
 import { LazyMotion, domAnimation } from '@/lib/motion';
+import GoogleAnalytics from '@/components/GoogleAnalytics';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -51,6 +52,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${orbitron.variable} `}>
       <body className="font-sans antialiased" suppressHydrationWarning={true}>
+        <GoogleAnalytics />
         <LazyMotion features={domAnimation} strict>
           <BookCallModalProvider>
             <Header />
