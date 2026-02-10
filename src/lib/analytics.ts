@@ -70,6 +70,13 @@ export const homeEvents = {
       cta_text: ctaText,
       section: 'home_cta',
     }),
+
+  // Why Partner section
+  whyPartnerReasonView: (reasonTitle: string) =>
+    trackEvent('why_partner_reason_view', {
+      reason_title: reasonTitle,
+      section: 'why_partner',
+    }),
 };
 
 /**

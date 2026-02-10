@@ -61,8 +61,8 @@ function Variant1() {
                 color="secondary"
                 className="text-xl mb-8 leading-relaxed"
               >
-                A creative digital agency helping startups and enterprises build exceptional web
-                experiences that drive results.
+                A software development partner helping startups and enterprises build exceptional
+                web experiences that drive results.
               </Typography>
             </motion.div>
 
@@ -77,9 +77,9 @@ function Variant1() {
                 size="lg"
                 animated
                 href="/contacts"
-                aria-label="Start Your Project"
+                aria-label="Talk to Engineering"
               >
-                Start Your Project
+                Talk to Engineering
               </Button>
               <Button
                 variant="outline"
@@ -210,7 +210,7 @@ function Variant2() {
               align="center"
               className="text-xl lg:text-2xl mb-8 max-w-3xl mx-auto"
             >
-              A creative digital agency helping startups and enterprises build exceptional web
+              A software development partner helping startups and enterprises build exceptional web
               experiences that drive results and inspire users.
             </Typography>
           </motion.div>
@@ -226,9 +226,9 @@ function Variant2() {
               size="lg"
               animated
               href="/contacts"
-              aria-label="Start Your Project"
+              aria-label="Talk to Engineering"
             >
-              Start Your Project
+              Talk to Engineering
             </Button>
             <Button
               variant="outline"
@@ -344,8 +344,8 @@ function Variant3() {
                   color="secondary"
                   className="text-lg lg:text-xl mb-8 leading-relaxed"
                 >
-                  A creative digital agency helping startups and enterprises build exceptional web
-                  experiences that drive results and inspire users.
+                  A software development partner helping startups and enterprises build exceptional
+                  web experiences that drive results and inspire users.
                 </Typography>
               </motion.div>
 
@@ -360,9 +360,9 @@ function Variant3() {
                   size="lg"
                   animated
                   href="/contacts"
-                  aria-label="Start Your Project"
+                  aria-label="Talk to Engineering"
                 >
-                  Start Your Project
+                  Talk to Engineering
                 </Button>
                 <Button
                   variant="outline"

@@ -16,7 +16,7 @@ interface FAQ {
 }
 
 interface FAQSectionProps {
-  page: 'home' | 'services' | 'dedicated-team' | 'pricing' | 'projects' | 'contacts';
+  page: 'home' | 'services' | 'partnership' | 'pricing' | 'projects' | 'contacts';
   title?: string;
   description?: string;
 }
@@ -154,7 +154,7 @@ const pageFAQConfigs: Record<
     title: 'Service Questions',
     description: 'Everything you need to know about our development services',
   },
-  'dedicated-team': {
+  partnership: {
     categories: ['team', 'general', 'pricing'],
     title: 'Team & Collaboration',
     description: 'Questions about our dedicated team model and how we work',

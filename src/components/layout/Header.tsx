@@ -9,9 +9,9 @@ import { Typography } from '../ui';
 
 const navigation = [
   { name: 'Home', href: '/' },
+  { name: 'Partnership', href: '/partnership/' },
   { name: 'Services', href: '/services/' },
   { name: 'Projects', href: '/projects/' },
-  { name: 'Dedicated Team', href: '/dedicated-team/' },
   { name: 'Resources', href: '/resources/' },
   { name: 'Pricing', href: '/pricing/' },
 ];

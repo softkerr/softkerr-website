@@ -35,14 +35,14 @@ export const organizationInfo = {
 export const defaultMetadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: 'SoftKerr - Award-Winning Web Development Agency | Custom Software Solutions',
+    default: 'SoftKerr - Software Development Partner | Custom Web Solutions',
     template: '%s | SoftKerr',
   },
   description:
-    'SoftKerr is an award-winning digital agency specializing in custom web development, UI/UX design, and enterprise software solutions. Transform your business with cutting-edge technology. 5+ years of excellence.',
+    'SoftKerr is a software development partner specializing in custom web development, UI/UX design, and enterprise solutions. Transform your business with cutting-edge technology and dedicated engineering teams. 5+ years of excellence.',
   keywords: [
     // Primary keywords
-    'web development agency',
+    'software development partner',
     'custom software development',
     'ui/ux design services',
     'enterprise web solutions',
@@ -64,7 +64,7 @@ export const defaultMetadata: Metadata = {
 
     // Location keywords (update as needed)
     'web development company',
-    'software agency',
+    'software partner',
     'tech consulting firm',
   ],
   authors: [{ name: 'SoftKerr Team', url: baseUrl }],
@@ -77,15 +77,15 @@ export const defaultMetadata: Metadata = {
     locale: 'en_US',
     url: baseUrl,
     siteName: 'SoftKerr',
-    title: 'SoftKerr - Award-Winning Web Development Agency',
+    title: 'SoftKerr - Software Development Partner',
     description:
-      'Transform your business with custom web development, UI/UX design, and enterprise software solutions. 5+ years of excellence delivering cutting-edge digital experiences.',
+      'Transform your business with custom web development, UI/UX design, and dedicated engineering teams. 5+ years of excellence delivering cutting-edge digital experiences.',
     images: [
       {
         url: `${baseUrl}/og-image.png`, // Create this image: 1200x630px
         width: 1200,
         height: 630,
-        alt: 'SoftKerr - Web Development Agency',
+        alt: 'SoftKerr - Software Development Partner',
         type: 'image/png',
       },
     ],
@@ -96,9 +96,9 @@ export const defaultMetadata: Metadata = {
     card: 'summary_large_image',
     site: '@softkerr',
     creator: '@softkerr',
-    title: 'SoftKerr - Award-Winning Web Development Agency',
+    title: 'SoftKerr - Software Development Partner',
     description:
-      'Transform your business with custom web development, UI/UX design, and enterprise software solutions. 5+ years of excellence.',
+      'Transform your business with custom web development, UI/UX design, and dedicated engineering teams. 5+ years of excellence.',
     images: [`${baseUrl}/twitter-image.png`], // Create this image: 1200x600px
   },
 
@@ -151,13 +151,13 @@ export const defaultMetadata: Metadata = {
 // Page-specific metadata configurations
 export const pageMetadata = {
   home: {
-    title: 'SoftKerr - Award-Winning Web Development Agency | Custom Software Solutions',
+    title: 'SoftKerr - Software Development Partner | Custom Web Solutions',
     description:
-      "Transform your business with SoftKerr's award-winning web development services. Expert team delivering custom software, UI/UX design, and enterprise solutions. 5+ years of excellence. Get your free consultation today!",
+      "Transform your business with SoftKerr's software development partnership. Expert engineering teams delivering custom software, UI/UX design, and enterprise solutions. 5+ years of excellence. Get your free consultation today!",
     openGraph: {
-      title: 'SoftKerr - Award-Winning Web Development Agency',
+      title: 'SoftKerr - Software Development Partner',
       description:
-        'Transform your business with custom web development, UI/UX design, and enterprise software solutions. 5+ years of excellence.',
+        'Transform your business with custom web development, UI/UX design, and dedicated engineering teams. 5+ years of excellence.',
       url: baseUrl,
     },
   },
@@ -169,7 +169,7 @@ export const pageMetadata = {
     keywords: [
       'web development services',
       'custom software development',
-      'UI/UX design agency',
+      'UI/UX design partner',
       'React development services',
       'Next.js development',
       'API development',
@@ -219,7 +219,7 @@ export const pageMetadata = {
       title: 'Dedicated Development Team - Hire Expert Developers',
       description:
         'Hire expert developers, designers, and engineers working exclusively on your project. Flexible and scalable.',
-      url: `${baseUrl}/dedicated-team`,
+      url: `${baseUrl}/partnership`,
     },
   },
 
@@ -285,9 +285,9 @@ export const pageMetadata = {
   contacts: {
     title: "Contact Us - Get Your Free Consultation | Let's Build Together",
     description:
-      "Contact SoftKerr for a free consultation. Discuss your project with our experts. Fast response time, no obligations. Email, phone, or schedule a call. Let's transform your business together!",
+      "Contact SoftKerr for a free consultation. Discuss your project with our expert engineering team. Fast response time, no obligations. Email, phone, or schedule a call. Let's transform your business together!",
     keywords: [
-      'contact web development agency',
+      'contact software partner',
       'free consultation',
       'get a quote',
       'project inquiry',

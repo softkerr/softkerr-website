@@ -9,19 +9,10 @@ import Section from '@/components/ui/Section';
 import Typography from '@/components/ui/Typography';
 import Button from '@/components/ui/Button';
 import Input from '@/components/ui/Input';
-import Select from '@/components/ui/Select';
 import Textarea from '@/components/ui/Textarea';
 import { submitToFormspree } from '@/lib/formspree';
-import { FaCheckCircle, FaPaperPlane, FaUpload, HiSparkles } from '@/components/icons';
+import { FaCheckCircle, FaLightbulb, FaPaperPlane, HiSparkles } from '@/components/icons';
 import { contactEvents } from '@/lib/analytics';
-
-const budgetOptions = [
-  { value: 'under-10k', label: 'Under $10,000' },
-  { value: '10k-25k', label: '$10,000 - $25,000' },
-  { value: '25k-50k', label: '$25,000 - $50,000' },
-  { value: '50k-100k', label: '$50,000 - $100,000' },
-  { value: 'over-100k', label: 'Over $100,000' },
-];
 
 type ContactFormData = {
   fullName: string;
@@ -39,24 +30,7 @@ export default function ContactFormHero() {
     reset,
   } = useForm<ContactFormData>();
 
-  const [file, setFile] = useState<File | null>(null);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedFile = e.target.files?.[0];
-    if (
-      selectedFile &&
-      (selectedFile.type === 'application/pdf' || selectedFile.type.includes('document'))
-    ) {
-      if (selectedFile.size <= 10 * 1024 * 1024) {
-        setFile(selectedFile);
-      } else {
-        alert('File size must be under 10MB');
-      }
-    } else {
-      alert('Please upload only PDF or DOC files');
-    }
-  };
 
   const onSubmit = async (data: ContactFormData) => {
     try {
@@ -68,10 +42,10 @@ export default function ContactFormHero() {
         data: {
           fullName: data.fullName,
           companyEmail: data.companyEmail,
-          phoneNumber: data.phoneNumber || 'Not provided',
-          budget: data.budget,
+          phoneNumber: 'Not provided',
+          budget: 'Not provided',
           projectDescription: data.projectDescription,
-          attachedFile: file ? file.name : 'No file attached',
+          attachedFile: 'No file attached',
           formType: 'contact-form',
         },
         subject: 'New Contact Form Submission from {fullName}',
@@ -86,7 +60,6 @@ export default function ContactFormHero() {
       contactEvents.formSuccess('contact');
       setSubmitStatus('success');
       reset();
-      setFile(null);
 
       // Reset success message after 5 seconds
       setTimeout(() => {
@@ -138,7 +111,7 @@ export default function ContactFormHero() {
             >
               <HiSparkles className="w-4 h-4 text-brand-gold" />
               <Typography variant="body2" className="text-brand-gold font-medium">
-                Start Your Project
+                Reach Out
               </Typography>
             </motion.div>
 
@@ -163,10 +136,10 @@ export default function ContactFormHero() {
               className="space-y-4"
             >
               {[
-                'No-obligation consultation',
-                'Quick 24-hour response',
-                'Transparent pricing',
-                'Dedicated project manager',
+                'Fill the form and submit your message',
+                'We read your message (usually within a few hours)',
+                'Quick email or call to understand your situation',
+                "If it's a fit, we'll propose next steps",
               ].map((benefit, index) => (
                 <motion.div
                   key={benefit}
@@ -220,13 +193,13 @@ export default function ContactFormHero() {
                 {/* Name and Email Row */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <Input
-                    label="Full Name"
+                    label="What should we call you?"
                     placeholder="John Doe"
                     fullWidth
                     required
                     error={errors.fullName?.message}
                     {...register('fullName', {
-                      required: 'Full name is required',
+                      required: 'Name is required',
                       minLength: {
                         value: 2,
                         message: 'Name must be at least 2 characters',
@@ -235,14 +208,14 @@ export default function ContactFormHero() {
                   />
 
                   <Input
-                    label="Company Email"
+                    label="Where should we reply?"
                     type="email"
                     placeholder="john@company.com"
                     fullWidth
                     required
                     error={errors.companyEmail?.message}
                     {...register('companyEmail', {
-                      required: 'Email is required',
+                      required: 'Need your email to reply',
                       pattern: {
                         value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                         message: 'Invalid email address',
@@ -250,85 +223,31 @@ export default function ContactFormHero() {
                     })}
                   />
                 </div>
-
-                {/* Phone and Budget Row */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <Input
-                    label="Phone Number"
-                    type="tel"
-                    placeholder="+1 (555) 123-4567"
+                <div>
+                  {/* Project Description */}
+                  <Textarea
+                    label="What's on your mind?"
+                    placeholder="What you're building, what you need, rough timeline"
+                    rows={4}
+                    resize="vertical"
                     fullWidth
-                    error={errors.phoneNumber?.message}
-                    {...register('phoneNumber', {
-                      pattern: {
-                        value: /^[+]?[(]?[0-9]{1,4}[)]?[-\s.]?[(]?[0-9]{1,4}[)]?[-\s.]?[0-9]{1,9}$/,
-                        message: 'Invalid phone number',
+                    error={errors.projectDescription?.message}
+                    {...register('projectDescription', {
+                      required: 'Give us a bit of context',
+                      minLength: {
+                        value: 20,
+                        message: 'A sentence or two helps',
                       },
-                    })}
-                  />
-
-                  <Select
-                    label="Project Budget"
-                    placeholder="Select budget range"
-                    defaultValue={undefined}
-                    options={budgetOptions}
-                    fullWidth
-                    error={errors.budget?.message}
-                    {...register('budget', {
-                      required: 'Please select a budget range',
+                      maxLength: {
+                        value: 500,
+                        message: 'Keep it under 500 characters for now',
+                      },
                     })}
                   />
                 </div>
 
-                {/* Project Description */}
-                <Textarea
-                  label="Project Details"
-                  placeholder="Tell us about your project goals and requirements..."
-                  rows={4}
-                  resize="none"
-                  fullWidth
-                  error={errors.projectDescription?.message}
-                  {...register('projectDescription', {
-                    required: 'Project description is required',
-                    minLength: {
-                      value: 20,
-                      message: 'Please provide at least 20 characters',
-                    },
-                    maxLength: {
-                      value: 1000,
-                      message: 'Description must not exceed 1000 characters',
-                    },
-                  })}
-                />
-
                 {/* Bottom Row: File Upload, Submit, Privacy */}
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-2">
-                  {/* File Upload - Icon Only */}
-                  <div className="flex items-center gap-3">
-                    <label
-                      className="flex items-center justify-center w-10 h-10 bg-white/5 border border-white/10 rounded-lg cursor-pointer hover:border-brand-gold/50 hover:bg-white/10 transition-all group"
-                      title={file ? file.name : 'Upload document (PDF/DOC, max 10MB)'}
-                    >
-                      <FaUpload
-                        className={`w-4 h-4 transition-colors ${file ? 'text-brand-gold' : 'text-gray-400 group-hover:text-brand-gold'}`}
-                      />
-                      <input
-                        type="file"
-                        accept=".pdf,.doc,.docx"
-                        onChange={handleFileChange}
-                        className="hidden"
-                      />
-                    </label>
-                    {file && (
-                      <Typography
-                        variant="caption"
-                        className="text-gray-400 text-sm truncate max-w-[120px]"
-                      >
-                        {file.name}
-                      </Typography>
-                    )}
-                  </div>
-
                   {/* Privacy Policy Link */}
                   <Typography variant="caption" className="text-gray-400 text-sm flex-1">
                     By submitting the form I agree with the{' '}
@@ -336,9 +255,8 @@ export default function ContactFormHero() {
                       href="/privacy-policy"
                       className="text-brand-gold hover:text-brand-violet transition-colors underline"
                     >
-                      Privacy Policy
-                    </Link>{' '}
-                    and consent to receive SMS updates from SoftKerr.
+                      Privacy Policy.
+                    </Link>
                   </Typography>
                   {/* Submit Button */}
                   <Button
@@ -354,6 +272,21 @@ export default function ContactFormHero() {
                   </Button>
                 </div>
               </form>
+            </div>
+            <div className="backdrop-blur-xl bg-gradient-to-br from-brand-gold/10 via-brand-gold/5 to-transparent border border-brand-gold/30 rounded-xl p-6 mt-3">
+              <div className="flex items-start gap-3">
+                <FaLightbulb className="w-5 h-5 text-brand-gold flex-shrink-0 mt-1" />
+                <div className="space-y-2">
+                  <Typography variant="body2" className="text-gray-300 text-sm">
+                    No pressure, no hard sell. Most initial calls are just us understanding if we
+                    can help.
+                  </Typography>
+                  <Typography variant="caption" className="text-gray-400 text-xs">
+                    If we&apos;re not a fit, we&apos;ll tell you and point you in the right
+                    direction.
+                  </Typography>
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>
