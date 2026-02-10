@@ -5,11 +5,26 @@ import Container from '@/components/ui/Container';
 import Section from '@/components/ui/Section';
 import Typography from '@/components/ui/Typography';
 import Button from '@/components/ui/Button';
-import Link from 'next/link';
-import { FaArrowRight, FaGlobe, FaUsers, FaChartLine } from '@/components/icons';
+import { FaArrowRight, FaGlobe, FaUsers, FaChevronDown } from '@/components/icons';
 import { HiSparkles } from '@/components/icons';
+import { partnershipModels } from '@/data/partnershipModels';
 
-export default function DedicatedTeamHero() {
+type DedicatedTeamHeroProps = {
+  onModelSelect?: (modelId: string) => void;
+};
+
+export default function DedicatedTeamHero({ onModelSelect }: DedicatedTeamHeroProps) {
+  const handleModelClick = (modelId: string) => {
+    // Scroll to ModelsGrid section
+    const modelsSection = document.getElementById('partnership-models');
+    if (modelsSection) {
+      modelsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    // Select the model tab
+    if (onModelSelect) {
+      onModelSelect(modelId);
+    }
+  };
   return (
     <Section className="relative py-12 md:py-32 overflow-hidden">
       {/* Background Effects */}
@@ -80,35 +95,8 @@ export default function DedicatedTeamHero() {
               <Typography variant="body1" className="text-lg text-gray-300 leading-relaxed">
                 Partner with dedicated development teams that power global companies serving
                 millions of customers every month. We deliver enterprise-grade solutions with the
-                agility and innovation of a boutique agency.
+                agility and innovation.
               </Typography>
-            </motion.div>
-
-            {/* Key Stats - Global Impact */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="grid grid-cols-3 gap-6 py-6"
-            >
-              <div className="space-y-1">
-                <div className="text-3xl font-bold text-brand-violet">100M+</div>
-                <Typography variant="body2" className="text-gray-400">
-                  Users Served
-                </Typography>
-              </div>
-              <div className="space-y-1">
-                <div className="text-3xl font-bold text-brand-pink">15+</div>
-                <Typography variant="body2" className="text-gray-400">
-                  Countries
-                </Typography>
-              </div>
-              <div className="space-y-1">
-                <div className="text-3xl font-bold text-brand-cyan">99.9%</div>
-                <Typography variant="body2" className="text-gray-400">
-                  Uptime SLA
-                </Typography>
-              </div>
             </motion.div>
 
             {/* CTA Buttons */}
@@ -190,72 +178,61 @@ export default function DedicatedTeamHero() {
 
                     <div className="text-center space-y-2">
                       <Typography variant="h2" className="text-2xl font-bold text-white">
-                        Expert Teams
+                        Partnership Models
                       </Typography>
                       <Typography variant="body2" className="text-gray-300">
-                        Dedicated to your success
+                        How We Work Together
                       </Typography>
-                    </div>
-
-                    {/* Stats Grid */}
-                    <div className="grid grid-cols-2 gap-4">
-                      <motion.div
-                        className="p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10"
-                        whileHover={{ scale: 1.05 }}
-                      >
-                        <FaChartLine className="w-6 h-6 text-brand-cyan mb-2" />
-                        <Typography variant="h4" className="text-xl font-bold text-white">
-                          3-5x
-                        </Typography>
-                        <Typography variant="caption" className="text-gray-400">
-                          Faster Delivery
-                        </Typography>
-                      </motion.div>
-
-                      <motion.div
-                        className="p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10"
-                        whileHover={{ scale: 1.05 }}
-                      >
-                        <FaGlobe className="w-6 h-6 text-brand-pink mb-2" />
-                        <Typography variant="h4" className="text-xl font-bold text-white">
-                          24/7
-                        </Typography>
-                        <Typography variant="caption" className="text-gray-400">
-                          Global Coverage
-                        </Typography>
-                      </motion.div>
                     </div>
                   </div>
 
-                  {/* Bottom Section - Trust Indicators */}
-                  <div className="space-y-3">
-                    <motion.div
-                      className="flex items-center gap-3 p-3 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10"
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.7 }}
-                    >
-                      <div className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center">
-                        <span className="text-green-500 text-sm">✓</span>
-                      </div>
-                      <Typography variant="body2" className="text-white text-sm">
-                        ISO 27001 Certified
-                      </Typography>
-                    </motion.div>
+                  {/* Bottom Section - Partnership Models List */}
+                  <div className="space-y-2">
+                    {partnershipModels.map((model, index) => {
+                      const ModelIcon = model.icon;
+                      const colorMap: Record<string, string> = {
+                        'brand-violet': '139, 92, 246',
+                        'brand-gold': '240, 185, 11',
+                        'brand-cyan': '6, 182, 212',
+                      };
+                      const glowColor = colorMap[model.color] || '240, 185, 11';
 
-                    <motion.div
-                      className="flex items-center gap-3 p-3 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10"
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.8 }}
-                    >
-                      <div className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center">
-                        <span className="text-green-500 text-sm">✓</span>
-                      </div>
-                      <Typography variant="body2" className="text-white text-sm">
-                        NDA & IP Protection
-                      </Typography>
-                    </motion.div>
+                      return (
+                        <motion.button
+                          key={model.id}
+                          onClick={() => handleModelClick(model.id)}
+                          className="w-full flex items-center justify-between gap-3 p-3 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 group"
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.7 + index * 0.1 }}
+                          whileHover={{ scale: 1.02, x: 4 }}
+                          style={{
+                            borderColor: `rgba(${glowColor}, 0.2)`,
+                          }}
+                        >
+                          <div className="flex items-center gap-3">
+                            <div
+                              className="w-8 h-8 rounded-lg flex items-center justify-center"
+                              style={{
+                                backgroundColor: `rgba(${glowColor}, 0.2)`,
+                              }}
+                            >
+                              <ModelIcon
+                                className="w-4 h-4"
+                                style={{ color: `rgb(${glowColor})` }}
+                              />
+                            </div>
+                            <Typography variant="body2" className="text-white text-sm font-medium">
+                              {model.title}
+                            </Typography>
+                          </div>
+                          <FaChevronDown
+                            className="w-3 h-3 text-gray-400 group-hover:text-white transition-colors duration-300"
+                            style={{ transform: 'rotate(-90deg)' }}
+                          />
+                        </motion.button>
+                      );
+                    })}
                   </div>
                 </div>
 

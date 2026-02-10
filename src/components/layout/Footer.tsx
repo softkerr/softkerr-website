@@ -13,7 +13,7 @@ const footerLinks = {
     { name: 'Support', href: '/services/?tab=support' },
   ],
   Company: [
-    { name: 'Our Team', href: '/dedicated-team#team-members' },
+    { name: 'Our Team', href: '/partnership#team-members' },
     { name: 'Careers', href: '/careers' },
     { name: 'Contacts', href: '/contacts' },
   ],

@@ -219,7 +219,7 @@ export const pageMetadata = {
       title: 'Dedicated Development Team - Hire Expert Developers',
       description:
         'Hire expert developers, designers, and engineers working exclusively on your project. Flexible and scalable.',
-      url: `${baseUrl}/dedicated-team`,
+      url: `${baseUrl}/partnership`,
     },
   },
 

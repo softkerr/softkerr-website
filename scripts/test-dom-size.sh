@@ -21,7 +21,7 @@ SITE_URL="https://www.softkerr.com"
 declare -a PAGES=(
   ""
   "/services"
-  "/dedicated-team"
+  "/partnership"
   "/careers"
   "/projects"
   "/pricing"

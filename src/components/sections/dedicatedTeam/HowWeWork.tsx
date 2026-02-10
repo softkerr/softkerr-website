@@ -20,49 +20,49 @@ interface CooperationModel {
 
 const cooperationModels: CooperationModel[] = [
   {
-    title: 'Project-Based',
-    description: 'Perfect for defined projects with clear scope and timeline.',
-    icon: <FaRocket className="w-6 h-6" />,
+    title: 'Embedded Team',
+    description: 'Extension of your engineering org',
+    icon: <FaUsers className="w-6 h-6" />,
     features: [
-      'Fixed scope and timeline',
-      'Dedicated project manager',
-      'Regular milestone reviews',
-      'Post-launch support included',
+      'Engineers join your Slack, GitHub, and standups',
+      'We follow your sprint planning and code review process',
+      'You assign work directly—no PM intermediary',
+      'Team scales up or down with 2-week notice',
     ],
-    bestFor: 'Startups, SMBs with specific needs',
-    duration: '2-12 weeks',
-    glowColor: 'rgba(240, 185, 11, 0.3)',
-    borderColor: 'border-brand-gold/30',
-    iconBg: 'from-brand-gold/20 to-brand-gold/5',
-  },
-  {
-    title: 'Retainer Partnership',
-    description: 'Ongoing collaboration for continuous development and support.',
-    icon: <FaHandshake className="w-6 h-6" />,
-    features: [
-      'Monthly allocated hours',
-      'Priority support',
-      'Flexible scope adjustments',
-      'Long-term strategic planning',
-    ],
-    bestFor: 'Growing businesses, agencies',
-    duration: '3+ months',
+    bestFor: 'Ongoing capacity needs, backlog that exceeds bandwidth',
+    duration: '6-18 months',
     glowColor: 'rgba(139, 92, 246, 0.3)',
     borderColor: 'border-brand-violet/30',
     iconBg: 'from-brand-violet/20 to-brand-violet/5',
   },
   {
-    title: 'Dedicated Team',
-    description: 'Full-time dedicated developers and designers for your projects.',
-    icon: <FaUsers className="w-6 h-6" />,
+    title: 'Co-Development Partner',
+    description: 'Shared ownership, shared responsibility',
+    icon: <FaHandshake className="w-6 h-6" />,
     features: [
-      'Dedicated team members',
-      'Direct communication',
-      'Agile development process',
-      'Scalable team size',
+      'Joint architecture and tech stack decisions',
+      'Weekly sync on progress, risks, and trade-offs',
+      'We own specific modules or services end-to-end',
+      'Continuous deployment with shared on-call (optional)',
     ],
-    bestFor: 'Enterprises, complex projects',
-    duration: '6+ months',
+    bestFor: 'Building new products, need architectural input',
+    duration: '3-12 months',
+    glowColor: 'rgba(240, 185, 11, 0.3)',
+    borderColor: 'border-brand-gold/30',
+    iconBg: 'from-brand-gold/20 to-brand-gold/5',
+  },
+  {
+    title: 'Technical Acceleration',
+    description: 'Short bursts, specific goals',
+    icon: <FaRocket className="w-6 h-6" />,
+    features: [
+      'Fixed 4-12 week engagement with clear success criteria',
+      'Daily async updates, weekly sync calls',
+      'We own the outcome, you approve major decisions',
+      'Handoff includes runbook, docs, and knowledge transfer',
+    ],
+    bestFor: 'Critical deadlines, POC validation, migrations',
+    duration: '4-12 weeks',
     glowColor: 'rgba(236, 72, 153, 0.3)',
     borderColor: 'border-brand-pink/30',
     iconBg: 'from-brand-pink/20 to-brand-pink/5',
@@ -201,14 +201,14 @@ export default function HowWeWork() {
             variant="h2"
             className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 text-center"
           >
-            How We Work
+            Pick Your Model
           </Typography>
 
           <Typography
             variant="body1"
             className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto text-center"
           >
-            Choose the collaboration model that best fits your project needs and business goals.
+            Most clients start with one and adjust based on what works. No contracts lock you in.
           </Typography>
         </motion.div>
 

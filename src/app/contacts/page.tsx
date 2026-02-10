@@ -4,7 +4,6 @@ import QuickContactInfo from '@/components/sections/contacts/QuickContactInfo';
 import FAQSection from '@/components/sections/FAQ';
 import { pageMetadata } from '@/lib/metadata';
 
-// SEO metadata for contacts page
 export const metadata: Metadata = pageMetadata.contacts;
 
 export default function ContactsPage() {
@@ -12,7 +11,6 @@ export default function ContactsPage() {
     <>
       <ContactFormHero />
       <QuickContactInfo />
-
       <FAQSection page="contacts" />
     </>
   );

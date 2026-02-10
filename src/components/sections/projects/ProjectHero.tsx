@@ -128,9 +128,9 @@ const ProjectHero = () => {
                 size="lg"
                 href="/contacts"
                 rightIcon={<FaArrowRight />}
-                aria-label="Start Your Project"
+                aria-label="Talk to Engineering"
               >
-                Start Your Project
+                Talk to Engineering
               </Button>
               <Button
                 variant="outline"

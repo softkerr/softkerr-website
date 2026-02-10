@@ -45,7 +45,7 @@ const Hero = () => {
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-brand-violet/20 to-brand-gold/20 border border-brand-violet/30 backdrop-blur-sm">
                 <FaLightbulb className="w-4 h-4 text-brand-violet" />
                 <Typography variant="body2" className="text-brand-violet font-medium">
-                  Trusted Development Partner
+                  Technical Partner for Engineering Teams
                 </Typography>
               </div>
 
@@ -55,18 +55,16 @@ const Hero = () => {
                   variant="h1"
                   className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4"
                 >
-                  Building Digital{' '}
+                  We Build Your Product.{' '}
                   <span className="bg-gradient-to-r from-brand-violet via-brand-gold to-brand-cyan bg-clip-text text-transparent">
-                    Excellence
-                  </span>{' '}
-                  Since 2020
+                    You Keep Control.
+                  </span>
                 </Typography>
               </div>
 
               <Typography variant="body1" className="text-lg text-gray-300 leading-relaxed">
-                SoftKerr is an award-winning digital agency, delivering cutting-edge web solutions
-                to clients worldwide. We combine strategic thinking, innovative design, and robust
-                development to create digital products that deliver measurable business results.
+                Your engineering extension. We integrate with your stack, follow your processes, and
+                deliver production-ready code. No hand-holding required.
               </Typography>
 
               {/* CTA Buttons */}
@@ -76,20 +74,20 @@ const Hero = () => {
                   size="lg"
                   animated
                   href="/contacts"
-                  aria-label="Start Your Project"
+                  aria-label="Talk to Engineering"
                   onClick={() => homeEvents.heroCtaClick('primary')}
                 >
-                  Start Your Project
+                  Talk to Engineering
                 </Button>
                 <Button
                   variant="outline"
                   size="lg"
                   href="/projects"
                   className="border-white/20 hover:border-brand-violet/50"
-                  aria-label="View Our Work"
+                  aria-label="See Our Work"
                   onClick={() => homeEvents.heroCtaClick('secondary')}
                 >
-                  View Our Work
+                  See Our Work
                 </Button>
               </div>
             </div>
