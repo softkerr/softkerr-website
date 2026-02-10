@@ -45,8 +45,8 @@ export default function Footer() {
             </Link>
 
             <p className="text-text-secondary mb-6">
-              We're a creative digital agency that helps startups and enterprises build exceptional
-              web experiences that drive results and inspire users.
+              We're a software development partner that helps startups and enterprises build
+              exceptional web experiences that drive results and inspire users.
             </p>
 
             <div className="flex space-x-4">

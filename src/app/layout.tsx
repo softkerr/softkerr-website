@@ -23,13 +23,13 @@ const orbitron = Orbitron({
 export const metadata: Metadata = {
   title: 'SoftKerr - We Build Web Experiences',
   description:
-    'A creative digital agency helping startups and enterprises build exceptional web experiences that drive results and inspire users.',
-  keywords: 'web development, ui/ux design, digital agency, startup, enterprise, web design',
+    'A software development partner helping startups and enterprises build exceptional web experiences that drive results and inspire users.',
+  keywords: 'web development, ui/ux design, software partner, startup, enterprise, web design',
   authors: [{ name: 'SoftKerr' }],
   openGraph: {
     title: 'SoftKerr - We Build Web Experiences',
     description:
-      'A creative digital agency helping startups and enterprises build exceptional web experiences that drive results and inspire users.',
+      'A software development partner helping startups and enterprises build exceptional web experiences that drive results and inspire users.',
     type: 'website',
     locale: 'en_US',
   },
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'SoftKerr - We Build Web Experiences',
     description:
-      'A creative digital agency helping startups and enterprises build exceptional web experiences that drive results and inspire users.',
+      'A software development partner helping startups and enterprises build exceptional web experiences that drive results and inspire users.',
   },
   icons: {
     icon: '/favicon.svg',
