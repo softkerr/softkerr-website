@@ -19,9 +19,183 @@ export default function GoogleAnalytics() {
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', '${GA_MEASUREMENT_ID}', {
-            page_path: window.location.pathname,
+          
+          // Bot Detection Configuration
+          const BOT_DETECTION = {
+            minTimeOnPage: 2000, // 2 seconds minimum
+            requireInteraction: true,
+            checkVisibility: true
+          };
+
+          let realUserDetected = false;
+          let pageViewSent = false;
+          let interactionDetected = false;
+          let pageLoadTime = Date.now();
+
+          // Enhanced bot detection
+          function isLikelyBot() {
+            // Check for headless browsers and bot user agents
+            const botPatterns = /bot|crawler|spider|crawling|lighthouse|gtmetrix|headless/i;
+            const userAgent = navigator.userAgent;
+            
+            if (botPatterns.test(userAgent)) {
+              return true;
+            }
+
+            // Check for webdriver (automated browsers)
+            if (navigator.webdriver) {
+              return true;
+            }
+
+            // Check for headless Chrome
+            if (window.chrome && !window.chrome.runtime) {
+              return true;
+            }
+
+            // Check for missing features that real browsers have
+            if (!navigator.plugins || navigator.plugins.length === 0) {
+              return true;
+            }
+
+            return false;
+          }
+
+          // Send page view only for real users
+          function sendRealPageView() {
+            if (pageViewSent || isLikelyBot()) {
+              console.log('[Analytics] Bot detected, skipping tracking');
+              return;
+            }
+
+            pageViewSent = true;
+            
+            const urlParams = new URLSearchParams(window.location.search);
+            const utmSource = urlParams.get('utm_source') || 'direct';
+            const utmMedium = urlParams.get('utm_medium') || 'none';
+            const utmCampaign = urlParams.get('utm_campaign') || 'none';
+            const timeOnPage = Date.now() - pageLoadTime;
+
+            // Configure GA4 with enhanced bot filtering
+            gtag('config', '${GA_MEASUREMENT_ID}', {
+              page_path: window.location.pathname,
+              page_title: document.title,
+              campaign_source: utmSource,
+              campaign_medium: utmMedium,
+              campaign_name: utmCampaign,
+              engagement_time_msec: timeOnPage,
+              cookie_flags: 'SameSite=None;Secure'
+            });
+
+            // Send custom event for tracking
+            gtag('event', 'real_user_page_view', {
+              page_location: window.location.href,
+              page_path: window.location.pathname,
+              time_to_interaction: timeOnPage,
+              has_interaction: interactionDetected,
+              campaign_source: utmSource,
+              campaign_medium: utmMedium,
+              campaign_name: utmCampaign
+            });
+
+            console.log('[Analytics] Real user page view tracked', {
+              timeOnPage: timeOnPage + 'ms',
+              campaign: utmCampaign
+            });
+          }
+
+          // Track user interactions (proves it's a real human)
+          function handleUserInteraction() {
+            if (!interactionDetected) {
+              interactionDetected = true;
+              realUserDetected = true;
+              
+              const timeToInteraction = Date.now() - pageLoadTime;
+              
+              // Only track if enough time has passed (not a prefetch bot)
+              if (timeToInteraction >= BOT_DETECTION.minTimeOnPage) {
+                sendRealPageView();
+              }
+            }
+          }
+
+          // Events that indicate real user activity
+          const interactionEvents = [
+            'click', 
+            'scroll', 
+            'mousemove', 
+            'touchstart', 
+            'keypress',
+            'resize'
+          ];
+
+          // Add interaction listeners
+          interactionEvents.forEach(eventType => {
+            document.addEventListener(eventType, handleUserInteraction, { 
+              once: true, 
+              passive: true,
+              capture: true 
+            });
           });
+
+          // Visibility check (tab is actually visible)
+          function handleVisibilityChange() {
+            if (document.visibilityState === 'visible' && !pageViewSent) {
+              const timeElapsed = Date.now() - pageLoadTime;
+              
+              // If page stays visible for 2+ seconds, likely a real user
+              if (timeElapsed >= BOT_DETECTION.minTimeOnPage && !isLikelyBot()) {
+                realUserDetected = true;
+                sendRealPageView();
+              }
+            }
+          }
+
+          document.addEventListener('visibilitychange', handleVisibilityChange);
+
+          // Fallback: If user stays on page for 3 seconds without interaction
+          // This catches users who are reading but not interacting
+          setTimeout(() => {
+            if (!pageViewSent && 
+                document.visibilityState === 'visible' && 
+                !isLikelyBot()) {
+              realUserDetected = true;
+              sendRealPageView();
+            }
+          }, BOT_DETECTION.minTimeOnPage + 1000);
+
+          // Track engagement time on page leave
+          window.addEventListener('beforeunload', () => {
+            if (realUserDetected && pageViewSent) {
+              const engagementTime = Date.now() - pageLoadTime;
+              
+              gtag('event', 'user_engagement', {
+                engagement_time_msec: engagementTime,
+                had_interaction: interactionDetected
+              });
+            }
+          });
+
+          // Track scroll depth for engaged users
+          let maxScrollDepth = 0;
+          window.addEventListener('scroll', () => {
+            if (realUserDetected) {
+              const scrollPercentage = Math.round(
+                (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100
+              );
+              
+              if (scrollPercentage > maxScrollDepth) {
+                maxScrollDepth = scrollPercentage;
+                
+                // Track milestone scroll depths
+                if ([25, 50, 75, 100].includes(scrollPercentage)) {
+                  gtag('event', 'scroll_depth', {
+                    scroll_depth: scrollPercentage,
+                    page_path: window.location.pathname
+                  });
+                }
+              }
+            }
+          }, { passive: true });
         `}
       </Script>
     </>
