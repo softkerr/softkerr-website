@@ -70,18 +70,26 @@ export default function GoogleAnalytics() {
             pageViewSent = true;
             
             const urlParams = new URLSearchParams(window.location.search);
-            const utmSource = urlParams.get('utm_source') || 'direct';
-            const utmMedium = urlParams.get('utm_medium') || 'none';
-            const utmCampaign = urlParams.get('utm_campaign') || 'none';
+            
+            // Use short hash-based IDs for cleaner URLs
+            const campaignId = urlParams.get('cid'); // Campaign ID (e.g., 'c1a2b3')
+            const sourceId = urlParams.get('sid'); // Source ID (e.g., 's4d5e6')
+            const refId = urlParams.get('rid'); // Reference/Prospect ID (e.g., 'r7f8g9')
+            
+            // Legacy UTM support (backward compatibility)
+            const utmSource = urlParams.get('utm_source');
+            const utmMedium = urlParams.get('utm_medium');
+            const utmCampaign = urlParams.get('utm_campaign');
+            
             const timeOnPage = Date.now() - pageLoadTime;
 
             // Configure GA4 with enhanced bot filtering
             gtag('config', '${GA_MEASUREMENT_ID}', {
               page_path: window.location.pathname,
               page_title: document.title,
-              campaign_source: utmSource,
-              campaign_medium: utmMedium,
-              campaign_name: utmCampaign,
+              campaign_source: sourceId || utmSource || 'direct',
+              campaign_medium: utmMedium || 'none',
+              campaign_name: campaignId || utmCampaign || 'none',
               engagement_time_msec: timeOnPage,
               cookie_flags: 'SameSite=None;Secure'
             });
@@ -92,14 +100,15 @@ export default function GoogleAnalytics() {
               page_path: window.location.pathname,
               time_to_interaction: timeOnPage,
               has_interaction: interactionDetected,
-              campaign_source: utmSource,
-              campaign_medium: utmMedium,
-              campaign_name: utmCampaign
+              campaign_id: campaignId || utmCampaign || 'none',
+              source_id: sourceId || utmSource || 'direct',
+              medium_id: utmMedium || 'none',
+              prospect_id: refId || 'none'
             });
 
             console.log('[Analytics] Real user page view tracked', {
               timeOnPage: timeOnPage + 'ms',
-              campaign: utmCampaign
+              campaign: campaignId || utmCampaign || 'none'
             });
           }
 
